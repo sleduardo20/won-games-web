@@ -1,6 +1,6 @@
 import { Container, Title, Description, Illutration, Logo } from './styles';
 
-const Main = ({ title = 'React Avançado' }) => {
+const Main = ({ title = 'Vamos decolar !!!' }) => {
   return (
     <Container>
       <Logo src="/img/logo.svg" alt="Logo React Avançado" />
