@@ -1,3 +1,4 @@
+import 'styled-components';
 // eslint-disable-next-line import/no-unresolved
 import theme from 'styles/theme';
 

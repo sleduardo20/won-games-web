@@ -52,6 +52,6 @@ export default createGlobalStyle`
 
   body{
     font-family: ${({ theme }) => theme.font.family};
-    font-size: ${({ theme }) => theme.font.sizes.medium}
+    font-size: ${({ theme }) => theme.font.sizes.small}
   }
 `;
