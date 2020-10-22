@@ -5,7 +5,7 @@ import { HeadingProps } from '.';
 const containerModifaiers = {
   lineLeft: (theme: DefaultTheme) => css`
     padding-left: ${theme.spacings.xxsmall};
-    border-left: 0.7rem solid ${theme.colors.secondary};
+    border-left: 0.5rem solid ${theme.colors.secondary};
   `,
   lineBottom: (theme: DefaultTheme) => css`
     position: relative;

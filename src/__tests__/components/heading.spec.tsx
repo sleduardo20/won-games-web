@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 import 'jest-styled-components';
 
-import Heading from '../../../components/Heading';
+import Heading from '../../components/Heading';
 
 describe('<Heading />', () => {
   it('should render a white heading by default', () => {
@@ -22,7 +22,7 @@ describe('<Heading />', () => {
   it('should render a heading with a line to the side', () => {
     renderWithTheme(<Heading lineLeft>Won Games</Heading>);
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyle({
-      'border-left': '0.7rem solid #3cd3c1',
+      'border-left': '0.5rem solid #3cd3c1',
     });
   });
 
