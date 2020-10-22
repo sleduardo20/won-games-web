@@ -14,7 +14,7 @@ describe('<Button />', () => {
     });
   });
 
-  it('should render the small size by default ', () => {
+  it('should render the small size ', () => {
     renderWithTheme(<Button size="small">Buy Now</Button>);
 
     expect(screen.getByRole('button', { name: /Buy Now/i })).toHaveStyle({
@@ -23,13 +23,21 @@ describe('<Button />', () => {
     });
   });
 
-  it('should render the large size by default ', () => {
+  it('should render the large size ', () => {
     renderWithTheme(<Button size="large">Buy Now</Button>);
 
     expect(screen.getByRole('button', { name: /Buy Now/i })).toHaveStyle({
       height: '5rem',
       padding: '0.8rem 4.8rem',
       'font-size': '1.6rem',
+    });
+  });
+
+  it('should render the fullWidth versin ', () => {
+    renderWithTheme(<Button fullWidth>Buy Now</Button>);
+
+    expect(screen.getByRole('button', { name: /Buy Now/i })).toHaveStyle({
+      width: '100%',
     });
   });
 });
