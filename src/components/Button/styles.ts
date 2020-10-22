@@ -2,6 +2,10 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 import { ButtonProps } from '.';
 
+interface Props extends ButtonProps {
+  hasIcon: boolean;
+}
+
 const containerModifiers = {
   small: (theme: DefaultTheme) => css`
     height: 3rem;
@@ -20,17 +24,32 @@ const containerModifiers = {
   fullWidth: () => css`
     width: 100%;
   `,
+  withIcon: (theme: DefaultTheme) => css`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 1.5rem;
+
+      & + span {
+        margin-left: ${theme.spacings.xxsmall};
+      }
+    }
+  `,
 };
 
-export const Container = styled.button<ButtonProps>`
-  ${({ theme, size, fullWidth }) => css`
+export const Container = styled.button<Props>`
+  ${({ theme, size, fullWidth, hasIcon }) => css`
     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
     color: ${theme.colors.white};
     border: 0;
     border-radius: ${theme.border.radius};
     padding: ${theme.spacings.xxsmall};
+    cursor: pointer;
 
     ${!!size && containerModifiers[size](theme)}
     ${!!fullWidth && containerModifiers.fullWidth()}
+    ${!!hasIcon && containerModifiers.withIcon(theme)}
   `}
 `;
