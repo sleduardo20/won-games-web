@@ -5,7 +5,7 @@ export const Container = styled.menu`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    padding: ${theme.spacings.small} 0;
+    padding: ${theme.spacings.small} ${theme.spacings.xsmall};
     justify-content: space-between;
     position: relative;
   `}
@@ -101,8 +101,8 @@ export const MenuFull = styled.nav<MenuFullProps>`
       cursor: pointer;
 
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 10px;
+      left: 0;
     }
 
     ${MenuNav} {
