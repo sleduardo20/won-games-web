@@ -7,3 +7,8 @@ export default {
 } as Meta;
 
 export const Basic: Story<LogoProps> = args => <Logo {...args} />;
+Basic.parameters = {
+  backgrounds: {
+    default: 'dark',
+  },
+};
