@@ -39,10 +39,10 @@
         "@typescript-eslint/camelcase":"off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "react/require-default-props":"off",
-        "import/no-unresolved": [
-          2, 
-          { "caseSensitive": false }
-       ],
+        "jsx-a11y/anchor-is-valid":"off",
+        "@typescript-eslint/no-empty-interface":"off",
+        "@typescript-eslint/ban-types":"off",
+        "import/no-unresolved": [2, { "caseSensitive": false }],
        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
         "import/extensions": [
           "error",
