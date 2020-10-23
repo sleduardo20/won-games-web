@@ -1,12 +1,16 @@
-import { HTMLAttributes } from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
 import { Container } from './styles';
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
+type ButtonTypes =
+  | AnchorHTMLAttributes<HTMLAnchorElement>
+  | ButtonHTMLAttributes<HTMLButtonElement>;
+
+export type ButtonProps = {
   size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
   icon?: React.ReactNode;
-}
+  as?: React.ElementType;
+} & ButtonTypes;
 
 const Button = ({
   children,
