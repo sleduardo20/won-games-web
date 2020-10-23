@@ -1,8 +1,12 @@
 import { Container } from './styles';
 
+export type LineColors = 'primary' | 'secondary';
+
 export interface HeadingProps {
   children: React.ReactNode;
   color?: 'white' | 'black';
+  size?: 'small' | 'medium';
+  lineColor?: LineColors;
   lineLeft?: boolean;
   lineBottom?: boolean;
 }
@@ -10,11 +14,19 @@ export interface HeadingProps {
 const Heading = ({
   children,
   color = 'white',
+  lineColor = 'primary',
+  size = 'medium',
   lineLeft = false,
   lineBottom = false,
 }: HeadingProps) => {
   return (
-    <Container color={color} lineLeft={lineLeft} lineBottom={lineBottom}>
+    <Container
+      color={color}
+      lineColor={lineColor}
+      size={size}
+      lineLeft={lineLeft}
+      lineBottom={lineBottom}
+    >
       {children}
     </Container>
   );

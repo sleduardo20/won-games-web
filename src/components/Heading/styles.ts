@@ -1,13 +1,30 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 import media from 'styled-media-query';
-import { HeadingProps } from '.';
+import { HeadingProps, LineColors } from '.';
 
 const containerModifaiers = {
-  lineLeft: (theme: DefaultTheme) => css`
-    padding-left: ${theme.spacings.xxsmall};
-    border-left: 0.5rem solid ${theme.colors.secondary};
+  small: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.sizes.medium};
+
+    &::after {
+      width: 3rem;
+    }
   `,
-  lineBottom: (theme: DefaultTheme) => css`
+
+  medium: (theme: DefaultTheme) => css`
+    font-size: ${theme.font.sizes.xlarge};
+
+    ${media.greaterThan('medium')`
+      font-size: ${theme.font.sizes.xxlarge}
+    `};
+  `,
+
+  lineLeft: (theme: DefaultTheme, lineColor: LineColors) => css`
+    padding-left: ${theme.spacings.xxsmall};
+    border-left: 0.7rem solid ${theme.colors[lineColor]};
+  `,
+
+  lineBottom: (theme: DefaultTheme, lineColor: LineColors) => css`
     position: relative;
     margin-bottom: ${theme.spacings.medium};
 
@@ -15,7 +32,7 @@ const containerModifaiers = {
       content: '';
       position: absolute;
       width: 5rem;
-      border-bottom: 0.5rem solid ${theme.colors.primary};
+      border-bottom: 0.5rem solid ${theme.colors[lineColor]};
       left: 0;
       bottom: -1rem;
     }
@@ -23,15 +40,11 @@ const containerModifaiers = {
 };
 
 export const Container = styled.h2<HeadingProps>`
-  ${({ theme, color, lineLeft, lineBottom }) => css`
-    font-size: ${theme.font.sizes.xlarge};
+  ${({ theme, color, lineColor, size, lineLeft, lineBottom }) => css`
     color: ${theme.colors[color!]};
 
-    ${media.greaterThan('medium')`
-      font-size: ${theme.font.sizes.xxlarge}
-    `};
-
-    ${lineLeft && containerModifaiers.lineLeft(theme)}
-    ${lineBottom && containerModifaiers.lineBottom(theme)}
+    ${lineLeft && containerModifaiers.lineLeft(theme, lineColor!)}
+    ${lineBottom && containerModifaiers.lineBottom(theme, lineColor!)}
+    ${!!size && containerModifaiers[size](theme)}
   `}
 `;
