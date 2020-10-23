@@ -6,4 +6,11 @@ export default {
   component: Menu,
 } as Meta;
 
-export const Basis: Story = args => <Menu {...args} />;
+export const Basic: Story = args => <Menu {...args} />;
+
+Basic.parameters = {
+  layout: 'fullscreen',
+  backgrounds: {
+    default: 'dark',
+  },
+};
