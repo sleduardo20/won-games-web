@@ -6,6 +6,7 @@ import {
   Close as CloseIcon,
 } from 'styled-icons/material-outlined';
 
+import MediaMath from '../MediaMath';
 import Button from '../Button';
 import Logo from '../Logo';
 
@@ -29,13 +30,22 @@ const Menu = ({ username }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <Container>
-      <IconWrapper onClick={() => setIsOpen(true)}>
-        <MenuIcon aria-label="Open Menu" />
-      </IconWrapper>
+      <MediaMath lessThan="medium">
+        <IconWrapper onClick={() => setIsOpen(true)}>
+          <MenuIcon aria-label="Open Menu" />
+        </IconWrapper>
+      </MediaMath>
 
       <LogoWrapper>
         <Logo hideOnMobile />
       </LogoWrapper>
+
+      <MediaMath greaterThan="medium">
+        <MenuNav>
+          <MenuLink href="#">Home</MenuLink>
+          <MenuLink href="#">Explore</MenuLink>
+        </MenuNav>
+      </MediaMath>
 
       <MenuGroup>
         <IconWrapper>
@@ -44,6 +54,12 @@ const Menu = ({ username }: MenuProps) => {
         <IconWrapper>
           <SearchIcon aria-label="Search" />
         </IconWrapper>
+
+        {!username && (
+          <MediaMath greaterThan="medium">
+            <Button>Sign In</Button>
+          </MediaMath>
+        )}
       </MenuGroup>
 
       <MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
