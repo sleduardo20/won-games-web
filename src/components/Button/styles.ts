@@ -2,9 +2,9 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 import { ButtonProps } from '.';
 
-interface Props extends ButtonProps {
+type Props = {
   hasIcon: boolean;
-}
+} & ButtonProps;
 
 const containerModifiers = {
   small: (theme: DefaultTheme) => css`
@@ -25,10 +25,6 @@ const containerModifiers = {
     width: 100%;
   `,
   withIcon: (theme: DefaultTheme) => css`
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
     svg {
       width: 1.5rem;
 
@@ -47,6 +43,11 @@ export const Container = styled.button<Props>`
     border-radius: ${theme.border.radius};
     padding: ${theme.spacings.xxsmall};
     cursor: pointer;
+    text-decoration: none;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
