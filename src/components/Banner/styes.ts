@@ -6,11 +6,7 @@ import * as RibbonStyles from '../Ribbon/styles';
 export const Container = styled.div`
   position: relative;
 
-  ${media.greaterThan('medium')`
-    box-shadow: 0 0.4rem 0.5rem 0 rgba(0,0,0,0.2);
-  `}
-
-  ${media.lessThan('large')`
+  ${media.lessThan('medium')`
     ${RibbonStyles.Container}{
       right: 0;
 
@@ -18,6 +14,10 @@ export const Container = styled.div`
         display:none;
       }
     }
+  `}
+
+  ${media.greaterThan('medium')`
+    box-shadow: 0 0.4rem 0.5rem 0 rgba(0,0,0,0.2);
   `}
 `;
 

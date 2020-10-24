@@ -8,9 +8,9 @@ export interface BannerProps {
   subtitle: string;
   buttonLabel: string;
   buttonLink: string;
-  ribbon: React.ReactNode;
-  ribbonSize: RibbonSizes;
-  ribbonColor: RibbonColors;
+  ribbon?: React.ReactNode;
+  ribbonSize?: RibbonSizes;
+  ribbonColor?: RibbonColors;
 }
 
 const Banner = ({

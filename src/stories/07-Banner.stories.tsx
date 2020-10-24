@@ -19,6 +19,9 @@ export const Basic: Story<BannerProps> = args => (
     <Banner {...args} />
   </div>
 );
+Basic.parameters = {
+  layout: 'fullscreen',
+};
 
 export const withRibbon: Story<BannerProps> = args => (
   <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
