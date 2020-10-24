@@ -7,15 +7,16 @@ export default {
   component: GameCard,
   args: {
     title: 'Population Zero',
-    develover: 'Rockstar Games',
+    developer: 'Rockstar Games',
     img:
       'https://d2skuhm0vrry40.cloudfront.net/2017/articles//a/1/8/9/9/2/6/7/eurogamer-zjp1vx.jpg/EG11/thumbnail/750x422/format/jpg/quality/60',
     price: 'R$ 235,00',
+    promotinalPrice: 'R$ 200,00',
   },
 } as Meta;
 
 export const basic: Story<GameCardProps> = args => (
-  <div style={{ maxWidth: '30rem' }}>
+  <div style={{ maxWidth: '29rem', maxHeight: '10rem' }}>
     <GameCard {...args} />
   </div>
 );

@@ -22,9 +22,16 @@ export interface GameCardProps {
   developer: string;
   img: string;
   price: string;
+  promotinalPrice?: string;
 }
 
-const GameCard = ({ title, developer, img, price }: GameCardProps) => {
+const GameCard = ({
+  title,
+  developer,
+  img,
+  price,
+  promotinalPrice,
+}: GameCardProps) => {
   return (
     <Container>
       <ImageBox>
@@ -39,7 +46,8 @@ const GameCard = ({ title, developer, img, price }: GameCardProps) => {
           <FavoriteBorder aria-label="Add to Wishlist" />
         </FavButton>
         <BuyBox>
-          <Price>{price}</Price>
+          {!!promotinalPrice && <Price isPromotional>{price}</Price>}
+          <Price>{promotinalPrice || price}</Price>
           <Button icon={<AddShoppingCart />} size="small" />
         </BuyBox>
       </Content>
