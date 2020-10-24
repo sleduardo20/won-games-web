@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --fix",
+    "lint": "eslint src --fix --max-warning=0",
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -s ./public -p 6008",
@@ -30,7 +30,7 @@
     }
   },
   "lint-staged": {
-    "**/*.ts?(x)": [
+    "src/**/*": [
       "yarn lint --fix",
       "yarn test --findRelatedTests --bail"
     ]
