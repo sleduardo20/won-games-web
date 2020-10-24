@@ -1,3 +1,4 @@
+import Ribbon, { RibbonColors, RibbonSizes } from '../Ribbon';
 import Button from '../Button';
 import { Container, Image, Caption, Title, Subtitle } from './styes';
 
@@ -7,6 +8,9 @@ export interface BannerProps {
   subtitle: string;
   buttonLabel: string;
   buttonLink: string;
+  ribbon: React.ReactNode;
+  ribbonSize: RibbonSizes;
+  ribbonColor: RibbonColors;
 }
 
 const Banner = ({
@@ -15,9 +19,18 @@ const Banner = ({
   img,
   buttonLabel,
   buttonLink,
+  ribbon,
+  ribbonColor,
+  ribbonSize,
 }: BannerProps) => {
   return (
     <Container>
+      {!!ribbon && (
+        <Ribbon color={ribbonColor} size={ribbonSize}>
+          {ribbon}
+        </Ribbon>
+      )}
+
       <Image src={img} role="img" aria-label={title} />
 
       <Caption>
