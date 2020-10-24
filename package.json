@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --fix --max-warning=0",
+    "lint": "eslint src --fix --max-warnings=0",
     "test": "jest",
     "test:watch": "jest --watch",
     "storybook": "start-storybook -s ./public -p 6008",
