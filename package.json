@@ -30,8 +30,8 @@
     }
   },
   "lint-staged": {
-    ".ts(x)?": [
-      "yarn lint --fix",
+    "**/src/*.ts?(x)": [
+      "yarn lint",
       "yarn test --findRelatedTests --bail"
     ]
   },
