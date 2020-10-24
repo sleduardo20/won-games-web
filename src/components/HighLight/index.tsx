@@ -1,5 +1,5 @@
 import Button from '../Button';
-import { Container, Content, Title, SubTitle } from './styles';
+import { Container, Content, FloatImage, Title, SubTitle } from './styles';
 
 export interface HighLightProps {
   title: string;
@@ -7,6 +7,7 @@ export interface HighLightProps {
   buttonLabel: string;
   buttonLink: string;
   backgroundImage: string;
+  floatImage?: string;
 }
 
 const HighLight = ({
@@ -15,9 +16,11 @@ const HighLight = ({
   buttonLabel,
   buttonLink,
   backgroundImage,
+  floatImage,
 }: HighLightProps) => {
   return (
     <Container backgroundImage={backgroundImage}>
+      {!!floatImage && <FloatImage src={floatImage} alt={title} />}
       <Content>
         <Title>{title}</Title>
         <SubTitle>{subtitle}</SubTitle>

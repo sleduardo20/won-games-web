@@ -13,7 +13,25 @@ export default {
   },
 } as Meta;
 
-export const basic: Story<HighLightProps> = args => <HighLight {...args} />;
+export const basic: Story<HighLightProps> = args => (
+  <div style={{ maxWidth: '104rem' }}>
+    <HighLight {...args} />
+  </div>
+);
+
 basic.parameters = {
+  layout: 'fullscreen',
+};
+
+export const withImage: Story<HighLightProps> = args => (
+  <div style={{ maxWidth: '104rem' }}>
+    <HighLight {...args} />
+  </div>
+);
+withImage.args = {
+  floatImage: 'img/imgHighLight.png',
+};
+
+withImage.parameters = {
   layout: 'fullscreen',
 };

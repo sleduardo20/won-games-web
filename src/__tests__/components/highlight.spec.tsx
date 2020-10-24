@@ -33,4 +33,13 @@ describe('<HighLight />', () => {
       backgroundImage: `url(${props.backgroundImage})`,
     });
   });
+
+  it('should render background image', () => {
+    renderWithTheme(<HighLight {...props} floatImage="/float-image.png" />);
+
+    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
+      'src',
+      '/float-image.png',
+    );
+  });
 });
