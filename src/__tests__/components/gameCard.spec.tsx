@@ -1,18 +1,17 @@
 import { fireEvent, screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 
-import GameCard from '../../components/GameCard';
+import GameCard from 'components/GameCard';
 
 const props = {
   title: 'Title Example',
   developer: 'Developer Example',
   img: '/img/example.png',
   price: 'R$ 250',
-  // promotinalPrice: 'R$ 200',
 };
 
 describe('<GameCard />', () => {
-  it('should render corretly', () => {
+  it('should be render GameCard component correctly', () => {
     renderWithTheme(<GameCard {...props} />);
 
     expect(
@@ -31,7 +30,7 @@ describe('<GameCard />', () => {
     expect(screen.getByLabelText(/Add to Wishlist/i)).toBeInTheDocument();
   });
 
-  it('should render price in label', () => {
+  it('should be render price in label', () => {
     renderWithTheme(<GameCard {...props} />);
 
     const price = screen.getByText(props.price);
@@ -45,7 +44,7 @@ describe('<GameCard />', () => {
     });
   });
 
-  it('should render line-through in price when promocional', () => {
+  it('should be render line-through in price when promocional', () => {
     renderWithTheme(<GameCard promotinalPrice="R$ 200" {...props} />);
 
     const price = screen.getByText(props.price);
@@ -63,13 +62,13 @@ describe('<GameCard />', () => {
     });
   });
 
-  it('should render field Favorite icon when favorite is true', () => {
+  it('should be render field Favorite icon when favorite is true', () => {
     renderWithTheme(<GameCard {...props} favorite />);
 
     expect(screen.getByLabelText(/Remove from Wishlist/i)).toBeInTheDocument();
   });
 
-  it('should call onFav method when favorite is clicked', () => {
+  it('should be call onFav method when favorite is clicked', () => {
     const onFav = jest.fn();
 
     renderWithTheme(<GameCard {...props} onFav={onFav} />);

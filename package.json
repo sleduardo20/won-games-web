@@ -31,7 +31,7 @@
   },
   "lint-staged": {
     "**/*.ts?(x)": [
-      "yarn lint",
+      "yarn lint --fix",
       "yarn test --findRelatedTests --bail"
     ]
   },

@@ -1,10 +1,10 @@
 import { fireEvent, screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 
-import Menu from '../../components/Menu';
+import Menu from 'components/Menu';
 
 describe('<Menu />', () => {
-  it('should render Menu', () => {
+  it('should be render Menu component correctly', () => {
     renderWithTheme(<Menu />);
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument();
@@ -13,7 +13,7 @@ describe('<Menu />', () => {
     expect(screen.getByRole('img', { name: /won games/i })).toBeInTheDocument();
   });
 
-  it('should hadle the open/close mobile menu', () => {
+  it('should be hadle the open/close mobile menu', () => {
     renderWithTheme(<Menu />);
 
     const fullMenuElement = screen.getByRole('navigation', { hidden: true });
@@ -30,7 +30,7 @@ describe('<Menu />', () => {
     expect(fullMenuElement).toHaveStyle({ opacity: 0 });
   });
 
-  it('should show register box when logged out', () => {
+  it('should be show register box when logged out', () => {
     renderWithTheme(<Menu />);
 
     expect(screen.getByText(/log in now/i)).toBeInTheDocument();
@@ -39,7 +39,7 @@ describe('<Menu />', () => {
     expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument();
   });
 
-  it('should show wishlist and account when logged in ', () => {
+  it('should be show wishlist and account when logged in ', () => {
     renderWithTheme(<Menu username="Eduardo" />);
 
     expect(screen.getByText(/my account/i)).toBeInTheDocument();

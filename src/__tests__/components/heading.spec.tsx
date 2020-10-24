@@ -1,31 +1,31 @@
 import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 
-import Heading from '../../components/Heading';
+import Heading from 'components/Heading';
 
 describe('<Heading />', () => {
-  it('should render a white heading by default', () => {
+  it('should be render a white heading by default', () => {
     renderWithTheme(<Heading>Won Games</Heading>);
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyle({
       color: '#fafafa',
     });
   });
 
-  it('should render a black heading when color is passed', () => {
+  it('should be render a black heading when color is passed', () => {
     renderWithTheme(<Heading color="black">Won Games</Heading>);
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyle({
       color: '#030517',
     });
   });
 
-  it('should render a heading with a line to the side', () => {
+  it('should be render a heading with a line to the side', () => {
     renderWithTheme(<Heading lineLeft>Won Games</Heading>);
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyle({
       'border-left': '0.7rem solid #f231a5',
     });
   });
 
-  it('should render a heading with a line to the bottom', () => {
+  it('should be render a heading with a line to the bottom', () => {
     renderWithTheme(<Heading lineBottom>Won Games</Heading>);
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyleRule(
       'border-bottom',
@@ -36,7 +36,7 @@ describe('<Heading />', () => {
     );
   });
 
-  it('should render a heading with a small size', () => {
+  it('should be render a heading with a small size', () => {
     renderWithTheme(<Heading size="small">Won Games</Heading>);
     expect(screen.getByRole('heading', { name: /won games/i })).toHaveStyle({
       'font-size': '1.6rem',
@@ -51,7 +51,7 @@ describe('<Heading />', () => {
     );
   });
 
-  it('should render a heading with a primary line color', () => {
+  it('should be render a heading with a primary line color', () => {
     renderWithTheme(
       <Heading lineColor="primary" lineBottom lineLeft>
         Won Games
@@ -66,7 +66,7 @@ describe('<Heading />', () => {
     });
   });
 
-  it('should render a heading with a secondary line color', () => {
+  it('should be render a heading with a secondary line color', () => {
     renderWithTheme(
       <Heading lineColor="secondary" lineLeft lineBottom>
         Won Games

@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 
-import Ribbon from '../../components/Ribbon';
+import Ribbon from 'components/Ribbon';
 
 describe('<Ribbon />', () => {
-  it('should render the text corretly', () => {
+  it('should be render the text correctly', () => {
     renderWithTheme(<Ribbon>Best Seller</Ribbon>);
 
     expect(screen.getByText(/Best seller/i)).toBeInTheDocument();
   });
 
-  it('should render with primary color', () => {
+  it('should be render with primary color', () => {
     renderWithTheme(<Ribbon>Best Seller</Ribbon>);
 
     expect(screen.getByText(/Best seller/i)).toHaveStyle({
@@ -18,7 +18,7 @@ describe('<Ribbon />', () => {
     });
   });
 
-  it('should render with secondary color', () => {
+  it('should be render with secondary color', () => {
     renderWithTheme(<Ribbon color="secondary">Best Seller</Ribbon>);
 
     expect(screen.getByText(/Best seller/i)).toHaveStyle({
@@ -26,7 +26,7 @@ describe('<Ribbon />', () => {
     });
   });
 
-  it('should render with the normal size as default', () => {
+  it('should be render with the normal size as default', () => {
     renderWithTheme(<Ribbon>Best Seller</Ribbon>);
 
     expect(screen.getByText(/Best seller/i)).toHaveStyle({
@@ -35,7 +35,7 @@ describe('<Ribbon />', () => {
     });
   });
 
-  it('should render with the small size', () => {
+  it('should be render with the small size', () => {
     renderWithTheme(<Ribbon size="small">Best Seller</Ribbon>);
 
     expect(screen.getByText(/Best seller/i)).toHaveStyle({

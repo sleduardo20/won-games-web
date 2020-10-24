@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import MediaMatch from '../../components/MediaMath';
+import MediaMatch from 'components/MediaMath';
 
 describe('<MediaMacth />', () => {
   let desktopHeading: Element;
@@ -26,7 +26,7 @@ describe('<MediaMacth />', () => {
     expect(mobileHeading.parentElement).toHaveStyleRule('display', 'none');
   });
 
-  it('should show or hide based media query passed', () => {
+  it('should be show or hide based media query passed', () => {
     expect(desktopHeading.parentElement).toHaveStyleRule('display', 'block', {
       media: '(min-width: 768px)',
     });

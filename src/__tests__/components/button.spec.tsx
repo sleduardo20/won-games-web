@@ -2,10 +2,10 @@ import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 import { AddShoppingCart } from 'styled-icons/material-outlined';
 
-import Button from '../../components/Button';
+import Button from 'components/Button';
 
 describe('<Button />', () => {
-  it('should render the medium size by default ', () => {
+  it('should be render the medium size by default ', () => {
     const { container } = renderWithTheme(<Button>Buy Now</Button>);
 
     expect(screen.getByRole('button', { name: /Buy Now/i })).toHaveStyle({
@@ -17,7 +17,7 @@ describe('<Button />', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should render the small size ', () => {
+  it('should be render the small size ', () => {
     renderWithTheme(<Button size="small">Buy Now</Button>);
 
     expect(screen.getByRole('button', { name: /Buy Now/i })).toHaveStyle({
@@ -26,7 +26,7 @@ describe('<Button />', () => {
     });
   });
 
-  it('should render the large size ', () => {
+  it('should be render the large size ', () => {
     renderWithTheme(<Button size="large">Buy Now</Button>);
 
     expect(screen.getByRole('button', { name: /Buy Now/i })).toHaveStyle({
@@ -36,7 +36,7 @@ describe('<Button />', () => {
     });
   });
 
-  it('should render the fullWidth versin ', () => {
+  it('should be render the fullWidth versin ', () => {
     renderWithTheme(<Button fullWidth>Buy Now</Button>);
 
     expect(screen.getByRole('button', { name: /Buy Now/i })).toHaveStyle({
@@ -44,7 +44,7 @@ describe('<Button />', () => {
     });
   });
 
-  it('should render an icon versin ', () => {
+  it('should be render an icon version ', () => {
     renderWithTheme(
       <Button icon={<AddShoppingCart data-testid="icon" />}>Buy Now</Button>,
     );
@@ -53,7 +53,7 @@ describe('<Button />', () => {
     expect(screen.getByTestId('icon')).toBeInTheDocument();
   });
 
-  it('should render button as a link', () => {
+  it('should be render button as a link', () => {
     const { container, debug } = renderWithTheme(
       <Button as="a" href="/link">
         Buy Now

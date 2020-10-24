@@ -1,8 +1,8 @@
 import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 
-import HighLight from '../../components/HighLight';
-import { Content } from '../../components/HighLight/styles';
+import HighLight from 'components/HighLight';
+import { Content } from 'components/HighLight/styles';
 
 const props = {
   title: 'Heading 1',
@@ -13,7 +13,7 @@ const props = {
 };
 
 describe('<HighLight />', () => {
-  it('should render headings and button', () => {
+  it('should be render headings and button', () => {
     renderWithTheme(<HighLight {...props} />);
 
     expect(
@@ -27,7 +27,7 @@ describe('<HighLight />', () => {
     expect(screen.getByRole('link', { name: /buy now/i })).toBeInTheDocument();
   });
 
-  it('should render background image', () => {
+  it('should be render background image', () => {
     const { container } = renderWithTheme(<HighLight {...props} />);
 
     expect(container.firstChild).toHaveStyle({
@@ -35,7 +35,7 @@ describe('<HighLight />', () => {
     });
   });
 
-  it('should render background image', () => {
+  it('should be render background image', () => {
     renderWithTheme(<HighLight {...props} floatImage="/float-image.png" />);
 
     expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
