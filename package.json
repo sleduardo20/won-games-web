@@ -9,7 +9,7 @@
     "lint": "eslint src --fix",
     "test": "jest",
     "test:watch": "jest --watch",
-    "storybook": "start-storybook -s ./public -p 6006",
+    "storybook": "start-storybook -s ./public -p 6008",
     "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {

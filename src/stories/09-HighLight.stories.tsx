@@ -6,6 +6,7 @@ export default {
   component: HighLight,
   args: {
     title: "Read Dead ist's back",
+    backgroundImage: '/img/bgHighLight.png',
     subtitle: "Come see Jhon's new adventures",
     buttonLabel: 'buy now',
     buttonLink: '/go',
@@ -15,7 +16,4 @@ export default {
 export const basic: Story<HighLightProps> = args => <HighLight {...args} />;
 basic.parameters = {
   layout: 'fullscreen',
-  backgrounds: {
-    default: 'dark',
-  },
 };
