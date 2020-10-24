@@ -26,3 +26,18 @@ export const basic: Story<GameCardProps> = args => (
 basic.parameters = {
   layout: 'fullscreen',
 };
+
+export const withRibbon: Story<GameCardProps> = args => (
+  <div style={{ maxWidth: '29rem', maxHeight: '10rem' }}>
+    <GameCard {...args} />
+  </div>
+);
+withRibbon.parameters = {
+  layout: 'fullscreen',
+};
+
+withRibbon.args = {
+  ribbon: '40% OFF',
+  ribbonColor: 'primary',
+  ribbonSize: 'small',
+};
