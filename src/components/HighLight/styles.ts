@@ -2,22 +2,43 @@ import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 import { HighLightProps } from '.';
 
-type ContainerProps = Pick<HighLightProps, 'backgroundImage'>;
+type ContainerProps = Pick<HighLightProps, 'backgroundImage' | 'alignment'>;
+
+const containerModfiers = {
+  right: () => css`
+    grid-template-areas: 'floatimage content';
+    grid-template-columns: 1.3fr 2fr;
+    ${Content} {
+      text-align: right;
+    }
+  `,
+  left: () => css`
+    grid-template-areas: 'content floatimage';
+    grid-template-columns: 2fr 1.3fr;
+    ${Content} {
+      text-align: left;
+    }
+
+    ${FloatImage} {
+      justify-self: end;
+    }
+  `,
+};
 
 export const Container = styled.section<ContainerProps>`
-  ${({ backgroundImage }) => css`
+  ${({ backgroundImage, alignment }) => css`
     position: relative;
     background-image: url(${backgroundImage});
     background-position: center center;
     background-size: cover;
     height: 23rem;
     display: grid;
-    grid-template-columns: 1.3fr 2fr;
-    grid-template-areas: 'floatimage content';
 
     ${media.greaterThan('medium')`
       height: 32rem;
     `}
+
+    ${containerModfiers[alignment!]}
 
     &::after {
       content: '';
@@ -33,7 +54,6 @@ export const Content = styled.div`
   ${({ theme }) => css`
     grid-area: content;
     z-index: ${theme.layers.base};
-    text-align: right;
     padding: ${theme.spacings.xsmall};
 
     ${media.greaterThan('medium')`

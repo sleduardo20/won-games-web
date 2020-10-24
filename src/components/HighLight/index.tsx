@@ -8,6 +8,7 @@ export interface HighLightProps {
   buttonLink: string;
   backgroundImage: string;
   floatImage?: string;
+  alignment?: 'left' | 'right';
 }
 
 const HighLight = ({
@@ -17,9 +18,10 @@ const HighLight = ({
   buttonLink,
   backgroundImage,
   floatImage,
+  alignment = 'right',
 }: HighLightProps) => {
   return (
-    <Container backgroundImage={backgroundImage}>
+    <Container backgroundImage={backgroundImage} alignment={alignment}>
       {!!floatImage && <FloatImage src={floatImage} alt={title} />}
       <Content>
         <Title>{title}</Title>
