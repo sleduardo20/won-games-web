@@ -51,4 +51,10 @@ describe('<BannerSlider />', () => {
       }),
     ).toBeInTheDocument();
   });
+
+  it('should be render with the dots', () => {
+    const { container } = renderWithTheme(<BannerSlider items={items} />);
+
+    expect(container.querySelector('.slick-dots')).toBeInTheDocument();
+  });
 });

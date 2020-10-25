@@ -1,6 +1,6 @@
 import Ribbon, { RibbonColors, RibbonSizes } from '../Ribbon';
 import Button from '../Button';
-import { Container, Image, Caption, Title, Subtitle } from './styes';
+import { Container, Image, Caption, Title, Subtitle } from './styles';
 
 export interface BannerProps {
   img: string;
