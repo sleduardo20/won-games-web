@@ -5,7 +5,7 @@ export const Container = styled.menu`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    padding: ${theme.spacings.small} ${theme.spacings.xsmall};
+    padding: ${theme.spacings.small} 0;
     justify-content: space-between;
     position: relative;
   `}

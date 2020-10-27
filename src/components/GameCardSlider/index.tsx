@@ -44,7 +44,7 @@ const settings: SliderSettings = {
   ],
 };
 
-const GameCardSlider = ({ items, color = 'black' }: GameCardSliderProps) => {
+const GameCardSlider = ({ items, color = 'white' }: GameCardSliderProps) => {
   return (
     <Container color={color}>
       <Slider settings={settings}>
