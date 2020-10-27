@@ -48,6 +48,6 @@ asLink.args = {
 
 asLink.parameters = {
   backgrounds: {
-    default: 'dark',
+    default: 'won-dark',
   },
 };

@@ -44,6 +44,6 @@ export const basic: Story<BannerSliderProps> = args => (
 basic.parameters = {
   layout: 'fullscreen',
   backgrounds: {
-    default: 'dark',
+    default: 'won-dark',
   },
 };

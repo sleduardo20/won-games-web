@@ -19,6 +19,6 @@ Basic.args = {
 
 Basic.parameters = {
   backgrounds: {
-    default: 'dark',
+    default: 'won-dark',
   },
 };

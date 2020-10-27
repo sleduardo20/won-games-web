@@ -14,6 +14,6 @@ export const Basic: Story = args => (
 
 Basic.parameters = {
   backgrounds: {
-    default: 'dark',
+    default: 'won-dark',
   },
 };

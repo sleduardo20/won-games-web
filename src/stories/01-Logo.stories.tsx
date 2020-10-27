@@ -9,6 +9,6 @@ export default {
 export const Basic: Story<LogoProps> = args => <Logo {...args} />;
 Basic.parameters = {
   backgrounds: {
-    default: 'dark',
+    default: 'won-dark',
   },
 };

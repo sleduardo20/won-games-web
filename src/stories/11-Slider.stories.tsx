@@ -59,13 +59,13 @@ export const vertical: Story<SliderProps> = () => (
 horizontal.parameters = {
   layout: 'fullscreen',
   backgrounds: {
-    default: 'dark',
+    default: 'won-dark',
   },
 };
 
 vertical.parameters = {
   layout: 'fullscreen',
   backgrounds: {
-    default: 'dark',
+    default: 'won-dark',
   },
 };

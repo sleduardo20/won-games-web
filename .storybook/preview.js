@@ -13,6 +13,19 @@ export const decorators = [
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  backgrounds: {
+    default: 'won-light',
+    values: [
+        { 
+            name: 'won-light', 
+            value: theme.colors.white
+        },
+        { 
+            name: 'won-dark', 
+            value: theme.colors.mainBg
+        },
+      ],
+    },
 }
 
 
