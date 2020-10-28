@@ -10,12 +10,12 @@ import mockHightLight from 'components/HighLight/mock';
 
 const props = {
   banners: mockBanners,
-  newGames: mockGames,
+  newGames: [mockGames[0]],
   mostPopularHighlight: mockHightLight,
-  mostPopularGames: mockGames,
-  upcommingGames: mockGames,
+  mostPopularGames: [mockGames[0]],
+  upcommingGames: [mockGames[0]],
   upcommingHighlight: mockHightLight,
-  freeGames: mockGames,
+  freeGames: [mockGames[0]],
   freeHighlight: mockHightLight,
 };
 
@@ -45,5 +45,13 @@ describe('<Home />', () => {
     expect(
       screen.getByRole('heading', { name: /Free Games/i }),
     ).toBeInTheDocument();
+  });
+
+  it('should be able render section elements', () => {
+    renderWithTheme(<Home {...props} />);
+
+    expect(screen.getAllByText(/Red Dead Redemption 23/i)).toHaveLength(1);
+
+    expect(screen.getAllByText(/RocketGames/i)).toHaveLength(5);
   });
 });
