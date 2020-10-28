@@ -1,3 +1,4 @@
+import { darken } from 'polished';
 import styled, { css, DefaultTheme } from 'styled-components';
 
 import { ButtonProps } from '.';
@@ -33,10 +34,19 @@ const containerModifiers = {
       }
     }
   `,
+
+  minimal: (theme: DefaultTheme) => css`
+    background: none;
+    color: ${theme.colors.primary};
+
+    &:hover {
+      color: ${darken(0.1, theme.colors.primary)};
+    }
+  `,
 };
 
 export const Container = styled.button<Props>`
-  ${({ theme, size, fullWidth, hasIcon }) => css`
+  ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
     color: ${theme.colors.white};
     border: 0;
@@ -50,10 +60,13 @@ export const Container = styled.button<Props>`
     justify-content: center;
 
     &:hover {
-      background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+      background: ${minimal
+        ? 'none'
+        : `linear-gradient(180deg, #e35565 0%, #d958a6 50%)`};
     }
 
     ${!!size && containerModifiers[size](theme)}
+    ${!!minimal && containerModifiers.minimal(theme)}
     ${!!fullWidth && containerModifiers.fullWidth()}
     ${!!hasIcon && containerModifiers.withIcon(theme)}
   `}
