@@ -10,6 +10,11 @@ export default {
     labelfor: 'games',
     labelColor: 'black',
   },
+  argTypes: {
+    onCheck: { action: 'checked' },
+  },
 } as Meta;
 
-export const basic: Story<CheckBoxProps> = args => <CheckBox {...args} />;
+export const basic: Story<CheckBoxProps> = args => (
+  <CheckBox {...args} isChecked />
+);
