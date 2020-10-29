@@ -43,7 +43,7 @@ describe('<CheckBox />', () => {
     expect(onCheck).toHaveBeenCalledWith(true);
   });
 
-  it('should be able checked onCheck when status changes', async () => {
+  it('should be able checked onCheck when status false', async () => {
     const onCheck = jest.fn();
 
     renderWithTheme(
@@ -57,5 +57,15 @@ describe('<CheckBox />', () => {
     });
 
     expect(onCheck).toHaveBeenCalledWith(false);
+  });
+
+  it('should be able accessible with tab', async () => {
+    renderWithTheme(<CheckBox label="checkbox label" labelfor="checkbox" />);
+
+    expect(document.body).toHaveFocus();
+
+    userEvent.tab();
+
+    expect(screen.getByLabelText(/checkbox label/i)).toHaveFocus();
   });
 });
