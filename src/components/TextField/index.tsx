@@ -7,7 +7,7 @@ export type TextFieldProps = {
   labelFor?: string;
   initialValue?: string;
   icon?: React.ReactNode;
-  disable?: boolean;
+  disabled?: boolean;
   iconPosition?: 'left' | 'rigth';
 } & InputHTMLAttributes<HTMLInputElement>;
 
@@ -17,7 +17,7 @@ const TextField = ({
   labelFor = '',
   initialValue = '',
   icon,
-  disable,
+  disabled = false,
   iconPosition = 'left',
   ...rest
 }: TextFieldProps) => {
@@ -35,14 +35,14 @@ const TextField = ({
   return (
     <Container>
       {!!label && <Label htmlFor={labelFor}>{label}</Label>}
-      <Wrapper iconPosition={iconPosition}>
+      <Wrapper iconPosition={iconPosition} disabled={disabled}>
         {!!icon && <Icon>{icon}</Icon>}
         <Input
           type="text"
-          {...rest}
           onChange={handleOnChange}
           value={value}
-          disabled={disable}
+          disabled={disabled}
+          {...rest}
         />
       </Wrapper>
     </Container>

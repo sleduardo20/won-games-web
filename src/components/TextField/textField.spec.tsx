@@ -58,6 +58,25 @@ describe('<TextField/>', () => {
     expect(input).toHaveFocus();
   });
 
+  it('should be able accessible by tab when disabled', () => {
+    renderWithTheme(
+      <TextField
+        disabled
+        id="textfield"
+        label="textfield"
+        labelFor="textfield"
+      />,
+    );
+
+    const input = screen.getByLabelText('textfield');
+
+    expect(document.body).toHaveFocus();
+
+    userEvent.tab();
+
+    expect(input).not.toHaveFocus();
+  });
+
   it('should be able render TextField component with icon', () => {
     renderWithTheme(
       <TextField placeholder="email" icon={<Mail data-testid="icon" />} />,
@@ -84,5 +103,32 @@ describe('<TextField/>', () => {
     const wrapper = screen.getByRole('textbox').parentElement;
 
     expect(wrapper).toHaveStyle({ flex: 'row-reverse' });
+  });
+
+  it('should be able disabled Input if propity is true', async () => {
+    const onInput = jest.fn();
+
+    renderWithTheme(
+      <TextField
+        id="TextField"
+        onInput={onInput}
+        label="TextField"
+        labelFor="TextField"
+        disabled
+      />,
+    );
+
+    const input = screen.getByRole('textbox');
+
+    expect(input).toBeDisabled();
+
+    const text = 'This is my text';
+    userEvent.type(input, text);
+
+    await waitFor(() => {
+      expect(input).not.toHaveValue(text);
+    });
+
+    expect(onInput).not.toHaveBeenCalled();
   });
 });

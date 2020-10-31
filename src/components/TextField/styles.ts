@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { TextFieldProps } from '.';
 
 export const Container = styled.div``;
@@ -46,10 +46,22 @@ const wrapperModifiers = {
       margin-left: 0.4rem;
     }
   `,
+  disabled: (theme: DefaultTheme) => css`
+    ${Label},
+    ${Input},
+    ${Icon} {
+      cursor: not-allowed;
+      color: ${theme.colors.gray};
+
+      &::placeholder {
+        color: currentColor;
+      }
+    }
+  `,
 };
 
-export const Wrapper = styled.div<Pick<TextFieldProps, 'iconPosition'>>`
-  ${({ theme, iconPosition }) => css`
+export const Wrapper = styled.div<TextFieldProps>`
+  ${({ theme, iconPosition, disabled }) => css`
     display: flex;
     background: ${theme.colors.ligthGray};
     border-radius: 0.2rem;
@@ -57,6 +69,8 @@ export const Wrapper = styled.div<Pick<TextFieldProps, 'iconPosition'>>`
     border: 0.2rem solid ${theme.colors.ligthGray};
 
     ${iconPosition && wrapperModifiers[iconPosition]};
+
+    ${disabled && wrapperModifiers.disabled(theme)};
 
     &:focus-within {
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
