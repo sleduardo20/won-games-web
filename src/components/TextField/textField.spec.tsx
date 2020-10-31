@@ -105,6 +105,20 @@ describe('<TextField/>', () => {
     expect(wrapper).toHaveStyle({ flex: 'row-reverse' });
   });
 
+  it('should be able render TextField component with error', () => {
+    const { container } = renderWithTheme(
+      <TextField
+        icon={<Mail data-testid="icon" />}
+        labelFor="textfield"
+        label="textfield"
+        error="Error Message"
+      />,
+    );
+
+    expect(screen.getByText(/error message/i)).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
   it('should be able disabled Input if propity is true', async () => {
     const onInput = jest.fn();
 

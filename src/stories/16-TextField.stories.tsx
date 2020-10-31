@@ -4,7 +4,7 @@ import { Mail } from 'styled-icons/material-outlined';
 import TextField, { TextFieldProps } from '../components/TextField';
 
 export default {
-  title: 'TextField',
+  title: 'Form/TextField',
   component: TextField,
   parameters: {
     backgrounds: {

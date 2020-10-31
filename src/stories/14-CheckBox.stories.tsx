@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import CheckBox, { CheckBoxProps } from '../components/CheckBox';
 
 export default {
-  title: 'CheckBox',
+  title: 'Form/CheckBox',
   component: CheckBox,
   args: {
     labelColor: 'white',
