@@ -1,7 +1,9 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 import { TextFieldProps } from '.';
 
-export const Container = styled.div``;
+type ContainerProps = Pick<TextFieldProps, 'disabled' | 'iconPosition'> & {
+  error?: boolean;
+};
 
 export const Input = styled.input`
   ${({ theme }) => css`
@@ -33,7 +35,25 @@ export const Icon = styled.div`
   }
 `;
 
-const wrapperModifiers = {
+export const Wrapper = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    background: ${theme.colors.ligthGray};
+    border-radius: 0.2rem;
+    padding: 0 ${theme.spacings.xsmall};
+    border: 0.2rem solid ${theme.colors.ligthGray};
+
+    &:focus-within {
+      box-shadow: 0 0 0.5rem ${theme.colors.primary};
+    }
+  `}
+`;
+export const Error = styled.span`
+  color: ${({ theme }) => theme.colors.red};
+  font-size: ${({ theme }) => theme.font.sizes.xsmall};
+`;
+
+const containerModifiers = {
   left: () => css`
     ${Icon} {
       margin-right: 0.4rem;
@@ -58,22 +78,24 @@ const wrapperModifiers = {
       }
     }
   `,
+  error: (theme: DefaultTheme) => css`
+    ${Wrapper} {
+      border-color: ${theme.colors.red};
+    }
+
+    ${Icon},
+    ${Label} {
+      color: ${theme.colors.red};
+    }
+  `,
 };
 
-export const Wrapper = styled.div<TextFieldProps>`
-  ${({ theme, iconPosition, disabled }) => css`
-    display: flex;
-    background: ${theme.colors.ligthGray};
-    border-radius: 0.2rem;
-    padding: 0 ${theme.spacings.xsmall};
-    border: 0.2rem solid ${theme.colors.ligthGray};
+export const Container = styled.div<ContainerProps>`
+  ${({ theme, iconPosition, disabled, error }) => css`
+    ${iconPosition && containerModifiers[iconPosition]};
 
-    ${iconPosition && wrapperModifiers[iconPosition]};
+    ${error && containerModifiers.error(theme)}
 
-    ${disabled && wrapperModifiers.disabled(theme)};
-
-    &:focus-within {
-      box-shadow: 0 0 0.5rem ${theme.colors.primary};
-    }
+    ${disabled && containerModifiers.disabled(theme)};
   `}
 `;

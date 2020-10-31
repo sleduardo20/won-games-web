@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, useState } from 'react';
-import { Container, Wrapper, Input, Label, Icon } from './styles';
+import { Container, Wrapper, Input, Label, Icon, Error } from './styles';
 
 export type TextFieldProps = {
   onInput?: (value: string) => void;
@@ -9,6 +9,7 @@ export type TextFieldProps = {
   icon?: React.ReactNode;
   disabled?: boolean;
   iconPosition?: 'left' | 'rigth';
+  error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const TextField = ({
@@ -19,6 +20,7 @@ const TextField = ({
   icon,
   disabled = false,
   iconPosition = 'left',
+  error,
   ...rest
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue);
@@ -33,9 +35,9 @@ const TextField = ({
   };
 
   return (
-    <Container>
+    <Container iconPosition={iconPosition} disabled={disabled} error={!!error}>
       {!!label && <Label htmlFor={labelFor}>{label}</Label>}
-      <Wrapper iconPosition={iconPosition} disabled={disabled}>
+      <Wrapper>
         {!!icon && <Icon>{icon}</Icon>}
         <Input
           type="text"
@@ -45,6 +47,7 @@ const TextField = ({
           {...rest}
         />
       </Wrapper>
+      {!!error && <Error>{error}</Error>}
     </Container>
   );
 };

@@ -30,3 +30,9 @@ export const basic: Story<TextFieldProps> = args => (
     <TextField {...args} />
   </div>
 );
+
+export const withError: Story<TextFieldProps> = args => (
+  <div>
+    <TextField error="This is Error" {...args} />
+  </div>
+);
