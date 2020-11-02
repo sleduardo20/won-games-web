@@ -1,5 +1,5 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
-import { Container } from './styles';
+import { forwardRef, AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react';
+import { Container, ContainerProps } from './styles';
 
 type ButtonTypes =
   | AnchorHTMLAttributes<HTMLAnchorElement>
@@ -13,16 +13,20 @@ export type ButtonProps = {
   as?: React.ElementType;
 } & ButtonTypes;
 
-const Button = ({
-  children,
-  size = 'medium',
-  fullWidth = false,
-  minimal = false,
-  icon,
-  ...rest
-}: ButtonProps) => {
+const Button: React.ForwardRefRenderFunction<ContainerProps, ButtonProps> = (
+  {
+    children,
+    size = 'medium',
+    fullWidth = false,
+    minimal = false,
+    icon,
+    ...rest
+  },
+  ref,
+) => {
   return (
     <Container
+      ref={ref}
       size={size}
       fullWidth={fullWidth}
       hasIcon={!!icon}
@@ -35,4 +39,4 @@ const Button = ({
   );
 };
 
-export default Button;
+export default forwardRef(Button);

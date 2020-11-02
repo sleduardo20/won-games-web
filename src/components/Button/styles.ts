@@ -3,9 +3,9 @@ import styled, { css, DefaultTheme } from 'styled-components';
 
 import { ButtonProps } from '.';
 
-type Props = {
+export type ContainerProps = {
   hasIcon: boolean;
-} & ButtonProps;
+} & Pick<ButtonProps, 'size' | 'fullWidth' | 'minimal'>;
 
 const containerModifiers = {
   small: (theme: DefaultTheme) => css`
@@ -45,7 +45,7 @@ const containerModifiers = {
   `,
 };
 
-export const Container = styled.button<Props>`
+export const Container = styled.button<ContainerProps>`
   ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
     background: linear-gradient(180deg, #ff5f5f 0%, #f062c0 50%);
     color: ${theme.colors.white};
