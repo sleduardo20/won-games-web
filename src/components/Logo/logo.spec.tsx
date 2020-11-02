@@ -18,6 +18,14 @@ describe('<Logo />', () => {
     });
   });
 
+  it('should be able render wiht id is passed', () => {
+    const { container } = renderWithTheme(<Logo id="id-test" />);
+
+    expect(
+      container.querySelector('#paint0_linear_id-test'),
+    ).toBeInTheDocument();
+  });
+
   it('should be render a bigger logo', () => {
     renderWithTheme(<Logo size="large" />);
     expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
