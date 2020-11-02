@@ -55,6 +55,10 @@ export const Subtitle = styled.h3`
   font-size: ${({ theme }) => theme.font.sizes.xxlarge};
   font-weight: ${({ theme }) => theme.font.ligth};
   margin-top: ${({ theme }) => theme.spacings.xxsmall};
+
+  > strong {
+    color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 export const Footer = styled.h6`
