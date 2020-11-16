@@ -5,7 +5,7 @@ import { GameCardProps } from '../GameCard';
 import { Wrapper } from './styles';
 
 interface ShowCaseProps {
-  title?: HeadingProps;
+  title?: string;
   highlight?: HighLightProps;
   games?: GameCardProps[];
 }
