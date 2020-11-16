@@ -10,12 +10,12 @@ export default {
   args: { items },
 } as Meta;
 
-export const basic: Story<BannerSliderProps> = args => (
+export const Basic: Story<BannerSliderProps> = args => (
   <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
     <BannerSlider {...args} />
   </div>
 );
-basic.parameters = {
+Basic.parameters = {
   layout: 'fullscreen',
   backgrounds: {
     default: 'won-dark',

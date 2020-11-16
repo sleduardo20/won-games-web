@@ -25,13 +25,13 @@ export default {
   },
 } as Meta;
 
-export const basic: Story<TextFieldProps> = args => (
+export const Basic: Story<TextFieldProps> = args => (
   <div>
     <TextField {...args} />
   </div>
 );
 
-export const withError: Story<TextFieldProps> = args => (
+export const WithError: Story<TextFieldProps> = args => (
   <div>
     <TextField error="This is Error" {...args} />
   </div>

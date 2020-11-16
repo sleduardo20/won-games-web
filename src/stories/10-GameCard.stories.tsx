@@ -18,12 +18,12 @@ export default {
   },
 } as Meta;
 
-export const basic: Story<GameCardProps> = args => (
+export const Basic: Story<GameCardProps> = args => (
   <div style={{ maxWidth: '29rem', maxHeight: '10rem' }}>
     <GameCard {...args} />
   </div>
 );
-basic.parameters = {
+Basic.parameters = {
   layout: 'fullscreen',
 };
 

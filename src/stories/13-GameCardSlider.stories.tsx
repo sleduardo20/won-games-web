@@ -18,7 +18,7 @@ export default {
   args: { items },
 } as Meta;
 
-export const basic: Story<GameCardSliderProps[]> = args => (
+export const Basic: Story<GameCardSliderProps[]> = args => (
   <div style={{ maxWidth: '136rem', margin: '0 auto' }}>
     <GameCardSlider items={items} {...args} />
   </div>

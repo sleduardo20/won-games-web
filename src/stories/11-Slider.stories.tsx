@@ -34,7 +34,7 @@ const Slide = styled.div`
   text-align: center;
 `;
 
-export const horizontal: Story<SliderProps> = () => (
+export const Horizontal: Story<SliderProps> = () => (
   <Slider settings={horizontalSettings}>
     <Slide>1</Slide>
     <Slide>2</Slide>
@@ -45,7 +45,7 @@ export const horizontal: Story<SliderProps> = () => (
   </Slider>
 );
 
-export const vertical: Story<SliderProps> = () => (
+export const Vertical: Story<SliderProps> = () => (
   <Slider settings={verticalSettings}>
     <Slide>1</Slide>
     <Slide>2</Slide>
@@ -56,14 +56,14 @@ export const vertical: Story<SliderProps> = () => (
   </Slider>
 );
 
-horizontal.parameters = {
+Horizontal.parameters = {
   layout: 'fullscreen',
   backgrounds: {
     default: 'won-dark',
   },
 };
 
-vertical.parameters = {
+Vertical.parameters = {
   layout: 'fullscreen',
   backgrounds: {
     default: 'won-dark',
