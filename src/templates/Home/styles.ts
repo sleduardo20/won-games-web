@@ -2,33 +2,8 @@ import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 
 import * as HeadingStyles from 'components/Heading/styles';
-import * as GameCardSliderStyles from 'components/GameCardSlider/styles';
+
 import * as HighLightStyles from 'components/HighLight/styles';
-
-export const Sections = styled.section`
-  ${({ theme }) => css`
-    ${HeadingStyles.Container},
-    ${GameCardSliderStyles.Container},
-    ${HighLightStyles.Container} {
-      margin-bottom: ${theme.spacings.medium};
-    }
-
-    ${HighLightStyles.Container} {
-      ${media.lessThan('medium')`
-        margin-right: calc(-${theme.grid.gutter} / 2});
-        margin-left: calc(-${theme.grid.gutter} / 2});
-      `}
-    }
-
-    ${GameCardSliderStyles.Container} {
-      ${media.lessThan('huge')`
-        margin-right: calc(-${theme.grid.gutter} / 2});
-      `}
-    }
-
-    margin-bottom: calc(${theme.spacings.large} / 2);
-  `}
-`;
 
 export const SectionBanner = styled.section`
   ${({ theme }) => css`
@@ -42,9 +17,13 @@ export const SectionBanner = styled.section`
   `}
 `;
 
-export const SectionNews = styled(Sections)`
+export const SectionNews = styled.div`
   ${({ theme }) => css`
     margin-bottom: calc(${theme.spacings.xxlarge} * 2);
+
+    ${HeadingStyles.Container} {
+      color: ${theme.colors.black};
+    }
 
     ${media.greaterThan('large')`
       margin-top: -13rem;
@@ -60,17 +39,13 @@ export const SectionNews = styled(Sections)`
   `}
 `;
 
-export const SectionPopular = styled(Sections)``;
-
-export const SectionUpcomming = styled(Sections)`
+export const SectionUpcomming = styled.div`
   ${({ theme }) => css`
     ${HighLightStyles.Container} {
       margin-top: calc(${theme.spacings.xxlarge} / 2);
     }
   `}
 `;
-
-export const SectionFreeGames = styled(Sections)``;
 
 export const SectionFooter = styled.section`
   ${({ theme }) => css`

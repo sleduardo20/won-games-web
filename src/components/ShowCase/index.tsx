@@ -13,7 +13,11 @@ interface ShowCaseProps {
 const ShowCase = ({ title, highlight, games }: ShowCaseProps) => {
   return (
     <Wrapper>
-      {!!title && <Heading>{title}</Heading>}
+      {!!title && (
+        <Heading lineLeft lineColor="secondary">
+          {title}
+        </Heading>
+      )}
       {!!highlight && <HighLight {...highlight} />}
       {!!games && <GameCardSlider items={games} />}
     </Wrapper>

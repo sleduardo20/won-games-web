@@ -19,39 +19,59 @@ const props = {
   freeHighlight: mockHightLight,
 };
 
+jest.mock('components/Menu', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Menu" />;
+    },
+  };
+});
+
+jest.mock('components/Footer', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Footer" />;
+    },
+  };
+});
+
+jest.mock('components/ShowCase', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock ShowCase" />;
+    },
+  };
+});
+
+jest.mock('components/BannerSlider', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock BannerSlider" />;
+    },
+  };
+});
+
 describe('<Home />', () => {
   it('should be able render page Home, menu and footer successfull', () => {
     renderWithTheme(<Home {...props} />);
 
-    const columnContact = screen.getByRole('heading', { name: /contact/i });
-    expect(columnContact).toBeInTheDocument();
-
-    expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument();
+    expect(screen.getByTestId(/mock menu/i)).toBeInTheDocument();
+    expect(screen.getByTestId(/mock footer/i)).toBeInTheDocument();
   });
 
   it('should be able render page Home the sections', () => {
     renderWithTheme(<Home {...props} />);
 
-    expect(screen.getByRole('heading', { name: /News/i })).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', { name: /Most Popular/i }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', { name: /Upcomming/i }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', { name: /Free Games/i }),
-    ).toBeInTheDocument();
+    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(6);
   });
 
   it('should be able render section elements', () => {
     renderWithTheme(<Home {...props} />);
 
-    expect(screen.getAllByText(/Red Dead Redemption 23/i)).toHaveLength(1);
-
-    expect(screen.getAllByText(/RocketGames/i)).toHaveLength(5);
+    expect(screen.getByTestId(/mock bannerslider/i)).toBeInTheDocument();
   });
 });
