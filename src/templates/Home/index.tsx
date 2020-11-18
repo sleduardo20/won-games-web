@@ -9,6 +9,7 @@ import Menu from 'components/Menu';
 import BannerSlider from 'components/BannerSlider';
 
 import ShowCase from 'components/ShowCase';
+import Base from 'templates/Base';
 import {
   SectionBanner,
   SectionNews,
@@ -38,9 +39,8 @@ const Home = ({
   freeHighlight,
 }: HomeTemplateProps) => {
   return (
-    <section>
+    <Base>
       <Container>
-        <Menu />
         <SectionBanner>
           <BannerSlider items={banners} />
         </SectionBanner>
@@ -58,8 +58,7 @@ const Home = ({
 
       <SectionUpcomming>
         <ShowCase title="Up Comming" />
-        <ShowCase games={upcommingGames} />
-        <ShowCase highlight={upcommingHighlight} />
+        <ShowCase games={upcommingGames} highlight={upcommingHighlight} />
       </SectionUpcomming>
 
       <ShowCase
@@ -67,13 +66,7 @@ const Home = ({
         highlight={freeHighlight}
         games={freeGames}
       />
-
-      <SectionFooter>
-        <Container>
-          <Footer />
-        </Container>
-      </SectionFooter>
-    </section>
+    </Base>
   );
 };
 
