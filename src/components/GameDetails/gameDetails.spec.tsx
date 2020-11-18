@@ -5,6 +5,6 @@ import GameDetails from '.';
 
 describe('<GameDetailsComponent/>', () => {
   it('should be able render GameDetails', () => {
-    renderWithTheme(<GameDetails />);
+    renderWithTheme(<GameDetails platforms={['mac', 'windows']} />);
   });
 });
