@@ -43,6 +43,7 @@
         "@typescript-eslint/no-empty-interface":"off",
         "@typescript-eslint/ban-types":"off",
         "jsx-a11y/no-noninteractive-element-to-interactive-role":"off",
+        "jsx-a11y/click-events-have-key-events":"off",
         "react/no-danger": "off",
         "no-shadow":"off",
         "import/no-unresolved": [2, 

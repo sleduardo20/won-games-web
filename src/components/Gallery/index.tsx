@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   ArrowBackIos as ArrowLeft,
   ArrowForwardIos as ArrowRight,
@@ -5,7 +6,7 @@ import {
 
 import Slider, { SliderSettings } from '../Slider';
 
-import { Container } from './styles';
+import { Container, Modal } from './styles';
 
 const settings: SliderSettings = {
   infinite: false,
@@ -51,6 +52,8 @@ export interface GalleryProps {
 }
 
 const Gallery = ({ items }: GalleryProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Container>
       <Slider settings={settings}>
@@ -60,9 +63,15 @@ const Gallery = ({ items }: GalleryProps) => {
             key={`thumb-${item.src}`}
             src={item.src}
             alt={`Thumb - ${item.label}`}
+            onClick={() => {
+              setIsOpen(true);
+            }}
           />
         ))}
       </Slider>
+      <Modal isOpen={isOpen} aria-label="modal" aria-hidden={!isOpen}>
+        <p>modal</p>
+      </Modal>
     </Container>
   );
 };
