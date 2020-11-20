@@ -35,7 +35,7 @@ describe('<GameDetails />', () => {
   it('should be able render free when FREE', () => {
     renderWithTheme(<GameDetails {...props} />);
 
-    expect(screen.getByText('FREE')).toBeInTheDocument();
+    expect(screen.getByText('Gratuito')).toBeInTheDocument();
   });
 
   it('should be able render 18+ when FREE', () => {

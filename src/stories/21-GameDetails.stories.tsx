@@ -19,6 +19,19 @@ export default {
         options: ['windows', 'linux', 'mac'],
       },
     },
+
+    releaseDate: {
+      control: {
+        type: 'date',
+      },
+    },
+
+    genres: {
+      control: {
+        type: 'inline-check',
+        options: ['Role-playing', 'Narrative', 'Action'],
+      },
+    },
   },
 } as Meta;
 

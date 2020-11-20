@@ -77,7 +77,9 @@ const GameDetails = ({
         <Block>
           <Label>Rating</Label>
           <Description>
-            {rating === 'FREE' ? 'FREE' : `${rating.replace('FREE', '')}+`}
+            {rating === 'FREE'
+              ? 'Gratuito'
+              : `${rating.replace('FREE', '').replace('BR', '')}+`}
           </Description>
         </Block>
 
