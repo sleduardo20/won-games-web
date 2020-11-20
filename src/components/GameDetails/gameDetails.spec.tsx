@@ -7,6 +7,8 @@ const props: GameDetailsProps = {
   developer: 'Different Tales',
   platforms: ['windows', 'linux', 'mac'],
   releaseDate: '2020-11-19T23:00:00',
+  rating: 'FREE',
+  genres: ['Role-playing', 'Narrative'],
 };
 
 describe('<GameDetails />', () => {
@@ -28,5 +30,23 @@ describe('<GameDetails />', () => {
     renderWithTheme(<GameDetails {...props} />);
 
     expect(screen.getByText('Nov 19, 2020')).toBeInTheDocument();
+  });
+
+  it('should be able render free when FREE', () => {
+    renderWithTheme(<GameDetails {...props} />);
+
+    expect(screen.getByText('FREE')).toBeInTheDocument();
+  });
+
+  it('should be able render 18+ when FREE', () => {
+    renderWithTheme(<GameDetails {...props} rating="BR18" />);
+
+    expect(screen.getByText(/18\+/i)).toBeInTheDocument();
+  });
+
+  it('should be able render a list of genres', () => {
+    renderWithTheme(<GameDetails {...props} rating="BR18" />);
+
+    expect(screen.getByText(/role-playing \/ narrative/i)).toBeInTheDocument();
   });
 });

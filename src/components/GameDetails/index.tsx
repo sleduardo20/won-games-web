@@ -14,17 +14,22 @@ import {
 } from './styles';
 
 type Platform = 'windows' | 'linux' | 'mac';
+type Rating = 'FREE' | 'BR10' | 'BR14' | 'BR16' | 'BR18';
 
 export interface GameDetailsProps {
   platforms: Platform[];
   developer: string;
   releaseDate: string;
+  rating: Rating;
+  genres: string[];
 }
 
 const GameDetails = ({
   platforms,
   developer,
   releaseDate,
+  rating,
+  genres,
 }: GameDetailsProps) => {
   const platformIcons = {
     windows: <Windows title="Windows" size={18} />,
@@ -71,12 +76,14 @@ const GameDetails = ({
 
         <Block>
           <Label>Rating</Label>
-          <Description>18+</Description>
+          <Description>
+            {rating === 'FREE' ? 'FREE' : `${rating.replace('FREE', '')}+`}
+          </Description>
         </Block>
 
         <Block>
           <Label>Genres</Label>
-          <Description>Action / Adventure</Description>
+          <Description>{genres.join(' / ')}</Description>
         </Block>
       </Content>
     </Container>
