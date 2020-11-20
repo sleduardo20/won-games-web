@@ -3,19 +3,13 @@ import { GameCardProps } from 'components/GameCard';
 import { HighLightProps } from 'components/HighLight';
 
 import { Container } from 'components/Container';
-import Footer from 'components/Footer';
-import Heading from 'components/Heading';
-import Menu from 'components/Menu';
 import BannerSlider from 'components/BannerSlider';
 
 import ShowCase from 'components/ShowCase';
 import Base from 'templates/Base';
-import {
-  SectionBanner,
-  SectionNews,
-  SectionUpcomming,
-  SectionFooter,
-} from './styles';
+import Gallery from 'components/Gallery';
+import mockGallery from 'components/Gallery/mock';
+import { SectionBanner, SectionNews, SectionUpcomming } from './styles';
 
 export interface HomeTemplateProps {
   banners: BannerProps[];
@@ -47,6 +41,7 @@ const Home = ({
       </Container>
 
       <SectionNews>
+        <Gallery items={mockGallery} />
         <ShowCase title="News" games={newGames} />
       </SectionNews>
 
