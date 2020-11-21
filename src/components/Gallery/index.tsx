@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowBackIos as ArrowLeft,
   ArrowForwardIos as ArrowRight,
@@ -54,6 +54,18 @@ export interface GalleryProps {
 
 const Gallery = ({ items }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyup = ({ key }: KeyboardEvent) => {
+      key === 'Escape' && setIsOpen(false);
+    };
+
+    window.addEventListener('keyup', handleKeyup);
+
+    return () => {
+      window.removeEventListener('keyup', handleKeyup);
+    };
+  }, []);
 
   return (
     <Container>

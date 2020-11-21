@@ -26,7 +26,7 @@ describe('<Gallery />', () => {
     expect(modal).toHaveStyle({ opacity: 1 });
   });
 
-  it('should be able render close modal', () => {
+  it('should be able close modal button is clicked', () => {
     renderWithTheme(<Gallery items={mockGallery.slice(0, 2)} />);
 
     const modal = screen.getByLabelText('modal');
@@ -38,5 +38,22 @@ describe('<Gallery />', () => {
     fireEvent.click(screen.getByRole('button', { name: /close modal/i }));
     expect(modal.getAttribute('aria-hidden')).toBe('true');
     expect(modal).toHaveStyle({ opacity: 0 });
+  });
+
+  it('should be able render close modal press key ESC', () => {
+    const { container } = renderWithTheme(
+      <Gallery items={mockGallery.slice(0, 2)} />,
+    );
+
+    const modal = screen.getByLabelText('modal');
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /Thumb - Gallery Image 01/i }),
+    );
+
+    fireEvent.keyUp(container, { key: 'Escape' });
+
+    expect(modal).toHaveStyle({ opacity: 0 });
+    expect(modal.getAttribute('aria-hidden')).toBe('true');
   });
 });
