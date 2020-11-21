@@ -2,11 +2,12 @@ import { useState } from 'react';
 import {
   ArrowBackIos as ArrowLeft,
   ArrowForwardIos as ArrowRight,
+  Close,
 } from 'styled-icons/material-outlined';
 
 import Slider, { SliderSettings } from '../Slider';
 
-import { Container, Modal } from './styles';
+import { Container, Modal, IconClose } from './styles';
 
 const settings: SliderSettings = {
   infinite: false,
@@ -69,8 +70,15 @@ const Gallery = ({ items }: GalleryProps) => {
           />
         ))}
       </Slider>
+
       <Modal isOpen={isOpen} aria-label="modal" aria-hidden={!isOpen}>
-        <p>modal</p>
+        <IconClose
+          role="button"
+          aria-label="close modal"
+          onClick={() => setIsOpen(false)}
+        >
+          <Close size={40} />
+        </IconClose>
       </Modal>
     </Container>
   );
