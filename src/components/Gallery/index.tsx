@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import SlickSlider from 'react-slick';
 import {
   ArrowBackIos as ArrowLeft,
   ArrowForwardIos as ArrowRight,
@@ -7,13 +8,16 @@ import {
 
 import Slider, { SliderSettings } from '../Slider';
 
-import { Container, Modal, IconClose } from './styles';
+import { Container, Modal, IconClose, Content } from './styles';
 
-const settings: SliderSettings = {
+const commomSettings: SliderSettings = {
   infinite: false,
   lazyLoad: 'ondemand',
   nextArrow: <ArrowRight aria-label="next image" />,
   prevArrow: <ArrowLeft aria-label="previews image" />,
+};
+const settings: SliderSettings = {
+  ...commomSettings,
   slidesToShow: 4,
   responsive: [
     {
@@ -42,6 +46,10 @@ const settings: SliderSettings = {
     },
   ],
 };
+const modalSettings: SliderSettings = {
+  ...commomSettings,
+  slidesToShow: 1,
+};
 
 export type GalleryImageProps = {
   src: string;
@@ -53,6 +61,7 @@ export interface GalleryProps {
 }
 
 const Gallery = ({ items }: GalleryProps) => {
+  const slider = useRef<SlickSlider>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -69,8 +78,8 @@ const Gallery = ({ items }: GalleryProps) => {
 
   return (
     <Container>
-      <Slider settings={settings}>
-        {items.map(item => (
+      <Slider ref={slider} settings={settings}>
+        {items.map((item, index) => (
           <img
             role="button"
             key={`thumb-${item.src}`}
@@ -78,6 +87,7 @@ const Gallery = ({ items }: GalleryProps) => {
             alt={`Thumb - ${item.label}`}
             onClick={() => {
               setIsOpen(true);
+              slider.current!.slickGoTo(index, true);
             }}
           />
         ))}
@@ -91,6 +101,18 @@ const Gallery = ({ items }: GalleryProps) => {
         >
           <Close size={40} />
         </IconClose>
+
+        <Content>
+          <Slider ref={slider} settings={modalSettings}>
+            {items.map(item => (
+              <img
+                key={`gallery-${item.src}`}
+                src={item.src}
+                alt={item.label}
+              />
+            ))}
+          </Slider>
+        </Content>
       </Modal>
     </Container>
   );
