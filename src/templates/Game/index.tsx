@@ -1,13 +1,17 @@
 import GameInfo, { GameInfoProps } from 'components/GameInfo';
-import { Main, Cover, SectionGameInfo } from './styles';
+
+import Gallery, { GalleryImageProps } from 'components/Gallery';
 import Base from '../Base';
+
+import { Main, Cover, SectionGameInfo, SectionGallery } from './styles';
 
 export interface GameTemplateProps {
   cover: string;
   gameInfo: GameInfoProps;
+  gallery?: GalleryImageProps[];
 }
 
-const Game = ({ cover, gameInfo }: GameTemplateProps) => {
+const Game = ({ cover, gameInfo, gallery }: GameTemplateProps) => {
   return (
     <Base>
       <Cover src={cover} role="image" aria-label="cover" />
@@ -15,6 +19,10 @@ const Game = ({ cover, gameInfo }: GameTemplateProps) => {
         <SectionGameInfo>
           <GameInfo {...gameInfo} />
         </SectionGameInfo>
+
+        <SectionGallery>
+          {!!gallery && <Gallery items={gallery} />}
+        </SectionGallery>
       </Main>
     </Base>
   );

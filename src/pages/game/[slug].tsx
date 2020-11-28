@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import mockGallery from 'components/Gallery/mock';
 import Game, { GameTemplateProps } from '../../templates/Game';
 
 export default function Index(props: GameTemplateProps) {
@@ -25,6 +26,7 @@ export const getStaticProps: GetStaticProps<GameTemplateProps> = async () => {
           'Critically acclaimed Batman: Arkham Asylum returns with a remastered Game of the Year Edition, featuring 4 extra Challenge Maps. The additional Challenge Maps are Crime Alley; Scarecrow Nightmare; Totally Insane and Nocturnal Hunter (both from the Insane Night Map Pack).',
         price: '9,29',
       },
+      gallery: mockGallery,
     },
   };
 };
