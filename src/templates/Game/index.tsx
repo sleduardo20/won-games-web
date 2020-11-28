@@ -1,10 +1,14 @@
-import { Container } from './styles';
+import { Cover } from './styles';
 import Base from '../Base';
 
-const Game = () => {
+export interface GameTemplateProps {
+  cover: string;
+}
+
+const Game = ({ cover }: GameTemplateProps) => {
   return (
     <Base>
-      <h1>Game</h1>
+      <Cover src={cover} role="image" aria-label="cover" />
     </Base>
   );
 };
