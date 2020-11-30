@@ -3,21 +3,121 @@ import { screen } from '@testing-library/react';
 
 import { renderWithTheme } from 'utils/tests/helpers';
 
-import Game from '.';
+import mockGallery from 'components/Gallery/mock';
+import mockGameInfo from 'components/GameInfo/mock';
+import mockTextContent from 'components/TextContent/mock';
+import mockGameDetails from 'components/GameDetails/mock';
+import mockGames from 'components/GameCardSlider/mock';
+import mockHightLight from 'components/HighLight/mock';
+import { GameDetailsProps } from 'components/GameDetails/index.jsx';
 
-const props = {
-  cover:
-    'https://images.gog-statics.com/e5afc0564e689bc226f9d748df7b0eee7d16af21761654c9d4f5d2da71ebd7fe.jpg',
-  gameInfo: {
-    title: 'Batman: Arkham Asylum Game of the Year Edition',
-    description:
-      'Critically acclaimed Batman: Arkham Asylum returns with a remastered Game of the Year Edition, featuring 4 extra Challenge Maps. The additional Challenge Maps are Crime Alley; Scarecrow Nightmare; Totally Insane and Nocturnal Hunter (both from the Insane Night Map Pack).',
-    price: '9,29',
-  },
+import Game, { GameTemplateProps } from '.';
+
+const props: GameTemplateProps = {
+  cover: 'bg-image.jpg',
+  gameInfo: mockGameInfo,
+  gallery: mockGallery,
+  details: mockGameDetails as GameDetailsProps,
+  description: mockTextContent.content,
+  upcomingGames: mockGames,
+  recommendedGames: mockGames,
+  upcomingHighlight: mockHightLight,
 };
 
+jest.mock('components/Menu', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Menu" />;
+    },
+  };
+});
+
+jest.mock('components/Gallery', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock Gallery" />;
+    },
+  };
+});
+
+jest.mock('components/GameDetails', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock GameDetails" />;
+    },
+  };
+});
+
+jest.mock('components/GameInfo', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock GameInfo" />;
+    },
+  };
+});
+
+jest.mock('components/ShowCase', () => {
+  return {
+    __esModule: true,
+    default: function Mock() {
+      return <div data-testid="Mock ShowCase" />;
+    },
+  };
+});
+
 describe('<Game />', () => {
-  it('should be able render Game correctly', () => {
-    // renderWithTheme(<Game {...props} />);
+  it('should be able render the template Game with components correctly', () => {
+    renderWithTheme(<Game {...props} />);
+
+    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument();
+    expect(screen.getByTestId('Mock Gallery')).toBeInTheDocument();
+    expect(screen.getByTestId('Mock GameDetails')).toBeInTheDocument();
+    expect(screen.getByTestId('Mock GameInfo')).toBeInTheDocument();
+    expect(screen.getAllByTestId('Mock ShowCase')).toHaveLength(2);
+  });
+
+  it('should not render the gallery if no images', () => {
+    renderWithTheme(<Game {...props} gallery={undefined} />);
+
+    expect(screen.queryByTestId('Mock Gallery')).not.toBeInTheDocument();
+  });
+
+  it('should not render the gallery on mobile', () => {
+    renderWithTheme(<Game {...props} />);
+
+    expect(screen.getByTestId('Mock Gallery').parentElement).toHaveStyle({
+      display: 'none',
+    });
+
+    expect(
+      screen.getByTestId('Mock Gallery').parentElement,
+    ).toHaveStyleRule('display', 'block', { media: '(min-width: 768px)' });
+  });
+
+  it('should render cover image', () => {
+    renderWithTheme(<Game {...props} />);
+
+    const cover = screen.getByRole('img', { name: /cover/i });
+
+    expect(cover).toHaveStyle({
+      backgroundImage: 'url(bg-image.jpg)',
+      height: '39.5rem',
+    });
+
+    expect(cover).toHaveStyleRule('height', '70rem', {
+      media: '(min-width: 768px)',
+    });
+
+    expect(cover).toHaveStyleRule(
+      'clip-path',
+      'polygon(0 0,100% 0,100% 100%,0 85%)',
+      {
+        media: '(min-width: 768px)',
+      },
+    );
   });
 });

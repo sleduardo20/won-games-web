@@ -16,8 +16,8 @@ export interface HomeTemplateProps {
   newGames: GameCardProps[];
   mostPopularHighlight: HighLightProps;
   mostPopularGames: GameCardProps[];
-  upcommingGames: GameCardProps[];
-  upcommingHighlight: HighLightProps;
+  upcomingGames: GameCardProps[];
+  upcomingHighlight: HighLightProps;
   freeGames: GameCardProps[];
   freeHighlight: HighLightProps;
 }
@@ -27,8 +27,8 @@ const Home = ({
   newGames,
   mostPopularHighlight,
   mostPopularGames,
-  upcommingGames,
-  upcommingHighlight,
+  upcomingGames,
+  upcomingHighlight,
   freeGames,
   freeHighlight,
 }: HomeTemplateProps) => {
@@ -52,7 +52,7 @@ const Home = ({
 
       <SectionUpcomming>
         <ShowCase title="Up Comming" />
-        <ShowCase games={upcommingGames} highlight={upcommingHighlight} />
+        <ShowCase games={upcomingGames} highlight={upcomingHighlight} />
       </SectionUpcomming>
 
       <ShowCase

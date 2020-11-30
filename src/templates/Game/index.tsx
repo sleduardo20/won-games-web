@@ -23,8 +23,8 @@ export interface GameTemplateProps {
   gallery?: GalleryImageProps[];
   description: string;
   details: GameDetailsProps;
-  upcommingGames: GameCardProps[];
-  upcommingHighlight: HighLightProps;
+  upcomingGames: GameCardProps[];
+  upcomingHighlight: HighLightProps;
   recommendedGames: GameCardProps[];
 }
 
@@ -34,13 +34,13 @@ const Game = ({
   gallery,
   description,
   details,
-  upcommingGames,
-  upcommingHighlight,
+  upcomingGames,
+  upcomingHighlight,
   recommendedGames,
 }: GameTemplateProps) => {
   return (
     <Base>
-      <Cover src={cover} role="image" aria-label="cover" />
+      <Cover src={cover} role="img" aria-label="cover" />
       <Main>
         <SectionGameInfo>
           <GameInfo {...gameInfo} />
@@ -59,9 +59,9 @@ const Game = ({
         </SectionGameDetails>
 
         <ShowCase
-          title="Upcomming"
-          games={upcommingGames}
-          highlight={upcommingHighlight}
+          title="Upcoming"
+          games={upcomingGames}
+          highlight={upcomingHighlight}
         />
 
         <ShowCase title="You may like these games" games={recommendedGames} />

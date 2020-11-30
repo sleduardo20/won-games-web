@@ -57,8 +57,8 @@ WB GAMES LOGO, WB SHIELD: ™ &amp; © Warner Bros. Entertainment Inc.
         rating: 'BR18',
         genres: ['Role-playing', 'Action'],
       },
-      upcommingGames: mockGames,
-      upcommingHighlight: mockHightLight,
+      upcomingGames: mockGames,
+      upcomingHighlight: mockHightLight,
       recommendedGames: mockGames,
     },
   };
