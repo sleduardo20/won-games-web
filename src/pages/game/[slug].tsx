@@ -1,5 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import mockGallery from 'components/Gallery/mock';
+import mockGames from 'components/GameCardSlider/mock';
+import mockHightLight from 'components/HighLight/mock';
 import Game, { GameTemplateProps } from '../../templates/Game';
 
 export default function Index(props: GameTemplateProps) {
@@ -47,6 +49,17 @@ WB GAMES LOGO, WB SHIELD: ™ &amp; © Warner Bros. Entertainment Inc.
       },
       gallery: mockGallery,
       description: descriptionHTML,
+      details: {
+        developer: 'Different Tales',
+        releaseDate: '2020-12-12T23:00:00',
+        platforms: ['windows', 'linux', 'mac'],
+        publisher: 'Walkabout',
+        rating: 'BR18',
+        genres: ['Role-playing', 'Action'],
+      },
+      upcommingGames: mockGames,
+      upcommingHighlight: mockHightLight,
+      recommendedGames: mockGames,
     },
   };
 };

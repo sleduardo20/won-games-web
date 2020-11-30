@@ -5,6 +5,7 @@ import GameDetails, { GameDetailsProps } from '.';
 
 const props: GameDetailsProps = {
   developer: 'Different Tales',
+  publisher: 'Walltrue',
   platforms: ['windows', 'linux', 'mac'],
   releaseDate: '2020-11-19T23:00:00',
   rating: 'FREE',
@@ -36,6 +37,18 @@ describe('<GameDetails />', () => {
     renderWithTheme(<GameDetails {...props} />);
 
     expect(screen.getByText('Gratuito')).toBeInTheDocument();
+  });
+
+  it('should be able render the Publisher', () => {
+    renderWithTheme(<GameDetails {...props} />);
+
+    expect(screen.getByText('Walltrue')).toBeInTheDocument();
+  });
+
+  it('should be able render the Developer', () => {
+    renderWithTheme(<GameDetails {...props} />);
+
+    expect(screen.getByText('Different Tales')).toBeInTheDocument();
   });
 
   it('should be able render 18+ when FREE', () => {

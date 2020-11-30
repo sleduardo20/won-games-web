@@ -18,6 +18,7 @@ type Rating = 'FREE' | 'BR10' | 'BR14' | 'BR16' | 'BR18';
 
 export interface GameDetailsProps {
   platforms: Platform[];
+  publisher: string;
   developer: string;
   releaseDate: string;
   rating: Rating;
@@ -26,6 +27,7 @@ export interface GameDetailsProps {
 
 const GameDetails = ({
   platforms,
+  publisher,
   developer,
   releaseDate,
   rating,
@@ -71,7 +73,7 @@ const GameDetails = ({
 
         <Block>
           <Label>Publisher</Label>
-          <Description>2k</Description>
+          <Description>{publisher}</Description>
         </Block>
 
         <Block>
