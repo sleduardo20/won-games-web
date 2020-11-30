@@ -41,7 +41,6 @@ const Home = ({
       </Container>
 
       <SectionNews>
-        <Gallery items={mockGallery} />
         <ShowCase title="News" games={newGames} />
       </SectionNews>
 
