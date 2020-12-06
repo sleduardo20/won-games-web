@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps<WishListTemplateProps> = async () =>
     props: {
       recommendedGames: mockGames.slice(0, 5),
       recommendedHighLight: mockHightLight,
+      games: mockGames,
     },
   };
 };
