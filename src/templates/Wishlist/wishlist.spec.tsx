@@ -32,4 +32,19 @@ describe('<Wishtlist />', () => {
 
     expect(screen.getAllByText(/RocketGames/i)).toHaveLength(6);
   });
+
+  it('should render empty when there are no games', () => {
+    renderWithTheme(
+      <Wishtlist
+        recommendedGames={props.recommendedGames}
+        recommendedHighLight={props.recommendedHighLight}
+      />,
+    );
+
+    expect(screen.queryByText(/rocketgames/i)).not.toBeInTheDocument();
+
+    expect(
+      screen.getByRole('heading', { name: /Your wishlist is empty/i }),
+    ).toBeInTheDocument();
+  });
 });
