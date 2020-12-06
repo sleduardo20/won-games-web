@@ -6,6 +6,7 @@ import GameDetails, { GameDetailsProps } from 'components/GameDetails';
 import { GameCardProps } from 'components/GameCard';
 import { HighLightProps } from 'components/HighLight';
 import ShowCase from 'components/ShowCase';
+import { Divider } from 'components/Divider';
 import Base from '../Base';
 
 import {
@@ -56,6 +57,7 @@ const Game = ({
 
         <SectionGameDetails>
           <GameDetails {...details} />
+          <Divider />
         </SectionGameDetails>
 
         <ShowCase
