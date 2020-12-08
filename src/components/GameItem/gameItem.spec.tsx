@@ -17,7 +17,10 @@ describe('<GameItem />', () => {
 
     expect(screen.getByRole('heading', { level: 3 })).toBeInTheDocument();
 
-    expect(screen.getByRole('img')).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
+      'src',
+      props.img,
+    );
 
     expect(screen.getByText('R$ 250,00')).toBeInTheDocument();
   });
