@@ -8,7 +8,7 @@ export const Footer = styled.div``;
 
 export const CardsList = styled.div``;
 
-export const CardItem = styled.div``;
+export const CardItem = styled.label``;
 
 export const CardInfo = styled.div``;
 
