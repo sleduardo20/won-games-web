@@ -5,6 +5,6 @@ import CardList from '.';
 
 describe('<CardList />', () => {
   it('should be able render correctly', () => {
-    // nderWithTheme(<CardList />);
+    // renderWithTheme(<CardList />);
   });
 });
