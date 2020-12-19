@@ -1,6 +1,6 @@
 import { Add, ShoppingCart } from '@styled-icons/material-outlined';
-import Button from 'components/Button';
 
+import Button from '../Button';
 import Heading from '../Heading';
 import Radio from '../Radio';
 
