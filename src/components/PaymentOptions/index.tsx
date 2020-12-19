@@ -1,5 +1,5 @@
-import Heading from 'components/Heading';
-import Radio from 'components/Radio';
+import Heading from '../Heading';
+import Radio from '../Radio';
 import {
   Container,
   Body,
