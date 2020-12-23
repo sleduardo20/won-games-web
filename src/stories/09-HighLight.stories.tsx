@@ -3,7 +3,7 @@ import HighLight, { HighLightProps } from '../components/HighLight';
 import item from '../components/HighLight/mock';
 
 export default {
-  title: 'HighLight',
+  title: 'components/HighLight',
   component: HighLight,
   args: { ...item },
 } as Meta;

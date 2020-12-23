@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import Menu, { MenuProps } from '../components/Menu';
 
 export default {
-  title: 'Menu',
+  title: 'components/Menu',
   component: Menu,
 } as Meta;
 

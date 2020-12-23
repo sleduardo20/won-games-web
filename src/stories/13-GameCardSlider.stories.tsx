@@ -7,7 +7,7 @@ import GameCardSlider, {
 import items from '../components/GameCardSlider/mock';
 
 export default {
-  title: 'GameCardSlider',
+  title: 'components-game/GameCardSlider',
   component: GameCardSlider,
   parameters: {
     layout: 'fullscreen',

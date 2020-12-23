@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import Ribbon, { RibbonProps } from '../components/Ribbon';
 
 export default {
-  title: 'Ribbon',
+  title: 'components/Ribbon',
   component: Ribbon,
   args: {
     children: 'Best Seller',

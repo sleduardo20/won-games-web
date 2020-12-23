@@ -4,7 +4,7 @@ import Gallery, { GalleryProps } from '../components/Gallery';
 import items from '../components/Gallery/mock';
 
 export default {
-  title: 'Gallery',
+  title: 'components/Gallery',
   component: Gallery,
   args: { items },
   parameters: {

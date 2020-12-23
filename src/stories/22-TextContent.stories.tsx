@@ -4,7 +4,7 @@ import TextContent, { TextContentProps } from '../components/TextContent';
 import mockTextContent from '../components/TextContent/mock';
 
 export default {
-  title: 'TextContent',
+  title: 'components/TextContent',
   component: TextContent,
   args: mockTextContent,
   parameters: {

@@ -4,7 +4,7 @@ import GameDetails, { GameDetailsProps } from '../components/GameDetails';
 import mockGameDetails from '../components/GameDetails/mock';
 
 export default {
-  title: 'Game/GameDetails',
+  title: 'components-game/GameDetails',
   component: GameDetails,
   parameters: {
     backgrounds: {

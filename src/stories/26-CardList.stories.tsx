@@ -4,7 +4,7 @@ import CardList, { CardListProps } from '../components/CardList';
 import mockCardList from '../components/CardList/mock';
 
 export default {
-  title: 'CardList',
+  title: 'components/CardList',
   component: CardList,
   args: {
     items: mockCardList,
