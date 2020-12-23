@@ -5,7 +5,7 @@ import BannerSlider, { BannerSliderProps } from '../components/BannerSlider';
 import items from '../components/BannerSlider/mock';
 
 export default {
-  title: 'BannerSlider',
+  title: 'components/BannerSlider',
   component: BannerSlider,
   args: { items },
 } as Meta;

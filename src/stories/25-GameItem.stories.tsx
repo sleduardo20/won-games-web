@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import GameItem, { GameItemProps } from '../components/GameItem';
 
 export default {
-  title: 'GameItem',
+  title: 'components-game/GameItem',
   component: GameItem,
 } as Meta;
 

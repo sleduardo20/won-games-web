@@ -6,7 +6,7 @@ import PaymentOptions, {
 import mockPaymentOptions from '../components/PaymentOptions/mock';
 
 export default {
-  title: 'PaymentOptions',
+  title: 'components/PaymentOptions',
   component: PaymentOptions,
   args: {
     cards: mockPaymentOptions,

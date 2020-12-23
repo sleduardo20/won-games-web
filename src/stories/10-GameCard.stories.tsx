@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import GameCard, { GameCardProps } from '../components/GameCard';
 
 export default {
-  title: 'GameCard',
+  title: 'components-game/GameCard',
   component: GameCard,
   args: {
     title: 'Population Zero',
