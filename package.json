@@ -18,7 +18,7 @@
     "@styled-icons/material-outlined": "^10.18.0",
     "build": "^0.1.4",
     "next": "10.0.3",
-    "next-pwa": "^5.0.0",
+    "next-pwa": "^5.0.1",
     "polished": "^4.0.3",
     "react": "16.14.0",
     "react-dom": "16.14.0",
