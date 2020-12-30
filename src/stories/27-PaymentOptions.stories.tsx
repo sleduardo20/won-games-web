@@ -13,6 +13,14 @@ export default {
       default: 'won-dark',
     },
   },
+  argTypes: {
+    cards: {
+      type: '',
+    },
+    handlePayment: {
+      action: 'clicked',
+    },
+  },
   args: {
     cards: mockPaymentOptions,
   },
