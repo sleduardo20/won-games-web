@@ -1,4 +1,5 @@
 import { Add, ShoppingCart } from '@styled-icons/material-outlined';
+import { useState } from 'react';
 
 import Button from '../Button';
 import Heading from '../Heading';
@@ -26,6 +27,8 @@ export interface PaymentOptionsProps {
 }
 
 const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
+  const [checked, setChecked] = useState(false);
+
   return (
     <Container>
       <Body>
@@ -39,7 +42,12 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
                 <img src={card.img} alt={card.flag} />
                 {card.number}
               </CardInfo>
-              <Radio id={card.number} name="credit-card" value={card.number} />
+              <Radio
+                id={card.number}
+                name="credit-card"
+                value={card.number}
+                onCheck={() => setChecked(true)}
+              />
             </CardItem>
           ))}
           <AddCard role="button">
@@ -51,7 +59,12 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
         <Button as="a" fullWidth minimal>
           Continue shopping
         </Button>
-        <Button fullWidth icon={<ShoppingCart />} onClick={handlePayment}>
+        <Button
+          fullWidth
+          icon={<ShoppingCart />}
+          onClick={handlePayment}
+          disabled={!checked}
+        >
           Buy Now
         </Button>
       </Footer>
