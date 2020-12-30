@@ -4,12 +4,16 @@ import { Divider } from 'components/Divider';
 import { GameCardProps } from 'components/GameCard';
 import Heading from 'components/Heading';
 import { HighLightProps } from 'components/HighLight';
+import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions';
 import ShowCase from 'components/ShowCase';
+import { useCallback } from 'react';
 import Base from 'templates/Base';
 
 import { Content } from './styles';
 
-export interface CartProps extends CardListProps {
+export interface CartProps
+  extends CardListProps,
+    Pick<PaymentOptionsProps, 'cards'> {
   recommendedGames: GameCardProps[];
   recommendedHighLight: HighLightProps;
 }
@@ -19,7 +23,11 @@ const Cart = ({
   recommendedHighLight,
   items,
   total,
+  cards,
 }: CartProps) => {
+  const handlePayment = useCallback(() => {
+    return {};
+  }, []);
   return (
     <Base>
       <Container>
@@ -29,6 +37,8 @@ const Cart = ({
 
         <Content>
           <CardList items={items} total={total} />
+
+          <PaymentOptions cards={cards} handlePayment={handlePayment} />
         </Content>
         <Divider />
       </Container>
