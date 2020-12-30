@@ -6,7 +6,7 @@ export interface CardListProps {
   total: string;
 }
 
-const CarList = ({ items, total }: CardListProps) => {
+const CardList = ({ items, total }: CardListProps) => {
   return (
     <Container>
       {items.map(item => (
@@ -20,4 +20,4 @@ const CarList = ({ items, total }: CardListProps) => {
   );
 };
 
-export default CarList;
+export default CardList;

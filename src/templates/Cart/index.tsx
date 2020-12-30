@@ -1,4 +1,4 @@
-import CarList, { CardListProps } from 'components/CardList';
+import CardList, { CardListProps } from 'components/CardList';
 import { Container } from 'components/Container';
 import { Divider } from 'components/Divider';
 import { GameCardProps } from 'components/GameCard';
@@ -28,7 +28,7 @@ const Cart = ({
         </Heading>
 
         <Content>
-          <CarList items={items} total={total} />
+          <CardList items={items} total={total} />
         </Content>
         <Divider />
       </Container>
