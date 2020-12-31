@@ -5,30 +5,35 @@ import {
   ExitToApp,
   FormatListBulleted,
 } from '@styled-icons/material-outlined';
+
 import { Nav, ItemLink } from './styles';
 
-const ProfileMenu = () => {
+export interface ProfileMenuProps {
+  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders';
+}
+
+const ProfileMenu = ({ activeLink }: ProfileMenuProps) => {
   return (
     <Nav>
       <Link href="/profile/me" passHref>
-        <ItemLink>
+        <ItemLink isActive={activeLink === '/profile/me'} title="My profile">
           <AccountCircle size={24} />
           <span>My profile</span>
         </ItemLink>
       </Link>
       <Link href="/profile/cards" passHref>
-        <ItemLink>
+        <ItemLink isActive={activeLink === '/profile/cards'} title="My cards">
           <CreditCard size={24} />
           <span>My cards</span>
         </ItemLink>
       </Link>
       <Link href="/profile/orders" passHref>
-        <ItemLink>
+        <ItemLink isActive={activeLink === '/profile/orders'} title="My orders">
           <FormatListBulleted size={24} />
           <span>My orders</span>
         </ItemLink>
       </Link>
-      <Link href="/profile/me" passHref>
+      <Link href="/logout" passHref>
         <ItemLink>
           <ExitToApp size={24} />
           <span>Sign Out</span>

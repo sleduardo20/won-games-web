@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import media from 'styled-media-query';
 
 export const Nav = styled.nav`
@@ -17,10 +17,24 @@ export const Nav = styled.nav`
   `}
 `;
 
-export const ItemLink = styled.a`
-  ${({ theme }) => css`
+const linkModifiers = {
+  default: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.white};
     color: ${theme.colors.black};
+  `,
+  active: (theme: DefaultTheme) => css`
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+  `,
+};
+
+type LinkProps = {
+  isActive?: boolean;
+};
+
+export const ItemLink = styled.a<LinkProps>`
+  ${({ theme, isActive }) => css`
+    textdecoration: none;
     display: flex;
     align-items: center;
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
@@ -43,5 +57,8 @@ export const ItemLink = styled.a`
         display: none;
       }
     `}
+
+    ${!isActive && linkModifiers.default(theme)};
+    ${isActive && linkModifiers.active(theme)};
   `}
 `;
