@@ -31,7 +31,7 @@ const ProfileMenu = () => {
       <Link href="/profile/me" passHref>
         <ItemLink>
           <ExitToApp size={24} />
-          <span>My Sign Out </span>
+          <span>Sign Out</span>
         </ItemLink>
       </Link>
     </Nav>
