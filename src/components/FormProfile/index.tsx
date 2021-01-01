@@ -1,3 +1,4 @@
+import Button from '../Button';
 import TextField from '../TextField';
 import Heading from '../Heading';
 import { Container, Form } from './styles';
@@ -36,6 +37,8 @@ const FormProfile = () => {
           label="New Password"
           disabled
         />
+
+        <Button size="large">Save</Button>
       </Form>
     </Container>
   );

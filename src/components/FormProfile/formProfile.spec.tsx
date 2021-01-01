@@ -23,6 +23,6 @@ describe('<FormProfile/>', () => {
 
     expect(screen.getByPlaceholderText(/new password/i)).toBeInTheDocument();
 
-    expect(screen.getByRole('button', { name: /salve/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /save/i })).toBeInTheDocument();
   });
 });
