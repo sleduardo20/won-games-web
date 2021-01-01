@@ -28,14 +28,12 @@ const FormProfile = () => {
           type="password"
           placeholder="Type your password"
           label="Senha"
-          disabled
         />
         <TextField
           name="new_password"
           type="password"
           placeholder="New Password"
           label="New Password"
-          disabled
         />
 
         <Button size="large">Save</Button>
