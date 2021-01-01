@@ -1,9 +1,12 @@
+import Heading from 'components/Heading';
 import { Container } from './styles';
 
 const FormProfile = () => {
   return (
     <Container>
-      <h1>FormProfile</h1>
+      <Heading lineBottom color="black" size="small">
+        My Profile
+      </Heading>
     </Container>
   );
 };
