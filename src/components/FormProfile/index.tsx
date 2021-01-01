@@ -15,6 +15,12 @@ const FormProfile = () => {
           label="Name"
           initialValue="John Cage"
         />
+        <TextField
+          name="email"
+          placeholder="Name"
+          label="E-mail"
+          type="email"
+        />
       </Form>
     </Container>
   );
