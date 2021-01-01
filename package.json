@@ -34,8 +34,8 @@
   },
   "lint-staged": {
     "src/**/*.ts?(x)": [
-      "yarn lint",
-      "yarn test --findRelatedTests --bail"
+      "yarn lint"
+      
     ]
   },
   "devDependencies": {
