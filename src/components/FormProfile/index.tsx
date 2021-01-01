@@ -17,9 +17,23 @@ const FormProfile = () => {
         />
         <TextField
           name="email"
-          placeholder="Name"
+          placeholder="E-mail"
           label="E-mail"
           type="email"
+          disabled
+        />
+        <TextField
+          name="password"
+          type="password"
+          placeholder="Type your password"
+          label="Senha"
+          disabled
+        />
+        <TextField
+          name="new_password"
+          type="password"
+          placeholder="New Password"
+          label="New Password"
           disabled
         />
       </Form>
