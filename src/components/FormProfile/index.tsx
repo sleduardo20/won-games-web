@@ -1,4 +1,4 @@
-import Heading from 'components/Heading';
+import Heading from '../Heading';
 import { Container } from './styles';
 
 const FormProfile = () => {
