@@ -1,4 +1,4 @@
-import CardList, { CardListProps } from 'components/CardList';
+import CartList, { CartListProps } from 'components/CartList';
 import { Container } from 'components/Container';
 import { Divider } from 'components/Divider';
 import Empty from 'components/Empty';
@@ -13,7 +13,7 @@ import Base from 'templates/Base';
 import { Content } from './styles';
 
 export interface CartProps
-  extends CardListProps,
+  extends CartListProps,
     Pick<PaymentOptionsProps, 'cards'> {
   recommendedGames: GameCardProps[];
   recommendedHighLight: HighLightProps;
@@ -38,7 +38,7 @@ const Cart = ({
 
         {items.length ? (
           <Content>
-            <CardList items={items} total={total} />
+            <CartList items={items} total={total} />
 
             <PaymentOptions cards={cards} handlePayment={handlePayment} />
           </Content>

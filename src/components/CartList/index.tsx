@@ -1,12 +1,12 @@
 import GameItem, { GameItemProps } from '../GameItem';
 import { Container, Footer, Total } from './styles';
 
-export interface CardListProps {
+export interface CartListProps {
   items: GameItemProps[];
   total: string;
 }
 
-const CardList = ({ items, total }: CardListProps) => {
+const CartList = ({ items, total }: CartListProps) => {
   return (
     <Container>
       {items.map(item => (
@@ -20,4 +20,4 @@ const CardList = ({ items, total }: CardListProps) => {
   );
 };
 
-export default CardList;
+export default CartList;

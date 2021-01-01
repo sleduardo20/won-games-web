@@ -3,7 +3,7 @@ import { renderWithTheme } from 'utils/tests/helpers';
 
 import gamesMock from '../../components/GameCardSlider/mock';
 import hightLightMock from '../../components/HighLight/mock';
-import itemsMock from '../../components/CardList/mock';
+import itemsMock from '../../components/CartList/mock';
 import cardsMock from '../../components/PaymentOptions/mock';
 
 import Cart from '.';
@@ -30,7 +30,7 @@ jest.mock('components/ShowCase', () => ({
   },
 }));
 
-jest.mock('components/CardList', () => ({
+jest.mock('components/CartList', () => ({
   __esModule: true,
   default: function Mock() {
     return <div data-testid="Mock Card" />;
