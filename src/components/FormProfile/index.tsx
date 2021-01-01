@@ -20,6 +20,7 @@ const FormProfile = () => {
           placeholder="Name"
           label="E-mail"
           type="email"
+          disabled
         />
       </Form>
     </Container>
