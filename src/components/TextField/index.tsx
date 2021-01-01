@@ -4,7 +4,6 @@ import { Container, Wrapper, Input, Label, Icon, Error } from './styles';
 export type TextFieldProps = {
   onInput?: (value: string) => void;
   label?: string;
-  labelFor?: string;
   initialValue?: string;
   icon?: React.ReactNode;
   disabled?: boolean;
@@ -15,7 +14,7 @@ export type TextFieldProps = {
 const TextField = ({
   onInput,
   label,
-  labelFor = '',
+  name,
   initialValue = '',
   icon,
   disabled = false,
@@ -36,7 +35,7 @@ const TextField = ({
 
   return (
     <Container iconPosition={iconPosition} disabled={disabled} error={!!error}>
-      {!!label && <Label htmlFor={labelFor}>{label}</Label>}
+      {!!label && <Label htmlFor={name}>{label}</Label>}
       <Wrapper>
         {!!icon && <Icon>{icon}</Icon>}
         <Input
@@ -44,6 +43,8 @@ const TextField = ({
           onChange={handleOnChange}
           value={value}
           disabled={disabled}
+          name={name}
+          {...(label ? { id: name } : {})}
           {...rest}
         />
       </Wrapper>

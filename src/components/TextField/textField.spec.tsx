@@ -7,7 +7,7 @@ import TextField from '.';
 
 describe('<TextField/>', () => {
   it('should be able render TextField component with label', () => {
-    renderWithTheme(<TextField id="field" labelFor="field" label="label" />);
+    renderWithTheme(<TextField name="label" label="label" />);
 
     expect(screen.getByLabelText('label')).toBeInTheDocument();
   });
@@ -27,9 +27,7 @@ describe('<TextField/>', () => {
   it('should be able changes its value when typing', async () => {
     const onInput = jest.fn();
 
-    renderWithTheme(
-      <TextField id="field" labelFor="field" label="label" onInput={onInput} />,
-    );
+    renderWithTheme(<TextField name="label" label="label" onInput={onInput} />);
 
     const input = screen.getByRole('textbox');
     const text = 'new text';
@@ -45,9 +43,7 @@ describe('<TextField/>', () => {
   });
 
   it('should be able accessible by tab', () => {
-    renderWithTheme(
-      <TextField id="textfield" label="textfield" labelFor="textfield" />,
-    );
+    renderWithTheme(<TextField label="textfield" name="label" />);
 
     const input = screen.getByLabelText('textfield');
 
@@ -59,14 +55,7 @@ describe('<TextField/>', () => {
   });
 
   it('should be able accessible by tab when disabled', () => {
-    renderWithTheme(
-      <TextField
-        disabled
-        id="textfield"
-        label="textfield"
-        labelFor="textfield"
-      />,
-    );
+    renderWithTheme(<TextField disabled name="textfield" label="textfield" />);
 
     const input = screen.getByLabelText('textfield');
 
@@ -109,7 +98,7 @@ describe('<TextField/>', () => {
     const { container } = renderWithTheme(
       <TextField
         icon={<Mail data-testid="icon" />}
-        labelFor="textfield"
+        name="textfield"
         label="textfield"
         error="Error Message"
       />,
@@ -124,10 +113,9 @@ describe('<TextField/>', () => {
 
     renderWithTheme(
       <TextField
-        id="TextField"
         onInput={onInput}
         label="TextField"
-        labelFor="TextField"
+        name="TextField"
         disabled
       />,
     );

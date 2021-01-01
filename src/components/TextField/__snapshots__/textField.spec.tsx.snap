@@ -107,6 +107,8 @@ exports[`<TextField/> should be able render TextField component with error 1`] =
       </div>
       <input
         class="c8"
+        id="textfield"
+        name="textfield"
         type="text"
         value=""
       />

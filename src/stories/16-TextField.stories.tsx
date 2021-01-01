@@ -13,9 +13,8 @@ export default {
   },
   args: {
     label: 'E-mail',
-    labelFor: 'email',
+    name: 'email',
     icon: <Mail />,
-    id: 'email',
     initialValue: '',
     placeholder: 'Digite o E-mail',
   },
