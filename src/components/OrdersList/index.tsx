@@ -1,5 +1,5 @@
-import Empty from 'components/Empty';
-import GameItem, { GameItemProps } from 'components/GameItem';
+import Empty from '../Empty';
+import GameItem, { GameItemProps } from '../GameItem';
 import Heading from '../Heading';
 
 import { Container } from './styles';
