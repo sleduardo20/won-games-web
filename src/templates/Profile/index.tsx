@@ -1,4 +1,4 @@
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 
 import { Container } from 'components/Container';
 import Heading from 'components/Heading';
