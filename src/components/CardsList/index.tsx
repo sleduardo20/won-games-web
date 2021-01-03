@@ -1,7 +1,7 @@
 import Heading from '../Heading';
 import { PaymentCard } from '../PaymentOptions';
 
-import { Container, Card } from './styles';
+import { Card } from './styles';
 
 export interface CardsListProps {
   cards?: PaymentCard[];
@@ -9,7 +9,7 @@ export interface CardsListProps {
 
 const CardsList = ({ cards }: CardsListProps) => {
   return (
-    <Container>
+    <>
       <Heading color="black" lineBottom size="small">
         My Cards
       </Heading>
@@ -19,7 +19,7 @@ const CardsList = ({ cards }: CardsListProps) => {
           <span>{card.number}</span>
         </Card>
       ))}
-    </Container>
+    </>
   );
 };
 
