@@ -34,11 +34,15 @@ type LinkProps = {
 
 export const ItemLink = styled.a<LinkProps>`
   ${({ theme, isActive }) => css`
-    textdecoration: none;
     display: flex;
     align-items: center;
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
     transition: background, color, ${theme.transition.default};
+    text-decoration: none;
+
+    > span {
+      margin-left: ${theme.spacings.xxsmall};
+    }
 
     &:hover {
       background: ${theme.colors.primary};
