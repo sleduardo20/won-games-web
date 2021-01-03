@@ -1,5 +1,5 @@
-import Heading from 'components/Heading';
-import { PaymentCard } from 'components/PaymentOptions';
+import Heading from '../Heading';
+import { PaymentCard } from '../PaymentOptions';
 
 import { Container, Card } from './styles';
 
