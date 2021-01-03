@@ -1,6 +1,9 @@
+import { useRouter } from 'next/dist/client/router';
+
 import { Container } from 'components/Container';
 import Heading from 'components/Heading';
 import ProfileMenu from 'components/ProfileMenu';
+
 import Base from 'templates/Base';
 
 import { Main, Content } from './styles';
@@ -10,6 +13,8 @@ export interface ProfileTemplateProps {
 }
 
 const Profile = ({ children }: ProfileTemplateProps) => {
+  const { asPath } = useRouter();
+
   return (
     <Base>
       <Container>
@@ -17,7 +22,7 @@ const Profile = ({ children }: ProfileTemplateProps) => {
           My Profile
         </Heading>
         <Main>
-          <ProfileMenu />
+          <ProfileMenu activeLink={asPath} />
           <Content>{children}</Content>
         </Main>
       </Container>
