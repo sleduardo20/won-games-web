@@ -16,4 +16,22 @@ describe('<ExploreSideBar/>', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /genre/i })).toBeInTheDocument();
   });
+
+  it('should be able render inputs', () => {
+    renderWithTheme(<ExploreSideBar />);
+
+    expect(
+      screen.getByRole('checkbox', { name: /under \$50/i }),
+    ).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('radio', { name: /low to high/i }),
+    ).toBeInTheDocument();
+  });
+
+  it('should be able render filter button', () => {
+    renderWithTheme(<ExploreSideBar />);
+
+    expect(screen.getByRole('button', { name: /filter/i })).toBeInTheDocument();
+  });
 });
