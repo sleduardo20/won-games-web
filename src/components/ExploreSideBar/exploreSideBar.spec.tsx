@@ -36,4 +36,12 @@ describe('<ExploreSideBar/>', () => {
 
     expect(screen.getByRole('button', { name: /filter/i })).toBeInTheDocument();
   });
+
+  it('should be able check initial values that are passed in', () => {
+    renderWithTheme(
+      <ExploreSideBar items={items} initialValues={{ windows: true }} />,
+    );
+
+    expect(screen.getByRole('checkbox', { name: /windows/i })).toBeChecked();
+  });
 });

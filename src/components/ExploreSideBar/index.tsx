@@ -10,6 +10,10 @@ type Field = {
   name: string;
 };
 
+type Values = {
+  [field: string]: boolean;
+};
+
 export type ItemProps = {
   title: string;
   name: string;
@@ -19,6 +23,7 @@ export type ItemProps = {
 
 export interface ExplorerSideBarProps {
   items: ItemProps[];
+  initialValues?: Values;
 }
 
 const ExploreSideBar = ({ items }: ExplorerSideBarProps) => {
