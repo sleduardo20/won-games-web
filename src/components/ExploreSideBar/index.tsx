@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import Button from '../Button';
 import Heading from '../Heading';
 import Checkbox from '../CheckBox';
@@ -35,9 +35,13 @@ const ExploreSideBar = ({
 }: ExplorerSideBarProps) => {
   const [values, setValues] = useState(initialValues);
 
-  const handleFilter = () => {
+  const handleFilter = useCallback(() => {
     onFilter(values);
-  };
+  }, [values, onFilter]);
+
+  const handleChange = useCallback((name: string, value: string | boolean) => {
+    setValues(s => ({ ...s, [name]: value }));
+  }, []);
 
   return (
     <Container>
@@ -55,6 +59,7 @@ const ExploreSideBar = ({
                 labelfor={field.name}
                 name={field.name}
                 isChecked={!!values[field.name]}
+                onCheck={v => handleChange(field.name, v)}
               />
             ))}
 
@@ -68,6 +73,7 @@ const ExploreSideBar = ({
                 labelFor={field.name}
                 value={field.name}
                 defaultChecked={field.name === values[item.name]}
+                onChange={() => handleChange(item.name, field.name)}
               />
             ))}
         </div>
