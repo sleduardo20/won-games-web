@@ -39,9 +39,14 @@ describe('<ExploreSideBar/>', () => {
 
   it('should be able check initial values that are passed in', () => {
     renderWithTheme(
-      <ExploreSideBar items={items} initialValues={{ windows: true }} />,
+      <ExploreSideBar
+        items={items}
+        initialValues={{ windows: true, sort_by: 'low-to-high' }}
+      />,
     );
 
     expect(screen.getByRole('checkbox', { name: /windows/i })).toBeChecked();
+
+    expect(screen.getByRole('radio', { name: /low to high/i })).toBeChecked();
   });
 });

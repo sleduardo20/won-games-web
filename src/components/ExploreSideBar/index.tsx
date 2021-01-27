@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from '../Button';
 import Heading from '../Heading';
 import Checkbox from '../CheckBox';
@@ -11,7 +12,7 @@ type Field = {
 };
 
 type Values = {
-  [field: string]: boolean;
+  [field: string]: boolean | string;
 };
 
 export type ItemProps = {
@@ -26,7 +27,12 @@ export interface ExplorerSideBarProps {
   initialValues?: Values;
 }
 
-const ExploreSideBar = ({ items }: ExplorerSideBarProps) => {
+const ExploreSideBar = ({
+  items,
+  initialValues = {},
+}: ExplorerSideBarProps) => {
+  const [values, setValues] = useState(initialValues);
+
   return (
     <Container>
       {items.map(item => (
@@ -42,6 +48,7 @@ const ExploreSideBar = ({ items }: ExplorerSideBarProps) => {
                 label={field.label}
                 labelfor={field.name}
                 name={field.name}
+                isChecked={!!values[field.name]}
               />
             ))}
 
@@ -54,6 +61,7 @@ const ExploreSideBar = ({ items }: ExplorerSideBarProps) => {
                 label={field.label}
                 labelFor={field.name}
                 value={field.name}
+                defaultChecked={field.name === values[item.name]}
               />
             ))}
         </div>
