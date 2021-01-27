@@ -25,3 +25,12 @@ export const Basic: Story<ExplorerSideBarProps> = args => (
     <ExploreSideBar {...args} />
   </div>
 );
+
+export const WithInitialValues: Story<ExplorerSideBarProps> = args => (
+  <div style={{ maxWidth: '320px', padding: 16 }}>
+    <ExploreSideBar
+      {...args}
+      initialValues={{ windows: true, sort_by: 'low-to-high' }}
+    />
+  </div>
+);
