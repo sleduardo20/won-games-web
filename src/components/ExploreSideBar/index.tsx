@@ -25,6 +25,7 @@ export type ItemProps = {
 export interface ExplorerSideBarProps {
   items: ItemProps[];
   initialValues?: Values;
+  onFilter?: (values: Values) => void;
 }
 
 const ExploreSideBar = ({

@@ -10,12 +10,15 @@ describe('<ExploreSideBar/>', () => {
     renderWithTheme(<ExploreSideBar items={items} />);
 
     expect(screen.getByRole('heading', { name: /price/i })).toBeInTheDocument();
+
     expect(
       screen.getByRole('heading', { name: /sort by/i }),
     ).toBeInTheDocument();
+
     expect(
       screen.getByRole('heading', { name: /system/i }),
     ).toBeInTheDocument();
+
     expect(screen.getByRole('heading', { name: /genre/i })).toBeInTheDocument();
   });
 
@@ -48,5 +51,19 @@ describe('<ExploreSideBar/>', () => {
     expect(screen.getByRole('checkbox', { name: /windows/i })).toBeChecked();
 
     expect(screen.getByRole('radio', { name: /low to high/i })).toBeChecked();
+  });
+
+  it('should be able return selected items in onFilter', () => {
+    const onFilter = jest.fn();
+
+    renderWithTheme(
+      <ExploreSideBar
+        items={items}
+        initialValues={{ windows: true, sort_by: 'low-to-high' }}
+        onFilter={onFilter}
+      />,
+    );
+
+    expect(onFilter).toBeCalledWith({ windows: true, sort_by: 'low-to-high' });
   });
 });
