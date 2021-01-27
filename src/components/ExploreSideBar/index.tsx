@@ -25,14 +25,19 @@ export type ItemProps = {
 export interface ExplorerSideBarProps {
   items: ItemProps[];
   initialValues?: Values;
-  onFilter?: (values: Values) => void;
+  onFilter: (values: Values) => void;
 }
 
 const ExploreSideBar = ({
   items,
   initialValues = {},
+  onFilter,
 }: ExplorerSideBarProps) => {
   const [values, setValues] = useState(initialValues);
+
+  const handleFilter = () => {
+    onFilter(values);
+  };
 
   return (
     <Container>
@@ -68,7 +73,7 @@ const ExploreSideBar = ({
         </div>
       ))}
 
-      <Button fullWidth size="medium">
+      <Button fullWidth size="medium" onClick={handleFilter}>
         Filter
       </Button>
     </Container>
