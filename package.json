@@ -17,7 +17,7 @@
     "@styled-icons/fa-brands": "^10.26.0",
     "@styled-icons/material-outlined": "^10.26.0",
     "build": "^0.1.4",
-    "next": "10.0.5",
+    "next": "10.0.6",
     "next-pwa": "^5.0.4",
     "polished": "^4.1.0",
     "react": "16.14.0",
