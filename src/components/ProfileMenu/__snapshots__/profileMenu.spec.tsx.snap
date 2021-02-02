@@ -16,7 +16,6 @@ exports[`<ProfileMenu/> should be able render menu correctly 1`] = `
 }
 
 .c1 {
-  textdecoration: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28,8 +27,14 @@ exports[`<ProfileMenu/> should be able render menu correctly 1`] = `
   padding: 1.6rem 2.4rem;
   -webkit-transition: background,color,0.3s ease-in-out;
   transition: background,color,0.3s ease-in-out;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   background-color: #fafafa;
   color: #030517;
+}
+
+.c1 > span {
+  margin-left: 0.8rem;
 }
 
 .c1:hover {

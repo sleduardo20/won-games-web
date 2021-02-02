@@ -21,13 +21,13 @@ export default {
 } as Meta;
 
 export const Basic: Story<ExplorerSideBarProps> = args => (
-  <div style={{ maxWidth: '320px', padding: 16 }}>
+  <div style={{ padding: 16 }}>
     <ExploreSideBar {...args} />
   </div>
 );
 
 export const WithInitialValues: Story<ExplorerSideBarProps> = args => (
-  <div style={{ maxWidth: '320px', padding: 16 }}>
+  <div style={{ padding: 16 }}>
     <ExploreSideBar
       {...args}
       initialValues={{ windows: true, sort_by: 'low-to-high' }}
