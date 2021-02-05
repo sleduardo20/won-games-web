@@ -2,9 +2,11 @@ import { screen } from '@testing-library/react';
 import { renderWithTheme } from 'utils/tests/helpers';
 
 import userEvent from '@testing-library/user-event';
+import { css } from 'styled-components';
 import items from './mock';
 
 import ExploreSideBar from '.';
+import { Overlay } from './styles';
 
 describe('<ExploreSideBar/>', () => {
   it('should be able render headings', () => {
@@ -95,5 +97,32 @@ describe('<ExploreSideBar/>', () => {
     userEvent.click(screen.getByRole('button', { name: /filter/i }));
 
     expect(onFilter).toBeCalledWith({ sort_by: 'high-to-low' });
+  });
+
+  it('should be able open/close sidebar when filtering on mobile', () => {
+    const { container } = renderWithTheme(
+      <ExploreSideBar items={items} onFilter={jest.fn} />,
+    );
+
+    const variant = {
+      media: '(max-width: 768px)',
+      modifier: String(
+        css`
+          ${Overlay}
+        `,
+      ),
+    };
+
+    const element = container.firstChild;
+
+    expect(element).not.toHaveStyleRule('opacity', '1', variant);
+
+    userEvent.click(screen.getByLabelText(/open filters/i));
+
+    expect(element).toHaveStyleRule('opacity', '1', variant);
+
+    userEvent.click(screen.getByLabelText(/close filters/i));
+
+    expect(element).not.toHaveStyleRule('opacity', '1', variant);
   });
 });
