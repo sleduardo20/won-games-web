@@ -44,7 +44,7 @@ export const Overlay = styled.div`
 
 export const Items = styled.div`
   ${({ theme }) => css`
-    & > div::not(:last-of-type) {
+    & > div:not(:last-of-type) {
       margin-bottom: ${theme.spacings.xsmall};
     }
 
@@ -77,50 +77,52 @@ const containerModifiers = {
     ${Overlay} {
       z-index: ${theme.layers.modal};
       background-color: #fff;
-      display: none;
       top: 0;
       left: 0;
       position: fixed;
       width: 100%;
       height: 100vh;
       opacity: 1;
+    }
 
-      ${Content} {
-        margin-top: ${theme.spacings.medium};
-        transform: translateY(0);
-        overflow-y: scroll;
-      }
+    ${Content} {
+      margin-top: ${theme.spacings.medium};
+      transform: translateY(0);
+      overflow-y: scroll;
+      white-space: nowrap;
+    }
 
-      ${Content}, ${Footer}, ${IconWrapper} {
-        z-index: ${theme.layers.modal};
-      }
+    ${Content}, ${Footer}, ${IconWrapper} {
+      z-index: ${theme.layers.modal};
+    }
 
-      ${HeadingStyles.Container} {
+    ${HeadingStyles.Container} {
+      color: ${theme.colors.black};
+      font-size: ${theme.font.sizes.xlarge};
+      font-weight: ${theme.font.normal};
+    }
+
+    ${RadioStyles.Label},${CheckBoxStyles.Label} {
+      color: ${theme.colors.black};
+    }
+
+    ${IconWrapper} {
+      color: ${theme.colors.white};
+
+      > svg {
         color: ${theme.colors.black};
-        font-size: ${theme.font.sizes.xlarge};
-        font-weight: ${theme.font.normal};
-      }
-
-      ${RadioStyles.Label},${CheckBoxStyles.Label} {
-        color: ${theme.colors.black};
-      }
-      ${IconWrapper} {
-        color: ${theme.colors.white};
+        position: absolute;
+        width: 30px;
+        right: 0.8rem;
+        top: 0.8rem;
 
         &:first-child {
           display: none;
-
-          > svg {
-            color: ${theme.colors.white};
-            position: absolute;
-            width: 30px;
-            right: 0.8rem;
-            top: 0.8rem;
-          }
         }
       }
     }
   `,
+
   close: (theme: DefaultTheme) => css`
     ${IconWrapper} {
       color: ${theme.colors.white};
