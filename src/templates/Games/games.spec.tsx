@@ -1,0 +1,45 @@
+import '../../../.jest/macth-media-mock.js';
+import { screen } from '@testing-library/react';
+
+import { renderWithTheme } from 'utils/tests/helpers';
+
+import gamesMock from '../../components/GameCardSlider/mock';
+import filterItemsMock from '../../components/ExploreSideBar/mock';
+
+import Games from '.';
+
+jest.mock('templates/Base', () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock Base">{children}</div>;
+  },
+}));
+
+jest.mock('components/ExploreSideBar', () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock ExploreSideBar">{children}</div>;
+  },
+}));
+
+jest.mock('components/GameCard', () => ({
+  __esModule: true,
+  default: function Mock() {
+    return <div data-testid="Mock Game Card " />;
+  },
+}));
+
+describe('<Games />', () => {
+  it('should be able render correctly', () => {
+    renderWithTheme(
+      <Games filterItems={filterItemsMock} games={[gamesMock[0]]} />,
+    );
+
+    expect(screen.getByTestId('Mock ExploreSideBar')).toBeInTheDocument();
+    expect(screen.getByTestId('Mock Game Card')).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('button', { name: /show more/i }),
+    ).toBeInTheDocument();
+  });
+});

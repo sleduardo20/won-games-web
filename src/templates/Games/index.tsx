@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { KeyboardArrowDown } from '@styled-icons/material-outlined';
 
 import Base from 'templates/Base';
@@ -14,10 +15,18 @@ export interface GamesTemplatesProps {
 }
 
 const GamesTemplate = ({ games, filterItems }: GamesTemplatesProps) => {
+  const handleFilter = useCallback(() => {
+    return {};
+  }, []);
+
+  const handleShowMore = useCallback(() => {
+    return {};
+  }, []);
+
   return (
     <Base>
       <Main>
-        <ExploreSideBar items={filterItems} onFilter={() => 'FilterItems'} />
+        <ExploreSideBar items={filterItems} onFilter={handleFilter} />
 
         <section>
           <Grid>
@@ -26,7 +35,7 @@ const GamesTemplate = ({ games, filterItems }: GamesTemplatesProps) => {
             ))}
           </Grid>
 
-          <ShowMore role="button" onClick={() => 'ShowMore'}>
+          <ShowMore role="button" onClick={handleShowMore}>
             <p>Show More</p>
             <KeyboardArrowDown size={35} />
           </ShowMore>
