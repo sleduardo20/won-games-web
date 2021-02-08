@@ -9,7 +9,7 @@ import {
 import { Nav, ItemLink } from './styles';
 
 export interface ProfileMenuProps {
-  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders';
+  activeLink?: '/profile/me' | '/profile/cards' | '/profile/orders' | string;
 }
 
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => {
