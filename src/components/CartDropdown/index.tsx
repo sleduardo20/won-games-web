@@ -6,14 +6,14 @@ import { GameItemProps } from '../GameItem';
 import { Container } from './styles';
 
 export interface CartDropdownProps {
-  items: GameItemProps[];
-  total: string;
+  items?: GameItemProps[];
+  total?: string;
 }
 
 const CartDropdown = ({ items, total }: CartDropdownProps) => {
   return (
     <Container>
-      <Dropdown title={<CartIcon quantity={items.length} />}>
+      <Dropdown title={<CartIcon quantity={items?.length} />}>
         <CartList items={items} total={total} hasButton />
       </Dropdown>
     </Container>
