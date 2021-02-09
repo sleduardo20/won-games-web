@@ -27,5 +27,6 @@ describe('<CardList />', () => {
     renderWithTheme(<CardList />);
 
     expect(screen.getByText(/your cart is empty/i)).toBeInTheDocument();
+    expect(screen.queryByText('total')).not.toBeInTheDocument();
   });
 });
