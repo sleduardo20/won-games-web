@@ -9,7 +9,7 @@ export interface CartIconProps {
 const CartIcon = ({ quantity = 0 }: CartIconProps) => {
   return (
     <Container>
-      {!!quantity && <Badge aria-label="cart items">{quantity}</Badge>}
+      {quantity > 0 && <Badge aria-label="cart items">{quantity}</Badge>}
       <ShoppingCart aria-label="Shopping Cart" />
     </Container>
   );
