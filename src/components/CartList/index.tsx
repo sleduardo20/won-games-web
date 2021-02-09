@@ -1,8 +1,8 @@
-import Empty from 'components/Empty';
 import Link from 'next/link';
 
 import Button from '../Button';
 import GameItem, { GameItemProps } from '../GameItem';
+import Empty from '../Empty';
 
 import { Container, Footer, Total } from './styles';
 
