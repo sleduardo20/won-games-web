@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Container, Title, Content } from './styles';
 
 export interface DropdownProps {
@@ -6,10 +7,12 @@ export interface DropdownProps {
 }
 
 const Dropdown = ({ title, children }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Container>
-      <Title>{title}</Title>
-      <Content>{children}</Content>
+    <Container isOpen={isOpen}>
+      <Title onClick={() => setIsOpen(!isOpen)}>{title}</Title>
+      <Content aria-hidden={!isOpen}>{children}</Content>
     </Container>
   );
 };

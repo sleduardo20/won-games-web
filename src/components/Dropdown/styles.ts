@@ -1,10 +1,5 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
-  width: max-content;
-  position: relative;
-`;
-
 export const Title = styled.div`
   ${({ theme }) => css`
     cursor: pointer;
@@ -33,6 +28,37 @@ export const Content = styled.div`
       border-right: 1.2rem solid transparent;
       border-left: 1.2rem solid transparent;
       border-bottom: 1.2rem solid ${theme.colors.white};
+    }
+  `}
+`;
+
+type ContainerProps = {
+  isOpen?: boolean;
+};
+
+const containerModifiers = {
+  open: () => css`
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  `,
+  close: () => css`
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-1rem);
+  `,
+};
+
+export const Container = styled.div<ContainerProps>`
+  ${({ theme, isOpen }) => css`
+    width: max-content;
+    position: relative;
+
+    ${Content} {
+      transition: transform 0.2s ease-in, opacity ${theme.transition.default};
+
+      ${isOpen && containerModifiers.open}
+      ${!isOpen && containerModifiers.close}
     }
   `}
 `;
