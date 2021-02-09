@@ -14,4 +14,12 @@ describe('<CardList />', () => {
     expect(screen.getByText('R$ 330,00')).toHaveStyle({ color: '#f231a5' });
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it('should be able render the button', () => {
+    renderWithTheme(
+      <CardList hasButton items={mockCardList} total="R$ 330,00" />,
+    );
+
+    expect(screen.getByText(/buy it now/)).toBeInTheDocument();
+  });
 });
