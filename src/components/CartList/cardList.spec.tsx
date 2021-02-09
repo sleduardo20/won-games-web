@@ -20,6 +20,6 @@ describe('<CardList />', () => {
       <CardList hasButton items={mockCardList} total="R$ 330,00" />,
     );
 
-    expect(screen.getByText(/buy it now/)).toBeInTheDocument();
+    expect(screen.getByText(/Buy it now/)).toBeInTheDocument();
   });
 });
