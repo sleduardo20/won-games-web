@@ -1,3 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+import { Container as CartContainerStyles } from '../CartList/styles';
+
+export const Container = styled.div`
+  ${CartContainerStyles} {
+    width: 56rem;
+  }
+`;
