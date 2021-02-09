@@ -14,7 +14,7 @@ export interface CartListProps {
 
 const CartList = ({ items = [], total, hasButton = false }: CartListProps) => {
   return (
-    <Container>
+    <Container isEmpty={!items.length}>
       {items.length ? (
         <>
           {items.map(item => (
@@ -34,6 +34,7 @@ const CartList = ({ items = [], total, hasButton = false }: CartListProps) => {
         </>
       ) : (
         <Empty
+          hasLink
           title="your cart is empty"
           description="Go back to the store explore great games and offers."
         />
