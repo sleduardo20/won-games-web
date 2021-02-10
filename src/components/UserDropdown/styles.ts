@@ -6,9 +6,15 @@ export const Nav = styled.nav`
     display: flex;
     flex-direction: column;
 
-    a :not(:last-child) {
+    a:not(:last-child) {
       border-bottom: 0.1rem solid ${theme.colors.ligthGray};
     }
+  `}
+`;
+
+export const UserName = styled.span`
+  ${({ theme }) => css`
+    padding: 0 ${theme.spacings.xxsmall};
   `}
 `;
 

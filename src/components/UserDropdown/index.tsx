@@ -8,7 +8,7 @@ import { ChevronDown } from '@styled-icons/boxicons-regular';
 import Link from 'next/link';
 import Dropdown from '../Dropdown';
 
-import { Nav, Option } from './styles';
+import { Nav, Option, UserName } from './styles';
 
 export interface UserDropdownProps {
   username: string;
@@ -20,7 +20,7 @@ const UserDropdown = ({ username }: UserDropdownProps) => {
       title={
         <>
           <AccountCircle size={24} />
-          {username}
+          <UserName>{username}</UserName>
           <ChevronDown size={24} />
         </>
       }
