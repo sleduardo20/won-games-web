@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
 
-import UserDropdown from '../components/UserDropdown';
+import UserDropdown, { UserDropdownProps } from '../components/UserDropdown';
 
 export default {
   title: 'components/UserDropdown',
@@ -12,4 +12,10 @@ export default {
   },
 } as Meta;
 
-export const Basic: Story = args => <UserDropdown {...args} />;
+export const Basic: Story<UserDropdownProps> = args => (
+  <UserDropdown {...args} />
+);
+
+Basic.args = {
+  username: 'Eduardo Lima',
+};
