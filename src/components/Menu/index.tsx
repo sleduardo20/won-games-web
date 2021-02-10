@@ -7,6 +7,8 @@ import {
   Close as CloseIcon,
 } from 'styled-icons/material-outlined';
 
+import UserDropdown from '../UserDropdown';
+import CartDropdown from '../CartDropdown';
 import MediaMath from '../MediaMath';
 import Button from '../Button';
 import Logo from '../Logo';
@@ -50,26 +52,39 @@ const Menu = ({ username }: MenuProps) => {
           <Link href="/" passHref>
             <MenuLink>Home</MenuLink>
           </Link>
-
-          <MenuLink href="#">Explore</MenuLink>
+          <Link href="/games" passHref>
+            <MenuLink>Explore</MenuLink>
+          </Link>
         </MenuNav>
       </MediaMath>
 
       <MenuGroup>
         <IconWrapper>
-          <ShoppingCartIcon aria-label="Open shopping Card" />
+          <MediaMath greaterThan="medium">
+            <CartDropdown />
+          </MediaMath>
+
+          <MediaMath lessThan="medium">
+            <Link href="/cart" passHref>
+              <a>
+                <CartDropdown />
+              </a>
+            </Link>
+          </MediaMath>
         </IconWrapper>
         <IconWrapper>
           <SearchIcon aria-label="Search" />
         </IconWrapper>
 
-        {!username && (
-          <MediaMath greaterThan="medium">
+        <MediaMath greaterThan="medium">
+          {!username ? (
             <Link href="/sign-in" passHref>
               <Button as="a">Sign In</Button>
             </Link>
-          </MediaMath>
-        )}
+          ) : (
+            <UserDropdown username={username} />
+          )}
+        </MediaMath>
       </MenuGroup>
 
       <MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
@@ -78,11 +93,20 @@ const Menu = ({ username }: MenuProps) => {
           <Link href="/" passHref>
             <MenuLink>Home</MenuLink>
           </Link>
-          <MenuLink href="#">Explore</MenuLink>
+
+          <Link href="/games" passHref>
+            <MenuLink>Explore</MenuLink>
+          </Link>
+
           {!!username && (
             <>
-              <MenuLink href="#">My account</MenuLink>
-              <MenuLink href="#">Wishlist</MenuLink>
+              <Link href="/profile/me" passHref>
+                <MenuLink>My profile</MenuLink>
+              </Link>
+
+              <Link href="/wishlist" passHref>
+                <MenuLink>Wishlist</MenuLink>
+              </Link>
             </>
           )}
         </MenuNav>
