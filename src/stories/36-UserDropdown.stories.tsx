@@ -13,7 +13,9 @@ export default {
 } as Meta;
 
 export const Basic: Story<UserDropdownProps> = args => (
-  <UserDropdown {...args} />
+  <div style={{ width: '90%', padding: '0 60px 0 600px' }}>
+    <UserDropdown {...args} />
+  </div>
 );
 
 Basic.args = {
