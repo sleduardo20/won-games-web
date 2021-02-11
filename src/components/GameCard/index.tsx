@@ -55,13 +55,13 @@ const GameCard = ({
           {ribbon}
         </Ribbon>
       )}
-      <Link href={`games/${slug}`} passHref>
+      <Link href={`game/${slug}`} passHref>
         <ImageBox>
           <img src={img} alt={title} />
         </ImageBox>
       </Link>
       <Content>
-        <Link href={`games/${slug}`} passHref>
+        <Link href={`game/${slug}`} passHref>
           <Info>
             <Title>{title}</Title>
             <Developer>{developer}</Developer>
