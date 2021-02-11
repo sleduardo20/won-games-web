@@ -4,6 +4,7 @@ import { renderWithTheme } from 'utils/tests/helpers';
 import GameCard from 'components/GameCard';
 
 const props = {
+  slug: 'cyberpunk-2077',
   title: 'Title Example',
   developer: 'Developer Example',
   img: '/img/example.png',
@@ -28,6 +29,11 @@ describe('<GameCard />', () => {
     );
 
     expect(screen.getByLabelText(/Add to Wishlist/i)).toBeInTheDocument();
+
+    expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
+      'href',
+      `/games/${props.slug}`,
+    );
   });
 
   it('should be render price in label', () => {

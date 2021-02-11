@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Menu2 as MenuIcon } from 'styled-icons/remix-fill';
 import {
-  ShoppingCart as ShoppingCartIcon,
   Search as SearchIcon,
   Close as CloseIcon,
 } from 'styled-icons/material-outlined';

@@ -1,5 +1,4 @@
 import styled, { css, DefaultTheme } from 'styled-components';
-import { GameCardProps } from '.';
 
 export const Container = styled.article`
   ${({ theme }) => css`
@@ -24,7 +23,7 @@ export const Content = styled.div`
   `}
 `;
 
-export const ImageBox = styled.div`
+export const ImageBox = styled.a`
   height: 14rem;
   width: 100%;
   background: #f6f7f8;
@@ -45,8 +44,9 @@ export const ImageBox = styled.div`
   }
 `;
 
-export const Info = styled.div`
+export const Info = styled.a`
   max-width: calc(100% - 2.4rem);
+  text-decoration: none;
   img {
     width: 100%;
     height: 100%;

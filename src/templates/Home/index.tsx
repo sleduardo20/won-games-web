@@ -7,8 +7,7 @@ import BannerSlider from 'components/BannerSlider';
 
 import ShowCase from 'components/ShowCase';
 import Base from 'templates/Base';
-import Gallery from 'components/Gallery';
-import mockGallery from 'components/Gallery/mock';
+
 import { SectionBanner, SectionNews, SectionUpcomming } from './styles';
 
 export interface HomeTemplateProps {

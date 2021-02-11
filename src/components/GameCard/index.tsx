@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import {
   AddShoppingCart,
   Favorite,
@@ -20,6 +22,7 @@ import {
 } from './styles';
 
 export interface GameCardProps {
+  slug: string;
   title: string;
   developer: string;
   img: string;
@@ -33,6 +36,7 @@ export interface GameCardProps {
 }
 
 const GameCard = ({
+  slug,
   title,
   developer,
   img,
@@ -51,14 +55,18 @@ const GameCard = ({
           {ribbon}
         </Ribbon>
       )}
-      <ImageBox>
-        <img src={img} alt={title} />
-      </ImageBox>
+      <Link href={`games/${slug}`} passHref>
+        <ImageBox>
+          <img src={img} alt={title} />
+        </ImageBox>
+      </Link>
       <Content>
-        <Info>
-          <Title>{title}</Title>
-          <Developer>{developer}</Developer>
-        </Info>
+        <Link href={`games/${slug}`} passHref>
+          <Info>
+            <Title>{title}</Title>
+            <Developer>{developer}</Developer>
+          </Info>
+        </Link>
         <FavButton role="button" onClick={onFav}>
           {favorite ? (
             <Favorite aria-label="Remove from Wishlist" />
