@@ -1,17 +1,15 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from 'styles/GlobalStyles';
+import { useApollo } from 'utils/apollo';
 
 import theme from '../styles/theme';
 
 function App({ Component, pageProps }: AppProps) {
-  const client = new ApolloClient({
-    uri: 'http://localhost:1337/graphql',
-    cache: new InMemoryCache(),
-  });
+  const client = useApollo(pageProps.initialApolloState);
 
   return (
     <ApolloProvider client={client}>
