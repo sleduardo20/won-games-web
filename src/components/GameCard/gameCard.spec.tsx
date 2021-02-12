@@ -8,7 +8,7 @@ const props = {
   title: 'Title Example',
   developer: 'Developer Example',
   img: '/img/example.png',
-  price: 'R$ 250',
+  price: 250,
 };
 
 describe('<GameCard />', () => {
@@ -32,14 +32,14 @@ describe('<GameCard />', () => {
 
     expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
       'href',
-      `/games/${props.slug}`,
+      `/game/${props.slug}`,
     );
   });
 
   it('should be render price in label', () => {
     renderWithTheme(<GameCard {...props} />);
 
-    const price = screen.getByText(props.price);
+    const price = screen.getByText('$250.00');
 
     expect(price).not.toHaveStyle({
       textDecoration: 'line-through',
@@ -51,15 +51,15 @@ describe('<GameCard />', () => {
   });
 
   it('should be render line-through in price when promocional', () => {
-    renderWithTheme(<GameCard promotinalPrice="R$ 200" {...props} />);
+    renderWithTheme(<GameCard promotinalPrice={200} {...props} />);
 
-    const price = screen.getByText(props.price);
+    const price = screen.getByText('$250.00');
 
     expect(price).toHaveStyle({
       textDecoration: 'line-through',
     });
 
-    expect(screen.getByText('R$ 200')).not.toHaveStyle({
+    expect(screen.getByText('$200.00')).not.toHaveStyle({
       textDecoration: 'line-through',
     });
 

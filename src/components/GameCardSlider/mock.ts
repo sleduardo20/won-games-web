@@ -5,8 +5,8 @@ export default [
       'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fheather%2Fhome%2FEGS_RockstarGames_RedDeadRedemption2_G1A_00-1920x1080-308f101576da37225c889173094f373f2afc56c1.jpg?h=1080&resize=1&w=1920',
     title: 'Red Dead Redemption 2',
     developer: 'RocketGames',
-    price: 'R$ 250,00',
-    promotinalPrice: 'R$ 200,00',
+    price: 250,
+    promotinalPrice: 200,
   },
   {
     img:
@@ -14,7 +14,7 @@ export default [
     title: 'Snow Runner',
     slug: 'Snow Runner',
     developer: 'RocketGames',
-    price: 'R$ 250,00',
+    price: 250,
   },
   {
     img:
@@ -22,8 +22,8 @@ export default [
     title: 'The Witcher: Enhanced Edition 1',
     slug: 'The Witcher: Enhanced Edition 1',
     developer: 'RocketGames',
-    price: 'R$ 250,00',
-    promotinalPrice: 'R$ 200,00',
+    price: 250,
+    promotinalPrice: 200,
   },
   {
     img:
@@ -31,8 +31,8 @@ export default [
     title: 'The Witcher: Enhanced Editions',
     slug: 'The Witcher: Enhanced Editions',
     developer: 'RocketGames',
-    price: 'R$ 250,00',
-    promotinalPrice: 'R$ 200,00',
+    price: 250,
+    promotinalPrice: 200,
   },
   {
     img:
@@ -40,8 +40,8 @@ export default [
     title: 'The Witcher: Enhanced Edition 4',
     slug: 'The Witcher: Enhanced Edition 4',
     developer: 'RocketGames',
-    price: 'R$ 250,00',
-    promotinalPrice: 'R$ 200,00',
+    price: 250,
+    promotinalPrice: 200,
   },
   {
     img:
@@ -49,7 +49,7 @@ export default [
     title: 'Red Dead Redemption 2',
     slug: 'Red Dead Redemption 2',
     developer: 'RocketGames',
-    price: 'R$ 250,00',
-    promotinalPrice: 'R$ 200,00',
+    price: 250,
+    promotinalPrice: 200,
   },
 ];
