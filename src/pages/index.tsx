@@ -1,8 +1,12 @@
+import { GetServerSideProps } from 'next';
+import { initializeApollo } from 'utils/apollo';
+
 import mockBanners from 'components/BannerSlider/mock';
 import mockGames from 'components/GameCardSlider/mock';
 import mockHightLight from 'components/HighLight/mock';
-import { GetServerSideProps } from 'next';
 
+import { QueryHome } from 'graphql/generated/QueryHome';
+import { QUERY_HOME } from 'graphql/queries/home';
 import Home, { HomeTemplateProps } from '../templates/Home';
 
 export default function Index(props: HomeTemplateProps) {
@@ -10,6 +14,10 @@ export default function Index(props: HomeTemplateProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const apolloClient = initializeApollo();
+
+  const { data } = await apolloClient.query<QueryHome>({ query: QUERY_HOME });
+
   return {
     props: {
       banners: mockBanners,
