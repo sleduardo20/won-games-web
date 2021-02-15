@@ -1,7 +1,6 @@
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import { initializeApollo } from 'utils/apollo';
 
-import mockBanners from 'components/BannerSlider/mock';
 import mockGames from 'components/GameCardSlider/mock';
 import mockHightLight from 'components/HighLight/mock';
 
@@ -13,14 +12,26 @@ export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />;
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
   const { data } = await apolloClient.query<QueryHome>({ query: QUERY_HOME });
 
   return {
     props: {
-      banners: mockBanners,
+      revalidate: 10,
+      banners: data.banners.map(banner => ({
+        img: banner.image?.url,
+        title: banner.title,
+        subtitle: banner.subtitle,
+        buttonLabel: banner.button?.label,
+        buttonLink: banner.button?.link,
+        ...(banner.ribbon && {
+          ribbon: banner.ribbon.text,
+          ribbonColor: banner.ribbon.color,
+          ribbonSize: banner.ribbon.sizes,
+        }),
+      })),
       newGames: mockGames,
       mostPopularHighlight: mockHightLight,
       mostPopularGames: mockGames,

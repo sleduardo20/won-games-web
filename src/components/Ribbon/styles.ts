@@ -1,14 +1,15 @@
 import styled, { css, DefaultTheme } from 'styled-components';
 import { darken } from 'polished';
+
 import { RibbonColors, RibbonProps } from '.';
 
 const containerModifiers = {
-  color: (theme: DefaultTheme, colors: RibbonColors) => css`
-    background-color: ${theme.colors[colors]};
+  color: (theme: DefaultTheme, color: RibbonColors) => css`
+    background-color: ${theme.colors[color]};
 
     &::before {
-      border-left-color: ${darken(0.2, theme.colors[colors])};
-      border-top-color: ${darken(0.2, theme.colors[colors])};
+      border-left-color: filter(brightness(110%));
+      border-top-color: filter(brightness(110%));
     }
   `,
   normal: (theme: DefaultTheme) => css`
@@ -60,7 +61,7 @@ export const Container = styled.div<Omit<RibbonProps, 'children'>>`
       border-bottom-color: transparent;
     }
 
-    ${!!size && containerModifiers[size](theme)}
     ${!!color && containerModifiers.color(theme, color)}
+    ${!!size && containerModifiers[size](theme)}
   `}
 `;
