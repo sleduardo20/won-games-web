@@ -59,7 +59,7 @@
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
-    "@typescript-eslint/typescript-estree": "^4.14.2",
+    "@typescript-eslint/typescript-estree": "^4.15.0",
     "apollo": "^2.32.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
