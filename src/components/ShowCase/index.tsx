@@ -8,9 +8,15 @@ interface ShowCaseProps {
   title?: string;
   highlight?: HighLightProps;
   games?: GameCardProps[];
+  color?: 'white' | 'black';
 }
 
-const ShowCase = ({ title, highlight, games }: ShowCaseProps) => {
+const ShowCase = ({
+  title,
+  highlight,
+  games,
+  color = 'white',
+}: ShowCaseProps) => {
   return (
     <Wrapper>
       {!!title && (

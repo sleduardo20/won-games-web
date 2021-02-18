@@ -40,7 +40,7 @@ const Home = ({
       </Container>
 
       <SectionNews>
-        <ShowCase title="News" games={newGames} />
+        <ShowCase title="News" games={newGames} color="black" />
       </SectionNews>
 
       <ShowCase
@@ -51,7 +51,11 @@ const Home = ({
 
       <SectionUpcomming>
         <ShowCase title="Up Comming" />
-        <ShowCase games={upcomingGames} highlight={upcomingHighlight} />
+        <ShowCase
+          games={upcomingGames}
+          highlight={upcomingHighlight}
+          color="white"
+        />
       </SectionUpcomming>
 
       <ShowCase
