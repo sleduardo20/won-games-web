@@ -1,9 +1,6 @@
 import { GetStaticProps } from 'next';
 import { initializeApollo } from 'utils/apollo';
 
-import mockGames from 'components/GameCardSlider/mock';
-import mockHightLight from 'components/HighLight/mock';
-
 import { QueryHome } from 'graphql/generated/QueryHome';
 import { QUERY_HOME } from 'graphql/queries/home';
 import Home, { HomeTemplateProps } from '../templates/Home';
@@ -45,8 +42,15 @@ export const getStaticProps: GetStaticProps = async () => {
         price: game.price,
       })),
 
-      mostPopularHighlight: sections?.popularGames?.highlight.map(game => ({})),
       mostPopularGamesTitle: sections?.popularGames?.title,
+      mostPopularHighlight: {
+        title: sections?.popularGames?.highlight?.title,
+        subtitle: sections?.popularGames?.highlight?.subtitle,
+        backgroundImage: `http://localhost:1337${sections?.popularGames?.highlight?.background?.url}`,
+        buttonLabel: sections?.popularGames?.highlight?.buttonLabel,
+        buttonLink: sections?.popularGames?.highlight?.buttonLink,
+        alignment: sections?.popularGames?.highlight?.alignment,
+      },
       mostPopularGames: sections!.popularGames!.games.map(game => ({
         name: game.name,
         slug: game.slug,
@@ -55,8 +59,15 @@ export const getStaticProps: GetStaticProps = async () => {
         price: game.price,
       })),
 
-      upcomingHighlight: mockHightLight,
       upcomingGamesTitle: sections?.upcomingGames?.title,
+      upcomingHighlight: {
+        title: sections?.upcomingGames?.highlight?.title,
+        subtitle: sections?.upcomingGames?.highlight?.subtitle,
+        backgroundImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.background?.url}`,
+        buttonLabel: sections?.upcomingGames?.highlight?.buttonLabel,
+        buttonLink: sections?.upcomingGames?.highlight?.buttonLink,
+        alignment: sections?.upcomingGames?.highlight?.alignment,
+      },
       upcomingGames: upcomingGames.map(game => ({
         name: game.name,
         slug: game.slug,
@@ -65,8 +76,15 @@ export const getStaticProps: GetStaticProps = async () => {
         price: game.price,
       })),
 
-      freeHighlight: mockHightLight,
       freeGamesTitle: sections?.freeGames?.title,
+      freeHighlight: {
+        title: sections?.freeGames?.highlight?.title,
+        subtitle: sections?.freeGames?.highlight?.subtitle,
+        backgroundImage: `http://localhost:1337${sections?.freeGames?.highlight?.background?.url}`,
+        buttonLabel: sections?.freeGames?.highlight?.buttonLabel,
+        buttonLink: sections?.freeGames?.highlight?.buttonLink,
+        alignment: sections?.freeGames?.highlight?.alignment,
+      },
       freeGames: freeGames.map(game => ({
         name: game.name,
         slug: game.slug,
