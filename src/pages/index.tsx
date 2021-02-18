@@ -15,12 +15,15 @@ export default function Index(props: HomeTemplateProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
-  const { data } = await apolloClient.query<QueryHome>({ query: QUERY_HOME });
+  const {
+    data: { banners, newGames, freeGames, upcamingGames },
+  } = await apolloClient.query<QueryHome>({ query: QUERY_HOME });
 
   return {
     props: {
       revalidate: 10,
-      banners: data.banners.map(banner => ({
+
+      banners: banners.map(banner => ({
         img: `http://localhost:1337${banner.image?.url}`,
         title: banner.title,
         subtitle: banner.subtitle,
@@ -32,13 +35,33 @@ export const getStaticProps: GetStaticProps = async () => {
           ribbonSize: banner.ribbon.sizes,
         }),
       })),
-      newGames: mockGames,
+
+      newGames: newGames.map(game => ({
+        name: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price,
+      })),
+
       mostPopularHighlight: mockHightLight,
       mostPopularGames: mockGames,
-      upcomingGames: mockGames,
-      upcomingHighlight: mockHightLight,
-      freeGames: mockGames,
-      freeHighlight: mockHightLight,
+
+      upcomingGames: upcamingGames.map(game => ({
+        name: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price,
+      })),
+
+      freeGames: freeGames.map(game => ({
+        name: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price,
+      })),
     },
   };
 };
