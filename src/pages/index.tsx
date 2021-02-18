@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       revalidate: 10,
       banners: data.banners.map(banner => ({
-        img: banner.image?.url,
+        img: `http://localhost:1337${banner.image?.url}`,
         title: banner.title,
         subtitle: banner.subtitle,
         buttonLabel: banner.button?.label,
