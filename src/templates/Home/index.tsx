@@ -13,21 +13,29 @@ import { SectionBanner, SectionNews } from './styles';
 export interface HomeTemplateProps {
   banners: BannerProps[];
   newGames: GameCardProps[];
+  newGamesTitle: string;
   mostPopularHighlight: HighLightProps;
   mostPopularGames: GameCardProps[];
+  mostPopularGamesTitle: string;
+  upcomingGamesTitle: string;
   upcomingGames: GameCardProps[];
   upcomingHighlight: HighLightProps;
+  freeGamesTitle: string;
   freeGames: GameCardProps[];
   freeHighlight: HighLightProps;
 }
 
 const Home = ({
   banners,
+  newGamesTitle,
   newGames,
   mostPopularHighlight,
+  mostPopularGamesTitle,
   mostPopularGames,
+  upcomingGamesTitle,
   upcomingGames,
   upcomingHighlight,
+  freeGamesTitle,
   freeGames,
   freeHighlight,
 }: HomeTemplateProps) => {
@@ -40,23 +48,23 @@ const Home = ({
       </Container>
 
       <SectionNews>
-        <ShowCase title="News" games={newGames} color="black" />
+        <ShowCase title={newGamesTitle} games={newGames} color="black" />
       </SectionNews>
 
       <ShowCase
-        title="Most Popular"
+        title={mostPopularGamesTitle}
         highlight={mostPopularHighlight}
         games={mostPopularGames}
       />
 
       <ShowCase
-        title="Up Comming"
+        title={upcomingGamesTitle}
         games={upcomingGames}
         highlight={upcomingHighlight}
       />
 
       <ShowCase
-        title="Free Games"
+        title={freeGamesTitle}
         highlight={freeHighlight}
         games={freeGames}
       />
