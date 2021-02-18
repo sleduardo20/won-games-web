@@ -41,7 +41,7 @@ describe('<Home />', () => {
   it('should be able render page Home the sections', () => {
     renderWithTheme(<Home {...props} />);
 
-    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(5);
+    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(4);
   });
 
   it('should be able render section elements', () => {

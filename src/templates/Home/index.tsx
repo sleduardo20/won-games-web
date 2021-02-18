@@ -8,7 +8,7 @@ import BannerSlider from 'components/BannerSlider';
 import ShowCase from 'components/ShowCase';
 import Base from 'templates/Base';
 
-import { SectionBanner, SectionNews, SectionUpcomming } from './styles';
+import { SectionBanner, SectionNews } from './styles';
 
 export interface HomeTemplateProps {
   banners: BannerProps[];
@@ -49,14 +49,11 @@ const Home = ({
         games={mostPopularGames}
       />
 
-      <SectionUpcomming>
-        <ShowCase title="Up Comming" />
-        <ShowCase
-          games={upcomingGames}
-          highlight={upcomingHighlight}
-          color="white"
-        />
-      </SectionUpcomming>
+      <ShowCase
+        title="Up Comming"
+        games={upcomingGames}
+        highlight={upcomingHighlight}
+      />
 
       <ShowCase
         title="Free Games"
