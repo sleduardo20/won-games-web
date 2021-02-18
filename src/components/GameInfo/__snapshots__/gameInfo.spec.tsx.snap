@@ -81,11 +81,11 @@ exports[`<GameInfo/> should be able render GameInfo component correctly 1`] = `
   font-weight: 600;
   color: #fafafa;
   border-radius: 0.4rem 0.4rem 0 0.4rem;
+  background-color: #3cd3c1;
   font-size: 1.4rem;
   height: 3.6rem;
   right: -2rem;
   padding: 0 2.4rem;
-  background-color: #3cd3c1;
 }
 
 .c3::before {
@@ -100,14 +100,14 @@ exports[`<GameInfo/> should be able render GameInfo component correctly 1`] = `
 }
 
 .c3::before {
-  top: 3.6rem;
-  border-top-width: 1rem;
-  border-right-width: 2rem;
+  border-left-color: filter(brightness(110%));
+  border-top-color: filter(brightness(110%));
 }
 
 .c3::before {
-  border-left-color: #1f8a7d;
-  border-top-color: #1f8a7d;
+  top: 3.6rem;
+  border-top-width: 1rem;
+  border-right-width: 2rem;
 }
 
 .c0 {

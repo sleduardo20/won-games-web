@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async () => {
         price: game.price,
       })),
 
-      mostPopularHighlight: mockHightLight,
+      mostPopularHighlight: sections?.popularGames?.highlight.map(game => ({})),
       mostPopularGamesTitle: sections?.popularGames?.title,
       mostPopularGames: sections!.popularGames!.games.map(game => ({
         name: game.name,

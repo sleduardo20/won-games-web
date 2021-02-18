@@ -1,15 +1,19 @@
 import '../../../.jest/macth-media-mock.js';
 import { screen } from '@testing-library/react';
 
-import Home from 'templates/Home';
+import Home, { HomeTemplateProps } from 'templates/Home';
 import { renderWithTheme } from 'utils/tests/helpers';
 
 import mockBanners from 'components/BannerSlider/mock';
 import mockGames from 'components/GameCardSlider/mock';
 import mockHightLight from 'components/HighLight/mock';
 
-const props = {
+const props: HomeTemplateProps = {
   banners: mockBanners,
+  mostPopularGamesTitle: 'popular games',
+  upcomingGamesTitle: 'up coming games',
+  newGamesTitle: 'new games',
+  freeGamesTitle: 'free games',
   newGames: [mockGames[0]],
   mostPopularHighlight: mockHightLight,
   mostPopularGames: [mockGames[0]],
