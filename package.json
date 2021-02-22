@@ -45,7 +45,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "^7.12.17",
     "@babel/preset-typescript": "^7.12.13",
     "@storybook/addon-essentials": "^6.1.15",
     "@storybook/react": "^6.1.18",
@@ -57,15 +57,17 @@
     "@types/react": "^17.0.2",
     "@types/react-slick": "^0.23.4",
     "@types/styled-components": "^5.1.7",
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.15.1",
+
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.0",
+
     "@typescript-eslint/typescript-estree": "^4.15.1",
     "apollo": "^2.32.1",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.3.1",
