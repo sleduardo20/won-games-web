@@ -3,6 +3,7 @@ import { initializeApollo } from 'utils/apollo';
 
 import { QueryHome } from 'graphql/generated/QueryHome';
 import { QUERY_HOME } from 'graphql/queries/home';
+import { bannerMapper, gamesMapper, highLightMapper } from 'utils/mappers';
 import Home, { HomeTemplateProps } from '../templates/Home';
 
 export default function Index(props: HomeTemplateProps) {
@@ -20,78 +21,22 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       revalidate: 10,
 
-      banners: banners.map(banner => ({
-        img: `http://localhost:1337${banner.image?.url}`,
-        title: banner.title,
-        subtitle: banner.subtitle,
-        buttonLabel: banner.button?.label,
-        buttonLink: banner.button?.link,
-        ...(banner.ribbon && {
-          ribbon: banner.ribbon.text,
-          ribbonColor: banner.ribbon.color,
-          ribbonSize: banner.ribbon.sizes,
-        }),
-      })),
+      banners: bannerMapper(banners),
 
       newGamesTitle: sections?.newGames?.title,
-      newGames: newGames.map(game => ({
-        name: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
+      newGames: gamesMapper(newGames),
 
       mostPopularGamesTitle: sections?.popularGames?.title,
-      mostPopularHighlight: {
-        title: sections?.popularGames?.highlight?.title,
-        subtitle: sections?.popularGames?.highlight?.subtitle,
-        backgroundImage: `http://localhost:1337${sections?.popularGames?.highlight?.background?.url}`,
-        buttonLabel: sections?.popularGames?.highlight?.buttonLabel,
-        buttonLink: sections?.popularGames?.highlight?.buttonLink,
-        alignment: sections?.popularGames?.highlight?.alignment,
-      },
-      mostPopularGames: sections!.popularGames!.games.map(game => ({
-        name: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
+      mostPopularHighlight: highLightMapper(sections?.popularGames?.highlight),
+      mostPopularGames: gamesMapper(sections!.popularGames!.games),
 
       upcomingGamesTitle: sections?.upcomingGames?.title,
-      upcomingHighlight: {
-        title: sections?.upcomingGames?.highlight?.title,
-        subtitle: sections?.upcomingGames?.highlight?.subtitle,
-        backgroundImage: `http://localhost:1337${sections?.upcomingGames?.highlight?.background?.url}`,
-        buttonLabel: sections?.upcomingGames?.highlight?.buttonLabel,
-        buttonLink: sections?.upcomingGames?.highlight?.buttonLink,
-        alignment: sections?.upcomingGames?.highlight?.alignment,
-      },
-      upcomingGames: upcomingGames.map(game => ({
-        name: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
+      upcomingHighlight: highLightMapper(sections?.upcomingGames?.highlight),
+      upcomingGames: gamesMapper(upcomingGames),
 
       freeGamesTitle: sections?.freeGames?.title,
-      freeHighlight: {
-        title: sections?.freeGames?.highlight?.title,
-        subtitle: sections?.freeGames?.highlight?.subtitle,
-        backgroundImage: `http://localhost:1337${sections?.freeGames?.highlight?.background?.url}`,
-        buttonLabel: sections?.freeGames?.highlight?.buttonLabel,
-        buttonLink: sections?.freeGames?.highlight?.buttonLink,
-        alignment: sections?.freeGames?.highlight?.alignment,
-      },
-      freeGames: freeGames.map(game => ({
-        name: game.name,
-        slug: game.slug,
-        developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
-        price: game.price,
-      })),
+      freeHighlight: highLightMapper(sections?.freeGames?.highlight),
+      freeGames: gamesMapper(freeGames),
     },
   };
 };
