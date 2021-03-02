@@ -24,6 +24,7 @@ export interface GameTemplateProps {
   gallery?: GalleryImageProps[];
   description: string;
   details: GameDetailsProps;
+  upcomingTitle: string;
   upcomingGames: GameCardProps[];
   upcomingHighlight: HighLightProps;
   recommendedTitle: string;
@@ -36,6 +37,7 @@ const Game = ({
   gallery,
   description,
   details,
+  upcomingTitle,
   upcomingGames,
   upcomingHighlight,
   recommendedTitle,
@@ -63,7 +65,7 @@ const Game = ({
         </SectionGameDetails>
 
         <ShowCase
-          title="Upcoming"
+          title={upcomingTitle}
           games={upcomingGames}
           highlight={upcomingHighlight}
         />
