@@ -14,7 +14,14 @@ import {
 
 import { QueryRecommended } from 'graphql/generated/QueryRecommended';
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended';
-import { gamesMapper } from 'utils/mappers';
+
+import {
+  QueryUpcoming,
+  QueryUpcomingVariables,
+} from 'graphql/generated/QueryUpcoming';
+import { QUERY_UPCOMING } from 'graphql/queries/upcoming';
+
+import { gamesMapper, highLightMapper } from 'utils/mappers';
 import Game, { GameTemplateProps } from '../../templates/Game';
 
 const apolloClient = initializeApollo();
@@ -62,6 +69,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     query: QUERY_RECOMMENDED,
   });
 
+  // get upcoming games
+  const today = new Date().toISOString().slice(0, 10);
+  const { data: upcoming } = await apolloClient.query<
+    QueryUpcoming,
+    QueryUpcomingVariables
+  >({
+    query: QUERY_UPCOMING,
+    variables: { date: today },
+  });
+
   const game = data.games[0];
 
   return {
@@ -86,8 +103,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         rating: game.rating,
         genres: game.categories.map(category => category.name),
       },
-      upcomingGames: mockGames,
-      upcomingHighlight: mockHightLight,
+
+      upcomingTitle: upcoming.showcase?.upcomingGames?.title,
+      upcomingGames: gamesMapper(upcoming.upcomingGames),
+      upcomingHighlight: highLightMapper(
+        upcoming.showcase?.upcomingGames?.highlight,
+      ),
+
       recommendedTitle: recommended.recommended?.section?.title,
       recommendedGames: gamesMapper(recommended.recommended?.section?.games),
     },
