@@ -9,6 +9,7 @@ import Base from 'templates/Base';
 import ExploreSideBar, { ItemProps } from 'components/ExploreSideBar';
 import GameCard, { GameCardProps } from 'components/GameCard';
 import { Grid } from 'components/Grid';
+import { Loader } from 'components/Loader';
 
 import { QUERY_GAMES } from 'graphql/queries/games';
 import { Main, ShowMore } from './styles';
@@ -36,26 +37,29 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
     <Base>
       <Main>
         <ExploreSideBar items={filterItems} onFilter={handleFilter} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <section>
+            <Grid>
+              {data?.games.map(game => (
+                <GameCard
+                  key={game.slug}
+                  title={game.name}
+                  slug={game.slug}
+                  developer={game.developers[0].name}
+                  img={`http://localhost:1337${game.cover?.url}`}
+                  price={game.price}
+                />
+              ))}
+            </Grid>
 
-        <section>
-          <Grid>
-            {data?.games.map(game => (
-              <GameCard
-                key={game.slug}
-                title={game.name}
-                slug={game.slug}
-                developer={game.developers[0].name}
-                img={`http://localhost:1337${game.cover?.url}`}
-                price={game.price}
-              />
-            ))}
-          </Grid>
-
-          <ShowMore role="button" onClick={handleShowMore}>
-            <p>Show More</p>
-            <KeyboardArrowDown size={35} />
-          </ShowMore>
-        </section>
+            <ShowMore role="button" onClick={handleShowMore}>
+              <p>Show More</p>
+              <KeyboardArrowDown size={35} />
+            </ShowMore>
+          </section>
+        )}
       </Main>
     </Base>
   );
