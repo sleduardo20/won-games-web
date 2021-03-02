@@ -9,6 +9,7 @@ import Wishtlist, { WishListTemplateProps } from '.';
 
 const props: WishListTemplateProps = {
   recommendedGames: mockGames,
+  recommendedTitle: 'You may like these games',
   recommendedHighLight: mockHightLight,
   games: mockGames,
 };
@@ -37,6 +38,7 @@ describe('<Wishtlist />', () => {
     renderWithTheme(
       <Wishtlist
         recommendedGames={props.recommendedGames}
+        recommendedTitle={props.recommendedTitle}
         recommendedHighLight={props.recommendedHighLight}
       />,
     );

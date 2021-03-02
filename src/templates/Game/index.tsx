@@ -26,6 +26,7 @@ export interface GameTemplateProps {
   details: GameDetailsProps;
   upcomingGames: GameCardProps[];
   upcomingHighlight: HighLightProps;
+  recommendedTitle: string;
   recommendedGames: GameCardProps[];
 }
 
@@ -37,6 +38,7 @@ const Game = ({
   details,
   upcomingGames,
   upcomingHighlight,
+  recommendedTitle,
   recommendedGames,
 }: GameTemplateProps) => {
   return (
@@ -66,7 +68,7 @@ const Game = ({
           highlight={upcomingHighlight}
         />
 
-        <ShowCase title="You may like these games" games={recommendedGames} />
+        <ShowCase title={recommendedTitle} games={recommendedGames} />
       </Main>
     </Base>
   );

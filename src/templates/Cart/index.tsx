@@ -17,9 +17,11 @@ export interface CartProps
     Pick<PaymentOptionsProps, 'cards'> {
   recommendedGames: GameCardProps[];
   recommendedHighLight: HighLightProps;
+  recommendedTitle: string;
 }
 
 const Cart = ({
+  recommendedTitle,
   recommendedGames,
   recommendedHighLight,
   items,
@@ -53,7 +55,7 @@ const Cart = ({
       </Container>
 
       <ShowCase
-        title="You may like these games"
+        title={recommendedTitle}
         games={recommendedGames}
         highlight={recommendedHighLight}
       />

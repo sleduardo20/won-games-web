@@ -21,6 +21,7 @@ const props: GameTemplateProps = {
   description: mockTextContent.content,
   upcomingGames: mockGames,
   recommendedGames: mockGames,
+  recommendedTitle: 'You may like these games',
   upcomingHighlight: mockHightLight,
 };
 

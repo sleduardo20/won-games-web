@@ -10,12 +10,14 @@ import ShowCase from 'components/ShowCase';
 import Empty from 'components/Empty';
 
 export interface WishListTemplateProps {
+  recommendedTitle: string;
   recommendedGames: GameCardProps[];
   recommendedHighLight: HighLightProps;
   games?: GameCardProps[];
 }
 
 const WishList = ({
+  recommendedTitle,
   recommendedGames,
   recommendedHighLight,
   games = [],
@@ -45,7 +47,7 @@ const WishList = ({
       </Container>
 
       <ShowCase
-        title="You may like this games"
+        title={recommendedTitle}
         games={recommendedGames}
         highlight={recommendedHighLight}
       />
