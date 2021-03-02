@@ -20,18 +20,23 @@ export interface GamesTemplatesProps {
 }
 
 const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
-  const { data, loading } = useQuery<QueryGames, QueryGamesVariables>(
-    QUERY_GAMES,
-    { variables: { limit: 15 } },
-  );
+  const { data, loading, fetchMore } = useQuery<
+    QueryGames,
+    QueryGamesVariables
+  >(QUERY_GAMES, { variables: { limit: 15 } });
 
   const handleFilter = useCallback(() => {
     return {};
   }, []);
 
   const handleShowMore = useCallback(() => {
-    return {};
-  }, []);
+    fetchMore({
+      variables: {
+        limit: 15,
+        start: data?.games.length,
+      },
+    });
+  }, [fetchMore, data?.games.length]);
 
   return (
     <Base>
