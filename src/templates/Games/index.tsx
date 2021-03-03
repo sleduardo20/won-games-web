@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 import { KeyboardArrowDown } from '@styled-icons/material-outlined';
 
-import { useQuery } from '@apollo/client';
-import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames';
+import { useQueryGames } from 'graphql/queries/games';
 
 import Base from 'templates/Base';
 
@@ -11,7 +10,6 @@ import GameCard, { GameCardProps } from 'components/GameCard';
 import { Grid } from 'components/Grid';
 import { Loader } from 'components/Loader';
 
-import { QUERY_GAMES } from 'graphql/queries/games';
 import { Main, ShowMore } from './styles';
 
 export interface GamesTemplatesProps {
@@ -20,10 +18,9 @@ export interface GamesTemplatesProps {
 }
 
 const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
-  const { data, loading, fetchMore } = useQuery<
-    QueryGames,
-    QueryGamesVariables
-  >(QUERY_GAMES, { variables: { limit: 15 } });
+  const { data, loading, fetchMore } = useQueryGames({
+    variables: { limit: 15 },
+  });
 
   const handleFilter = useCallback(() => {
     return {};

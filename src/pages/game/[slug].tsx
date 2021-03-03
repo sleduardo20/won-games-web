@@ -1,10 +1,7 @@
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
+
 import { initializeApollo } from 'utils/apollo';
-
-import mockGames from 'components/GameCardSlider/mock';
-import mockHightLight from 'components/HighLight/mock';
-
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames';
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games';
 import {
@@ -64,6 +61,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return { notFound: true };
   }
 
+  const game = data.games[0];
+
   // get recommeded games
   const { data: recommended } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED,
@@ -78,8 +77,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     query: QUERY_UPCOMING,
     variables: { date: today },
   });
-
-  const game = data.games[0];
 
   return {
     props: {
