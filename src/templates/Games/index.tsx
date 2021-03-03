@@ -40,7 +40,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
       <Main>
         <ExploreSideBar items={filterItems} onFilter={handleFilter} />
         {loading ? (
-          <Loader />
+          <Loader aria-label="loading" />
         ) : (
           <section>
             <Grid>
@@ -50,7 +50,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
                   title={game.name}
                   slug={game.slug}
                   developer={game.developers[0].name}
-                  img={`http://localhost:1337${game.cover?.url}`}
+                  img={`http://localhost:1337${game.cover!.url}`}
                   price={game.price}
                 />
               ))}
