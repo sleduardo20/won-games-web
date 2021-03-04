@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { concatPagination } from '@apollo/client/utilities';
 
-let apolloClient: ApolloClient<NormalizedCacheObject>;
+let apolloClient: ApolloClient<NormalizedCacheObject | null>;
 
 const createApolloClient = () => {
   return new ApolloClient({
@@ -26,7 +26,7 @@ const createApolloClient = () => {
   });
 };
 
-export const initializeApollo = (initialState = {}) => {
+export const initializeApollo = (initialState = null) => {
   // serve para verificar se já existe uma instância, para não criar outra
   const apolloClientGlobal = apolloClient ?? createApolloClient();
 
@@ -43,7 +43,7 @@ export const initializeApollo = (initialState = {}) => {
   return apolloClient;
 };
 
-export const useApollo = (initialState = {}) => {
+export const useApollo = (initialState = null) => {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
 
   return store;
