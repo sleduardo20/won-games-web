@@ -26,7 +26,6 @@ export interface QueryUpcoming_upcomingGames {
   cover: QueryUpcoming_upcomingGames_cover | null;
   developers: QueryUpcoming_upcomingGames_developers[];
   price: number;
-  release_date: any | null;
 }
 
 export interface QueryUpcoming_showcase_upcomingGames_highlight_background {

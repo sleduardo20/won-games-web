@@ -47,7 +47,6 @@ export interface QueryRecommended_recommended_section_games {
   cover: QueryRecommended_recommended_section_games_cover | null;
   developers: QueryRecommended_recommended_section_games_developers[];
   price: number;
-  release_date: any | null;
 }
 
 export interface QueryRecommended_recommended_section {

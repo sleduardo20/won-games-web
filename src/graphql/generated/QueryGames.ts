@@ -24,7 +24,6 @@ export interface QueryGames_games {
   cover: QueryGames_games_cover | null;
   developers: QueryGames_games_developers[];
   price: number;
-  release_date: any | null;
 }
 
 export interface QueryGames {
@@ -34,4 +33,6 @@ export interface QueryGames {
 export interface QueryGamesVariables {
   limit: number;
   start?: number | null;
+  where?: any | null;
+  sort?: string | null;
 }

@@ -24,5 +24,4 @@ export interface GameFragment {
   cover: GameFragment_cover | null;
   developers: GameFragment_developers[];
   price: number;
-  release_date: any | null;
 }
