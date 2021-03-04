@@ -3,7 +3,7 @@ import {
   FavoriteBorder,
 } from 'styled-icons/material-outlined';
 
-import { formatPrice } from 'utils/formatPrice';
+import { formatPrice } from '../../utils/formatPrice';
 
 import Button from '../Button';
 import Heading from '../Heading';
