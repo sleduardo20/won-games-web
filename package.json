@@ -13,7 +13,7 @@
     "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
     "schema:convert": "node convertToNoNull.js",
     "codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
-    "types:generate":"yarn schema:download && yarn schema:convert && yarn codegen",
+    "types:generate": "yarn schema:download && yarn schema:convert && yarn codegen",
     "storybook": "start-storybook -s ./public -p 6008",
     "build-storybook": "build-storybook -s ./public"
   },
@@ -24,6 +24,7 @@
     "@styled-icons/material-outlined": "^10.28.0",
     "build": "^0.1.4",
     "graphql": "^15.5.0",
+    "lodash.xor": "^4.5.0",
     "next": "10.0.7",
     "next-pwa": "^5.0.5",
     "polished": "^4.1.0",
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash.xor": "^4.5.6",
     "@babel/core": "^7.12.17",
     "@babel/preset-typescript": "^7.12.13",
     "@storybook/addon-essentials": "^6.1.20",
@@ -83,6 +85,5 @@
     "react-is": "^17.0.1",
     "ts-loader": "^8.0.17",
     "typescript": "^4.1.5"
-
   }
 }
