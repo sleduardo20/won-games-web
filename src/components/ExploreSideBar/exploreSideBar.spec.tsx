@@ -19,7 +19,7 @@ describe('<ExploreSideBar/>', () => {
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole('heading', { name: /system/i }),
+      screen.getByRole('heading', { name: /platforms/i }),
     ).toBeInTheDocument();
 
     expect(screen.getByRole('heading', { name: /genre/i })).toBeInTheDocument();
@@ -48,7 +48,10 @@ describe('<ExploreSideBar/>', () => {
       <ExploreSideBar
         onFilter={jest.fn}
         items={items}
-        initialValues={{ windows: true, sort_by: 'low-to-high' }}
+        initialValues={{
+          platforms: ['windows'],
+          sort_by: 'low-to-high',
+        }}
       />,
     );
 
@@ -63,14 +66,20 @@ describe('<ExploreSideBar/>', () => {
     renderWithTheme(
       <ExploreSideBar
         items={items}
-        initialValues={{ windows: true, sort_by: 'low-to-high' }}
+        initialValues={{
+          platforms: ['windows'],
+          sort_by: 'low-to-high',
+        }}
         onFilter={onFilter}
       />,
     );
 
     userEvent.click(screen.getByRole('button', { name: /filter/i }));
 
-    expect(onFilter).toBeCalledWith({ windows: true, sort_by: 'low-to-high' });
+    expect(onFilter).toBeCalledWith({
+      platforms: ['windows'],
+      sort_by: 'low-to-high',
+    });
   });
 
   it('should be able filter with checked values', () => {
@@ -79,11 +88,15 @@ describe('<ExploreSideBar/>', () => {
     renderWithTheme(<ExploreSideBar items={items} onFilter={onFilter} />);
 
     userEvent.click(screen.getByLabelText(/windows/i));
+    userEvent.click(screen.getByLabelText(/linux/i));
     userEvent.click(screen.getByLabelText(/low to high/i));
 
     userEvent.click(screen.getByRole('button', { name: /filter/i }));
 
-    expect(onFilter).toBeCalledWith({ windows: true, sort_by: 'low-to-high' });
+    expect(onFilter).toBeCalledWith({
+      platforms: ['windows', 'linux'],
+      sort_by: 'low-to-high',
+    });
   });
 
   it('should be able altern between radio options', () => {
