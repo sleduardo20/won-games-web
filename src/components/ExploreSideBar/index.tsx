@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FilterList, Close } from 'styled-icons/material-outlined';
 import xor from 'lodash.xor';
 
@@ -46,10 +46,15 @@ const ExploreSideBar = ({
   const [values, setValues] = useState(initialValues);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleFilter = useCallback(() => {
+  useEffect(() => {
     onFilter(values);
+    // this method comos from another template that we dont's have access
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+
+  const handleFilterMenu = useCallback(() => {
     setIsOpen(false);
-  }, [values, onFilter]);
+  }, []);
 
   const handleRadio = useCallback((name: string, value: string | boolean) => {
     setValues(s => ({ ...s, [name]: value }));
@@ -112,7 +117,7 @@ const ExploreSideBar = ({
       </Content>
 
       <Footer>
-        <Button fullWidth size="medium" onClick={handleFilter}>
+        <Button fullWidth size="medium" onClick={handleFilterMenu}>
           Filter
         </Button>
       </Footer>

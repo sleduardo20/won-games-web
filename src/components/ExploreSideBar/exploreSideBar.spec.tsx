@@ -74,8 +74,6 @@ describe('<ExploreSideBar/>', () => {
       />,
     );
 
-    userEvent.click(screen.getByRole('button', { name: /filter/i }));
-
     expect(onFilter).toBeCalledWith({
       platforms: ['windows'],
       sort_by: 'low-to-high',
@@ -91,7 +89,7 @@ describe('<ExploreSideBar/>', () => {
     userEvent.click(screen.getByLabelText(/linux/i));
     userEvent.click(screen.getByLabelText(/low to high/i));
 
-    userEvent.click(screen.getByRole('button', { name: /filter/i }));
+    expect(onFilter).toHaveBeenCalledTimes(4);
 
     expect(onFilter).toBeCalledWith({
       platforms: ['windows', 'linux'],
@@ -106,8 +104,6 @@ describe('<ExploreSideBar/>', () => {
 
     userEvent.click(screen.getByLabelText(/low to high/i));
     userEvent.click(screen.getByLabelText(/high to low/i));
-
-    userEvent.click(screen.getByRole('button', { name: /filter/i }));
 
     expect(onFilter).toBeCalledWith({ sort_by: 'high-to-low' });
   });
@@ -135,6 +131,11 @@ describe('<ExploreSideBar/>', () => {
     expect(element).toHaveStyleRule('opacity', '1', variant);
 
     userEvent.click(screen.getByLabelText(/close filters/i));
+
+    expect(element).not.toHaveStyleRule('opacity', '1', variant);
+
+    userEvent.click(screen.getByLabelText(/open filters/i));
+    userEvent.click(screen.getByRole('button', { name: /filter/i }));
 
     expect(element).not.toHaveStyleRule('opacity', '1', variant);
   });
