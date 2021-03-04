@@ -11,6 +11,5 @@ export const GameFragment = gql`
       name
     }
     price
-    release_date
   }
 `;
