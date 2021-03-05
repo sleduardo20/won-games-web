@@ -38,24 +38,12 @@ jest.mock('templates/Base', () => ({
 }));
 
 describe('<Games />', () => {
-  it('should be able render loading when starting the template', () => {
-    renderWithTheme(
-      <MockedProvider mocks={[]} addTypename={false}>
-        <Games filterItems={filterItemsMock} />
-      </MockedProvider>,
-    );
-
-    expect(screen.getByLabelText(/loading/i)).toBeInTheDocument();
-  });
-
   it('should be able render sections correctly', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
       </MockedProvider>,
     );
-
-    expect(screen.getByLabelText(/loading/i)).toBeInTheDocument();
 
     expect(await screen.findByText(/Price/i)).toBeInTheDocument();
     expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument();
