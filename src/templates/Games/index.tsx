@@ -15,10 +15,10 @@ import Base from 'templates/Base';
 import ExploreSideBar, { ItemProps } from 'components/ExploreSideBar';
 import GameCard from 'components/GameCard';
 import { Grid } from 'components/Grid';
-import { Loader } from 'components/Loader';
+import { Loader, LoaderEclipse } from 'components/Loader';
 import Empty from 'components/Empty';
 
-import { Main, ShowMore } from './styles';
+import { Main, ShowMore, ShowMoreButton } from './styles';
 
 export interface GamesTemplatesProps {
   filterItems: ItemProps[];
@@ -28,6 +28,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
   const { push, query } = useRouter();
 
   const { data, loading, fetchMore } = useQueryGames({
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
@@ -66,39 +67,41 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
           items={filterItems}
           onFilter={handleFilter}
         />
-        {loading ? (
-          <Loader aria-label="loading" />
-        ) : (
-          <section>
-            {data?.games.length ? (
-              <>
-                <Grid>
-                  {data?.games.map(game => (
-                    <GameCard
-                      key={game.slug}
-                      title={game.name}
-                      slug={game.slug}
-                      developer={game.developers[0].name}
-                      img={`http://localhost:1337${game.cover!.url}`}
-                      price={game.price}
-                    />
-                  ))}
-                </Grid>
 
-                <ShowMore role="button" onClick={handleShowMore}>
-                  <p>Show More</p>
-                  <KeyboardArrowDown size={35} />
-                </ShowMore>
-              </>
-            ) : (
-              <Empty
-                title=":("
-                description="We didn't find any games this filter"
-                hasLink
-              />
-            )}
-          </section>
-        )}
+        <section>
+          {data?.games.length ? (
+            <>
+              <Grid>
+                {data?.games.map(game => (
+                  <GameCard
+                    key={game.slug}
+                    title={game.name}
+                    slug={game.slug}
+                    developer={game.developers[0].name}
+                    img={`http://localhost:1337${game.cover!.url}`}
+                    price={game.price}
+                  />
+                ))}
+              </Grid>
+              <ShowMore>
+                {loading ? (
+                  <LoaderEclipse />
+                ) : (
+                  <ShowMoreButton role="button" onClick={handleShowMore}>
+                    <p>Show More</p>
+                    <KeyboardArrowDown size={35} />
+                  </ShowMoreButton>
+                )}
+              </ShowMore>
+            </>
+          ) : (
+            <Empty
+              title=":("
+              description="We didn't find any games this filter"
+              hasLink
+            />
+          )}
+        </section>
       </Main>
     </Base>
   );
