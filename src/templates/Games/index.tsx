@@ -36,25 +36,27 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
     },
   });
 
-  const handleFilter = useCallback(
-    (items: ParsedUrlQueryInput) => {
-      push({
-        pathname: '/games',
-        query: items,
-      });
-    },
+  if (!data) return <Loader />;
 
-    [push],
-  );
+  const { games, gamesConnection } = data;
 
-  const handleShowMore = useCallback(() => {
+  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0);
+
+  const handleFilter = (items: ParsedUrlQueryInput) => {
+    push({
+      pathname: '/games',
+      query: items,
+    });
+  };
+
+  const handleShowMore = () => {
     fetchMore({
       variables: {
         limit: 15,
-        start: data?.games.length,
+        start: games.length,
       },
     });
-  }, [fetchMore, data?.games.length]);
+  };
 
   return (
     <Base>
@@ -83,16 +85,19 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
                   />
                 ))}
               </Grid>
-              <ShowMore>
-                {loading ? (
-                  <LoaderEclipse />
-                ) : (
-                  <ShowMoreButton role="button" onClick={handleShowMore}>
-                    <p>Show More</p>
-                    <KeyboardArrowDown size={35} />
-                  </ShowMoreButton>
-                )}
-              </ShowMore>
+
+              {hasMoreGames && (
+                <ShowMore>
+                  {loading ? (
+                    <LoaderEclipse />
+                  ) : (
+                    <ShowMoreButton role="button" onClick={handleShowMore}>
+                      <p>Show More</p>
+                      <KeyboardArrowDown size={35} />
+                    </ShowMoreButton>
+                  )}
+                </ShowMore>
+              )}
             </>
           ) : (
             <Empty
