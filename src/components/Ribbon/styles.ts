@@ -1,5 +1,4 @@
 import styled, { css, DefaultTheme } from 'styled-components';
-import { darken } from 'polished';
 
 import { RibbonColors, RibbonProps } from '.';
 

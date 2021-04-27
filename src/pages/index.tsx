@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
   } = await apolloClient.query<QueryHome, QueryHomeVariables>({
     query: QUERY_HOME,
     variables: { date: today },
-    fetchPolicy: 'no-cache', // garantiri sempre dado novo na geração do estático
+    fetchPolicy: 'no-cache', // garantir sempre dado novo na geração do estático
   });
 
   return {
