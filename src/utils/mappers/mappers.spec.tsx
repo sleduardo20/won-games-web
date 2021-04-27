@@ -1,7 +1,7 @@
 import { QueryGames_games } from 'graphql/generated/QueryGames';
 import { QueryHome_sections_popularGames_highlight } from 'graphql/generated/QueryHome';
 import { QueryHome_banners } from '../../graphql/generated/QueryHome';
-import { bannerMapper, gamesMapper, highLightMapper } from '.';
+import { bannerMapper, cartMapper, gamesMapper, highLightMapper } from '.';
 
 describe('bannerMapper()', () => {
   it('should be able return right format when mapped', () => {
@@ -94,5 +94,31 @@ describe('HighLightMapper()', () => {
     buttonLabel: 'button label',
     buttonLink: 'button link',
     alignment: 'right',
+  });
+});
+
+describe('cartMapper()', () => {
+  it('should be able return empty array if no games', () => {
+    expect(cartMapper(undefined)).toStrictEqual([]);
+  });
+
+  it('should be able return mapped items', () => {
+    const game = {
+      id: '1',
+      cover: {
+        url: '/image.jpg',
+      },
+      name: 'game',
+      price: 10,
+    } as QueryGames_games;
+
+    expect(cartMapper([game])).toStrictEqual([
+      {
+        id: '1',
+        title: 'game',
+        price: '$10.00',
+        img: 'http://localhost:1337/image.jpg',
+      },
+    ]);
   });
 });
