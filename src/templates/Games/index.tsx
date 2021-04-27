@@ -1,4 +1,3 @@
-import { useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { ParsedUrlQueryInput } from 'querystring';
 import { KeyboardArrowDown } from '@styled-icons/material-outlined';
@@ -36,7 +35,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
     },
   });
 
-  if (!data) return <Loader />;
+  if (!data) return <p>loading...</p>;
 
   const { games, gamesConnection } = data;
 
@@ -53,7 +52,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
     fetchMore({
       variables: {
         limit: 15,
-        start: games.length,
+        start: data?.games.length,
       },
     });
   };
