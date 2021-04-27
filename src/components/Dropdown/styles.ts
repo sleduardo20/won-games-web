@@ -7,6 +7,7 @@ export const Title = styled.div`
     display: flex;
     align-items: center;
     padding-right: ${theme.spacings.small};
+    z-index: ${theme.layers.alwaysOnTop};
   `}
 `;
 
@@ -19,6 +20,7 @@ export const Content = styled.div`
     margin-top: ${theme.spacings.small};
     position: absolute;
     right: 0;
+    z-index: ${theme.layers.alwaysOnTop};
 
     &::before {
       content: '';
@@ -29,6 +31,18 @@ export const Content = styled.div`
       border-left: 1.2rem solid transparent;
       border-bottom: 1.2rem solid ${theme.colors.white};
     }
+  `}
+`;
+
+export const Overlay = styled.div`
+  ${({ theme }) => css`
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: ${theme.layers.overlay};
+    background: rgba(0, 0, 0, 0.5);
   `}
 `;
 
@@ -54,7 +68,7 @@ export const Container = styled.div<ContainerProps>`
     width: max-content;
     position: relative;
 
-    ${Content} {
+    ${Content}, ${Overlay} {
       transition: transform 0.2s ease-in, opacity ${theme.transition.default};
 
       ${isOpen && containerModifiers.open}
