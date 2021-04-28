@@ -1,7 +1,7 @@
 import '../../../.jest/macth-media-mock.js';
-import { render, screen } from '@testing-library/react';
 
 import Slider from 'components/Slider';
+import { render, screen } from '../../utils/test-utils';
 
 describe('<Slider />', () => {
   it('should be render Slider component the childrens as silider item', () => {

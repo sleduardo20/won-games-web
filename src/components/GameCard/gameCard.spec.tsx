@@ -1,7 +1,5 @@
-import { fireEvent, screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
-
 import GameCard from 'components/GameCard';
+import { screen, render, fireEvent } from '../../utils/test-utils';
 
 const props = {
   slug: 'cyberpunk-2077',
@@ -13,7 +11,7 @@ const props = {
 
 describe('<GameCard />', () => {
   it('should be render GameCard component correctly', () => {
-    renderWithTheme(<GameCard {...props} />);
+    render(<GameCard {...props} />);
 
     expect(
       screen.getByRole('heading', { name: props.title }),
@@ -37,7 +35,7 @@ describe('<GameCard />', () => {
   });
 
   it('should be render price in label', () => {
-    renderWithTheme(<GameCard {...props} />);
+    render(<GameCard {...props} />);
 
     const price = screen.getByText('$250.00');
 
@@ -51,7 +49,7 @@ describe('<GameCard />', () => {
   });
 
   it('should be render line-through in price when promocional', () => {
-    renderWithTheme(<GameCard promotinalPrice={200} {...props} />);
+    render(<GameCard promotinalPrice={200} {...props} />);
 
     const price = screen.getByText('$250.00');
 
@@ -69,7 +67,7 @@ describe('<GameCard />', () => {
   });
 
   it('should be render field Favorite icon when favorite is true', () => {
-    renderWithTheme(<GameCard {...props} favorite />);
+    render(<GameCard {...props} favorite />);
 
     expect(screen.getByLabelText(/Remove from Wishlist/i)).toBeInTheDocument();
   });
@@ -77,7 +75,7 @@ describe('<GameCard />', () => {
   it('should be call onFav method when favorite is clicked', () => {
     const onFav = jest.fn();
 
-    renderWithTheme(<GameCard {...props} onFav={onFav} />);
+    render(<GameCard {...props} onFav={onFav} />);
 
     fireEvent.click(screen.getAllByRole('button')[0]);
 
@@ -85,7 +83,7 @@ describe('<GameCard />', () => {
   });
 
   it('should be render with ribbon', () => {
-    renderWithTheme(
+    render(
       <GameCard
         {...props}
         ribbon="My Ribbon"

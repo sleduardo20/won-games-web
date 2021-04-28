@@ -1,12 +1,12 @@
 import '../../../.jest/macth-media-mock.js';
-import { screen } from '@testing-library/react';
 
 import Home, { HomeTemplateProps } from 'templates/Home';
-import { renderWithTheme } from 'utils/tests/helpers';
 
 import mockBanners from 'components/BannerSlider/mock';
 import mockGames from 'components/GameCardSlider/mock';
 import mockHightLight from 'components/HighLight/mock';
+
+import { screen, render } from '../../utils/test-utils';
 
 const props: HomeTemplateProps = {
   banners: mockBanners,
@@ -43,13 +43,13 @@ jest.mock('components/BannerSlider', () => {
 
 describe('<Home />', () => {
   it('should be able render page Home the sections', () => {
-    renderWithTheme(<Home {...props} />);
+    render(<Home {...props} />);
 
     expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(4);
   });
 
   it('should be able render section elements', () => {
-    renderWithTheme(<Home {...props} />);
+    render(<Home {...props} />);
 
     expect(screen.getByTestId(/mock bannerslider/i)).toBeInTheDocument();
   });

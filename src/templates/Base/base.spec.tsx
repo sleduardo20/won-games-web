@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { screen, render } from '../../utils/test-utils';
 
 import Base from '.';
 
@@ -41,7 +40,7 @@ jest.mock('components/BannerSlider', () => {
 
 describe('<Base/>', () => {
   it('should be able render Menu, Footer and childre the Base component correctly', () => {
-    renderWithTheme(
+    render(
       <Base>
         <h1>Heading</h1>
       </Base>,

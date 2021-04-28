@@ -1,12 +1,11 @@
-import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { render, screen, waitFor } from '../../utils/test-utils';
 
 import Radio from '.';
 
 describe('<Radio/>', () => {
   it('should be able render Radio component with label (white)', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <Radio label="Radio" labelFor="check" value="anyValue" />,
     );
     const label = screen.getByText('Radio');
@@ -16,7 +15,7 @@ describe('<Radio/>', () => {
   });
 
   it('should be able render Radio component with label (black)', () => {
-    renderWithTheme(
+    render(
       <Radio
         label="Radio"
         labelColor="black"
@@ -30,7 +29,7 @@ describe('<Radio/>', () => {
   });
 
   it('should be able render Radio component without label', () => {
-    renderWithTheme(<Radio />);
+    render(<Radio />);
 
     expect(screen.queryByLabelText('Radio')).not.toBeInTheDocument();
   });
@@ -38,7 +37,7 @@ describe('<Radio/>', () => {
   it('should be able dispatch onCheck when label status changes', async () => {
     const onCheck = jest.fn();
 
-    renderWithTheme(
+    render(
       <Radio
         label="Radio"
         labelFor="radio"
@@ -59,7 +58,7 @@ describe('<Radio/>', () => {
   });
 
   it('should be able accessible with tab', async () => {
-    renderWithTheme(<Radio label="Radio" labelFor="radio" />);
+    render(<Radio label="Radio" labelFor="radio" />);
 
     expect(document.body).toHaveFocus();
 

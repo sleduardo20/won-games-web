@@ -1,13 +1,12 @@
-import { fireEvent, screen } from '@testing-library/react';
+import { screen, render, fireEvent } from '../../utils/test-utils';
 import '../../../.jest/macth-media-mock.js';
-import { renderWithTheme } from 'utils/tests/helpers';
 
 import Gallery from '.';
 import mockGallery from './mock';
 
 describe('<Gallery />', () => {
   it('should be able render thumbnails as buttons', () => {
-    renderWithTheme(<Gallery items={mockGallery.slice(0, 2)} />);
+    render(<Gallery items={mockGallery.slice(0, 2)} />);
 
     expect(
       screen.getByRole('button', { name: /Thumb - Gallery Image 01/i }),
@@ -15,7 +14,7 @@ describe('<Gallery />', () => {
   });
 
   it('should be able render open modal', async () => {
-    renderWithTheme(<Gallery items={mockGallery.slice(0, 2)} />);
+    render(<Gallery items={mockGallery.slice(0, 2)} />);
 
     fireEvent.click(
       screen.getByRole('button', { name: /Thumb - Gallery Image 02/i }),
@@ -29,7 +28,7 @@ describe('<Gallery />', () => {
   });
 
   it('should be able render open modal selected image', () => {
-    renderWithTheme(<Gallery items={mockGallery.slice(0, 2)} />);
+    render(<Gallery items={mockGallery.slice(0, 2)} />);
 
     const modal = screen.getByLabelText('modal');
 
@@ -41,7 +40,7 @@ describe('<Gallery />', () => {
   });
 
   it('should be able close modal button is clicked', () => {
-    renderWithTheme(<Gallery items={mockGallery.slice(0, 2)} />);
+    render(<Gallery items={mockGallery.slice(0, 2)} />);
 
     const modal = screen.getByLabelText('modal');
 
@@ -55,9 +54,7 @@ describe('<Gallery />', () => {
   });
 
   it('should be able render close modal press key ESC', () => {
-    const { container } = renderWithTheme(
-      <Gallery items={mockGallery.slice(0, 2)} />,
-    );
+    const { container } = render(<Gallery items={mockGallery.slice(0, 2)} />);
 
     const modal = screen.getByLabelText('modal');
 

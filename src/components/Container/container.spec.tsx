@@ -1,10 +1,10 @@
 import { Container } from 'components/Container';
 import theme from 'styles/theme';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { render } from '../../utils/test-utils';
 
 describe('<Container />', () => {
   it('should be able the render Container component correctly', () => {
-    const { container } = renderWithTheme(<Container />);
+    const { container } = render(<Container />);
 
     expect(container.firstChild).toHaveStyleRule(
       'max-width',

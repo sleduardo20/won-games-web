@@ -1,8 +1,6 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
-
 import HighLight from 'components/HighLight';
 import { Content } from 'components/HighLight/styles';
+import { screen, render } from '../../utils/test-utils';
 
 const props = {
   title: 'Heading 1',
@@ -14,7 +12,7 @@ const props = {
 
 describe('<HighLight />', () => {
   it('should be render headings and button', () => {
-    renderWithTheme(<HighLight {...props} />);
+    render(<HighLight {...props} />);
 
     expect(
       screen.getByRole('heading', { name: /heading 1/i }),
@@ -28,7 +26,7 @@ describe('<HighLight />', () => {
   });
 
   it('should be render background image', () => {
-    const { container } = renderWithTheme(<HighLight {...props} />);
+    const { container } = render(<HighLight {...props} />);
 
     expect(container.firstChild).toHaveStyle({
       backgroundImage: `url(${props.backgroundImage})`,
@@ -36,7 +34,7 @@ describe('<HighLight />', () => {
   });
 
   it('should be render background image', () => {
-    renderWithTheme(<HighLight {...props} floatImage="/float-image.png" />);
+    render(<HighLight {...props} floatImage="/float-image.png" />);
 
     expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
       'src',
@@ -45,7 +43,7 @@ describe('<HighLight />', () => {
   });
 
   it('should render align righ by default', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <HighLight {...props} floatImage="/float-image.png" />,
     );
 
@@ -60,7 +58,7 @@ describe('<HighLight />', () => {
   });
 
   it('should render align left', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <HighLight {...props} floatImage="/float-image.png" alignment="left" />,
     );
 

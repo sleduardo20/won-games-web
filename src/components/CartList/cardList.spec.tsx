@@ -1,12 +1,11 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { screen, render } from '../../utils/test-utils';
 
 import CardList from '.';
 import mockCardList from './mock';
 
 describe('<CardList />', () => {
   it('should be able render correctly', () => {
-    const { container } = renderWithTheme(
+    const { container } = render(
       <CardList items={mockCardList} total="R$ 330,00" />,
     );
 
@@ -16,15 +15,13 @@ describe('<CardList />', () => {
   });
 
   it('should be able render the button', () => {
-    renderWithTheme(
-      <CardList hasButton items={mockCardList} total="R$ 330,00" />,
-    );
+    render(<CardList hasButton items={mockCardList} total="R$ 330,00" />);
 
     expect(screen.getByText(/Buy it now/)).toBeInTheDocument();
   });
 
   it('should be able render empty if there are no games', () => {
-    renderWithTheme(<CardList />);
+    render(<CardList />);
 
     expect(screen.getByText(/your cart is empty/i)).toBeInTheDocument();
     expect(screen.queryByText('total')).not.toBeInTheDocument();

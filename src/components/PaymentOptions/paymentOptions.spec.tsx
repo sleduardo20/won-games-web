@@ -1,13 +1,13 @@
-import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderWithTheme } from 'utils/tests/helpers';
+
+import { render, screen, waitFor } from '../../utils/test-utils';
 
 import PaymentOptions from '.';
 import mockPaymentOptions from './mock';
 
 describe('<PaymentOptions/>', () => {
   it('should be able render saved options and the add new credit card button', () => {
-    renderWithTheme(
+    render(
       <PaymentOptions cards={mockPaymentOptions} handlePayment={jest.fn} />,
     );
 
@@ -17,7 +17,7 @@ describe('<PaymentOptions/>', () => {
   });
 
   it('should be able handle select card when clicking on the label', async () => {
-    renderWithTheme(
+    render(
       <PaymentOptions cards={mockPaymentOptions} handlePayment={jest.fn} />,
     );
 
@@ -30,7 +30,7 @@ describe('<PaymentOptions/>', () => {
   it('should be able not call handlePayment when button is disabled', async () => {
     const handlePayment = jest.fn();
 
-    renderWithTheme(
+    render(
       <PaymentOptions cards={mockPaymentOptions} handlePayment={jest.fn} />,
     );
 
@@ -41,7 +41,7 @@ describe('<PaymentOptions/>', () => {
   it('should be able call handlePayment when credit card is selected', async () => {
     const handlePayment = jest.fn();
 
-    renderWithTheme(
+    render(
       <PaymentOptions
         cards={mockPaymentOptions}
         handlePayment={handlePayment}

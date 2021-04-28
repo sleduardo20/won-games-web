@@ -1,12 +1,12 @@
 import '../../../.jest/macth-media-mock.js';
 
 import GameCardSlider from 'components/GameCardSlider';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { render } from '../../utils/test-utils';
 
 import items from './mock';
 
 describe('<GameCardSlider/>', () => {
   it('should be render GameCardSlider component correctly', () => {
-    renderWithTheme(<GameCardSlider items={items} />);
+    render(<GameCardSlider items={items} />);
   });
 });

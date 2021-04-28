@@ -1,6 +1,6 @@
 import '../../../.jest/macth-media-mock.js';
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
+
+import { screen, render } from '../../utils/test-utils';
 
 import Profile from '.';
 
@@ -31,7 +31,7 @@ jest.mock('components/ProfileMenu', () => ({
 
 describe('<Profile/>', () => {
   it('should be able render sections', () => {
-    renderWithTheme(<Profile>Loren Ipsum</Profile>);
+    render(<Profile>Loren Ipsum</Profile>);
 
     expect(screen.getByText('Loren Ipsum')).toBeInTheDocument();
     expect(screen.getByText('My Profile')).toBeInTheDocument();

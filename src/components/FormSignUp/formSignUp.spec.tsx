@@ -1,11 +1,9 @@
-import { screen } from '@testing-library/react';
-
 import FormSignUp from 'components/FormSignUp';
-import { renderWithTheme } from 'utils/tests/helpers';
+import { screen, render } from '../../utils/test-utils';
 
 describe('<FormSignUp />', () => {
   it('should be able render form correctly', () => {
-    const { container } = renderWithTheme(<FormSignUp />);
+    const { container } = render(<FormSignUp />);
 
     expect(screen.getByPlaceholderText('Nome')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
@@ -19,7 +17,7 @@ describe('<FormSignUp />', () => {
   });
 
   it('should be able render the text and link to sign in', () => {
-    renderWithTheme(<FormSignUp />);
+    render(<FormSignUp />);
 
     expect(screen.getByText(/Já tem uma conta?/i)).toBeInTheDocument();
 

@@ -1,6 +1,6 @@
 import '../../../.jest/macth-media-mock.js';
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
+
+import { render, screen } from '../../utils/test-utils';
 
 import highlightMock from '../HighLight/mock';
 import gamesMock from '../GameCardSlider/mock';
@@ -15,7 +15,7 @@ const props = {
 
 describe('<ShowCase/>', () => {
   it('should be able render full ShowCase component correctly', () => {
-    renderWithTheme(<ShowCase {...props} />);
+    render(<ShowCase {...props} />);
 
     expect(
       screen.getByRole('heading', { name: /most popular/i }),
@@ -31,9 +31,7 @@ describe('<ShowCase/>', () => {
   });
 
   it('should be able render without title', () => {
-    renderWithTheme(
-      <ShowCase highlight={props.highlight} games={props.games} />,
-    );
+    render(<ShowCase highlight={props.highlight} games={props.games} />);
 
     expect(
       screen.queryByRole('heading', { name: /most popular/i }),
@@ -49,9 +47,7 @@ describe('<ShowCase/>', () => {
   });
 
   it('should be able render without games', () => {
-    renderWithTheme(
-      <ShowCase highlight={props.highlight} title={props.title} />,
-    );
+    render(<ShowCase highlight={props.highlight} title={props.title} />);
 
     expect(
       screen.getByRole('heading', { name: /most popular/i }),
@@ -67,7 +63,7 @@ describe('<ShowCase/>', () => {
   });
 
   it('should be able render without highlight', () => {
-    renderWithTheme(<ShowCase games={props.games} title={props.title} />);
+    render(<ShowCase games={props.games} title={props.title} />);
 
     expect(
       screen.getByRole('heading', { name: /most popular/i }),

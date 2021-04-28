@@ -1,9 +1,8 @@
 import '../../../.jest/macth-media-mock.js';
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
 
 import mockGames from 'components/GameCardSlider/mock';
 import mockHightLight from 'components/HighLight/mock';
+import { screen, render } from '../../utils/test-utils';
 
 import Wishtlist, { WishListTemplateProps } from '.';
 
@@ -23,7 +22,7 @@ jest.mock('components/ShowCase', () => ({
 
 describe('<Wishtlist />', () => {
   it('should be able render Wishlist', () => {
-    renderWithTheme(<Wishtlist {...props} />);
+    render(<Wishtlist {...props} />);
 
     expect(screen.getByTestId(/mock showcase/i)).toBeInTheDocument();
 
@@ -35,7 +34,7 @@ describe('<Wishtlist />', () => {
   });
 
   it('should render empty when there are no games', () => {
-    renderWithTheme(
+    render(
       <Wishtlist
         recommendedGames={props.recommendedGames}
         recommendedTitle={props.recommendedTitle}

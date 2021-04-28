@@ -1,7 +1,6 @@
-import { screen } from '@testing-library/react';
-import { renderWithTheme } from 'utils/tests/helpers';
-
 import Banner from 'components/Banner';
+
+import { screen, render } from '../../utils/test-utils';
 
 const props = {
   img: 'https://souce.unsplash.com/user/willianjusten/104x580',
@@ -13,7 +12,7 @@ const props = {
 
 describe('<Banner />', () => {
   it('should be render Banner component correctly', () => {
-    const { container } = renderWithTheme(<Banner {...props} />);
+    const { container } = render(<Banner {...props} />);
 
     expect(
       screen.getByRole('heading', { name: /Defy Death/i }),
@@ -31,7 +30,7 @@ describe('<Banner />', () => {
   });
 
   it('should be render Banner component with Ribbon', () => {
-    renderWithTheme(
+    render(
       <Banner
         {...props}
         ribbon="My Ribbon"
