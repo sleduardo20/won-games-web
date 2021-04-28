@@ -1,5 +1,5 @@
 import { ShoppingCart } from '@styled-icons/material-outlined';
-import { useCart } from 'hooks/useCart';
+import { useCart } from '../../hooks/useCart';
 
 import { Container, Badge } from './styles';
 

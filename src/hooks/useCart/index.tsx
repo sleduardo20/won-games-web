@@ -1,8 +1,8 @@
-import { useQueryGames } from 'graphql/queries/games';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { formatPrice } from 'utils/formatPrice';
-import { getStorageItem, setStorageItem } from 'utils/localStorage';
-import { cartMapper } from 'utils/mappers';
+import { getStorageItem, setStorageItem } from '../../utils/localStorage';
+import { cartMapper } from '../../utils/mappers';
+import { formatPrice } from '../../utils/formatPrice';
+import { useQueryGames } from '../../graphql/queries/games';
 
 interface CartItem {
   id: string;
@@ -22,7 +22,7 @@ export interface CartContextData {
   loading: boolean;
 }
 
-export const CartContext = createContext({
+export const defaultValuesCartContext = {
   items: [],
   quantity: 0,
   total: '$0.00',
@@ -31,7 +31,9 @@ export const CartContext = createContext({
   removeFromCart: () => null,
   clearCart: () => null,
   loading: false,
-} as CartContextData);
+} as CartContextData;
+
+export const CartContext = createContext(defaultValuesCartContext);
 
 export interface CartProviderProps {
   children: React.ReactNode;
