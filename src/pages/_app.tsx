@@ -1,10 +1,14 @@
 import { ApolloProvider } from '@apollo/client';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyles from 'styles/GlobalStyles';
 import { useApollo } from 'utils/apollo';
+
+import GlobalStyles from 'styles/GlobalStyles';
+
+import { CartProvider } from '../hooks/useCart';
 
 import theme from '../styles/theme';
 
@@ -14,19 +18,21 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-        <Head>
-          <title>Won Games</title>
-          <link rel="shortcut icon" href="/img/icon-512.png" />
-          <link rel="apple-touch-icon" href="/img/icon-512.png" />
-          <link rel="manifest" href="/manifest.json" />
-          <meta
-            name="description"
-            content="The best Game Stories in the world!"
-          />
-        </Head>
+        <CartProvider>
+          <Head>
+            <title>Won Games</title>
+            <link rel="shortcut icon" href="/img/icon-512.png" />
+            <link rel="apple-touch-icon" href="/img/icon-512.png" />
+            <link rel="manifest" href="/manifest.json" />
+            <meta
+              name="description"
+              content="The best Game Stories in the world!"
+            />
+          </Head>
 
-        <Component {...pageProps} />
-        <GlobalStyles />
+          <Component {...pageProps} />
+          <GlobalStyles />
+        </CartProvider>
       </ThemeProvider>
     </ApolloProvider>
   );

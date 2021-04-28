@@ -22,7 +22,7 @@ export interface CartContextData {
   loading: boolean;
 }
 
-const CartContext = createContext({
+export const CartContext = createContext({
   items: [],
   quantity: 0,
   total: '$0.00',
