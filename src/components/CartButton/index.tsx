@@ -3,8 +3,8 @@ import {
   RemoveShoppingCart,
 } from '@styled-icons/material-outlined';
 
-import Button from 'components/Button';
-import { useCart } from 'hooks/useCart';
+import Button from '../Button';
+import { useCart } from '../../hooks/useCart';
 
 interface CartButtonProps {
   id: string;

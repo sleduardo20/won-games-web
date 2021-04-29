@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { Favorite, FavoriteBorder } from 'styled-icons/material-outlined';
 
-import { CartButton } from 'components/CartButton';
+import { CartButton } from '../CartButton';
 
 import { formatPrice } from '../../utils/formatPrice';
 
