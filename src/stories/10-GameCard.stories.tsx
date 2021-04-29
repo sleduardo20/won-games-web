@@ -1,4 +1,5 @@
 import { Story, Meta } from '@storybook/react/types-6-0';
+import { CartContextData } from 'hooks/useCart';
 
 import GameCard, { GameCardProps } from '../components/GameCard';
 
@@ -25,6 +26,15 @@ export const Basic: Story<GameCardProps> = args => (
 );
 Basic.parameters = {
   layout: 'fullscreen',
+};
+
+export const IsInCart: Story<GameCardProps & CartContextData> = args => (
+  <div style={{ maxWidth: '29rem', maxHeight: '10rem' }}>
+    <GameCard {...args} />
+  </div>
+);
+IsInCart.args = {
+  isInCart: () => true,
 };
 
 export const withRibbon: Story<GameCardProps> = args => (
