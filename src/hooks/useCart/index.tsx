@@ -33,19 +33,21 @@ export const defaultValuesCartContext = {
   loading: false,
 } as CartContextData;
 
-export const CartContext = createContext(defaultValuesCartContext);
+export const CartContext = createContext<CartContextData>(
+  defaultValuesCartContext,
+);
 
 export interface CartProviderProps {
   children: React.ReactNode;
 }
 
-const cartKey = 'cartItems';
+const CART_KEY = 'cartItems';
 
 export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<string[]>([]);
 
   useEffect(() => {
-    const data = getStorageItem(cartKey);
+    const data = getStorageItem(CART_KEY);
 
     if (data) {
       setCartItems(data);
@@ -69,12 +71,11 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   const saveCart = (cartItems: string[]) => {
     setCartItems(cartItems);
-    setStorageItem(cartKey, cartItems);
+    setStorageItem(CART_KEY, cartItems);
   };
 
   const addToCart = (id: string) => {
-    const newCartItems = [...cartItems, id];
-    saveCart(newCartItems);
+    saveCart([...cartItems, id]);
   };
 
   const removeFromCart = (id: string) => {
