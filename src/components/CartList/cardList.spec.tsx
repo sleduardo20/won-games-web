@@ -1,13 +1,18 @@
+import { defaultValuesCartContext } from 'hooks/useCart';
 import { screen, render } from '../../utils/test-utils';
 
 import CardList from '.';
-import mockCardList from './mock';
+import items from './mock';
 
 describe('<CardList />', () => {
   it('should be able render correctly', () => {
-    const { container } = render(
-      <CardList items={mockCardList} total="R$ 330,00" />,
-    );
+    const cartProviderProps = {
+      ...defaultValuesCartContext,
+      items,
+      total: 'R$ 330,00',
+    };
+
+    const { container } = render(<CardList />, { cartProviderProps });
 
     expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(2);
     expect(screen.getByText('R$ 330,00')).toHaveStyle({ color: '#f231a5' });
@@ -15,7 +20,12 @@ describe('<CardList />', () => {
   });
 
   it('should be able render the button', () => {
-    render(<CardList hasButton items={mockCardList} total="R$ 330,00" />);
+    const cartProviderProps = {
+      ...defaultValuesCartContext,
+      items,
+    };
+
+    render(<CardList hasButton />, { cartProviderProps });
 
     expect(screen.getByText(/Buy it now/)).toBeInTheDocument();
   });
