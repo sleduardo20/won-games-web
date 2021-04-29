@@ -3,15 +3,17 @@ import {
   RemoveShoppingCart,
 } from '@styled-icons/material-outlined';
 
-import Button from '../Button';
+import Button, { ButtonProps } from '../Button';
 import { useCart } from '../../hooks/useCart';
 
-interface CartButtonProps {
+interface CartButtonProps extends Pick<ButtonProps, 'size'> {
   id: string;
+  hasText?: boolean;
 }
 
-export const CartButton = ({ id }: CartButtonProps) => {
+export const CartButton = ({ id, size, hasText }: CartButtonProps) => {
   const { isInCart, addToCart, removeFromCart } = useCart();
+  const textButton = isInCart(id) ? 'Remove from cart' : 'Add to cart';
   return (
     <Button
       icon={
@@ -21,8 +23,10 @@ export const CartButton = ({ id }: CartButtonProps) => {
           <AddShoppingCart aria-label="Add to cart" />
         )
       }
-      size="small"
+      size={size}
       onClick={() => (isInCart(id) ? removeFromCart(id) : addToCart(id))}
-    />
+    >
+      {hasText && textButton}
+    </Button>
   );
 };
