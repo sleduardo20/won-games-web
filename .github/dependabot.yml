@@ -1,0 +1,31 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "08:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@typescript-eslint/eslint-plugin"
+    versions:
+    - 4.15.2
+    - 4.16.1
+  - dependency-name: "@testing-library/user-event"
+    versions:
+    - 12.8.0
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.13.8
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.31
+  - dependency-name: eslint-import-resolver-typescript
+    versions:
+    - 2.4.0
+  - dependency-name: apollo
+    versions:
+    - 2.32.5
+  - dependency-name: "@typescript-eslint/typescript-estree"
+    versions:
+    - 4.15.0
