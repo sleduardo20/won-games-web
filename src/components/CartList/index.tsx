@@ -1,18 +1,18 @@
 import Link from 'next/link';
 
+import { useCart } from '../../hooks/useCart';
 import Button from '../Button';
-import GameItem, { GameItemProps } from '../GameItem';
+import GameItem from '../GameItem';
 import Empty from '../Empty';
 
 import { Container, Footer, Total } from './styles';
 
 export interface CartListProps {
-  items?: GameItemProps[];
-  total?: string;
   hasButton?: boolean;
 }
 
-const CartList = ({ items = [], total, hasButton = false }: CartListProps) => {
+const CartList = ({ hasButton = false }: CartListProps) => {
+  const { items, total } = useCart();
   return (
     <Container isEmpty={!items.length}>
       {items.length ? (
