@@ -48,13 +48,13 @@ export const highLightMapper = (
   );
 };
 
-export const cartMapper = (game: QueryGames_games[] | undefined) => {
-  return game
-    ? game.map(item => ({
-        id: item.id,
-        title: item.name,
-        img: `http://localhost:1337${item.cover?.url}`,
-        price: formatPrice(item.price),
+export const cartMapper = (games: QueryGames_games[] | undefined) => {
+  return games
+    ? games.map(game => ({
+        id: game.id,
+        title: game.name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: formatPrice(game.price),
       }))
     : [];
 };

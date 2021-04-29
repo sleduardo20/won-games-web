@@ -2,6 +2,7 @@ import GameCard from 'components/GameCard';
 import { screen, render, fireEvent } from '../../utils/test-utils';
 
 const props = {
+  id: '1',
   slug: 'cyberpunk-2077',
   title: 'Title Example',
   developer: 'Developer Example',
