@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const APP_KEY = 'WONGAMES';
 
 export function getStorageItem(key: string) {
