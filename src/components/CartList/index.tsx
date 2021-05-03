@@ -6,7 +6,7 @@ import Button from '../Button';
 import GameItem from '../GameItem';
 import Empty from '../Empty';
 
-import { Container, Footer, Total, Loading } from './styles';
+import { Container, Footer, Total, Loading, GamesList } from './styles';
 
 export interface CartListProps {
   hasButton?: boolean;
@@ -27,9 +27,11 @@ const CartList = ({ hasButton = false }: CartListProps) => {
     <Container isEmpty={!items.length}>
       {items.length ? (
         <>
-          {items.map(item => (
-            <GameItem key={item.title} {...item} />
-          ))}
+          <GamesList>
+            {items.map(item => (
+              <GameItem key={item.title} {...item} />
+            ))}
+          </GamesList>
 
           <Footer>
             {!hasButton && <span>Total:</span>}
