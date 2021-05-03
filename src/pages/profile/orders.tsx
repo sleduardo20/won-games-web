@@ -14,7 +14,7 @@ export default function Orders({ items }: OrdersListProps) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps<OrdersListProps> = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       items: itemsMock,
