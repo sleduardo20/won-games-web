@@ -30,6 +30,18 @@ describe('<CardList />', () => {
     expect(screen.getByText(/Buy it now/)).toBeInTheDocument();
   });
 
+  it('should be able render loading', () => {
+    const cartProviderProps = {
+      ...defaultValuesCartContext,
+      items,
+      loading: true,
+    };
+
+    render(<CardList hasButton />, { cartProviderProps });
+
+    expect(screen.getByLabelText(/loading/i)).toBeInTheDocument();
+  });
+
   it('should be able render empty if there are no games', () => {
     render(<CardList />);
 
