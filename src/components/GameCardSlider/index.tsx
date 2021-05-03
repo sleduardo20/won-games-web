@@ -49,7 +49,7 @@ const GameCardSlider = ({ items, color = 'white' }: GameCardSliderProps) => {
     <Container color={color}>
       <Slider settings={settings}>
         {items.map(item => (
-          <GameCard key={item.title} {...item} />
+          <GameCard key={item.id} {...item} />
         ))}
       </Slider>
     </Container>

@@ -13,7 +13,9 @@ interface CartButtonProps extends Pick<ButtonProps, 'size'> {
 
 export const CartButton = ({ id, size, hasText }: CartButtonProps) => {
   const { isInCart, addToCart, removeFromCart } = useCart();
+
   const textButton = isInCart(id) ? 'Remove from cart' : 'Add to cart';
+
   return (
     <Button
       icon={
