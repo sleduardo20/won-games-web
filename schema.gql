@@ -1409,7 +1409,7 @@ input editComponentPagePopularGameInput {
 }
 
 enum ENUM_COMPONENTPAGERIBBON_COLOR {
-  primay
+  primary
   secondary
 }
 
