@@ -14,6 +14,12 @@ export const Input = styled.input`
     padding: ${theme.spacings.xxsmall} 0;
     background: transparent;
     flex: 1;
+
+    &: -webkit-autofill {
+      -webkit-box-shadow: 0 0 0 ${theme.spacings.small}
+        ${theme.colors.ligthGray} inside;
+      filter: none;
+    }
   `}
 `;
 
