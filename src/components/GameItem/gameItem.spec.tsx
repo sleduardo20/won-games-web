@@ -1,8 +1,12 @@
+import userEvent from '@testing-library/user-event';
 import { screen, render } from '../../utils/test-utils';
 
 import GameItem from '.';
 
+import { defaultValuesCartContext } from '../../hooks/useCart';
+
 const props = {
+  id: '1',
   title: 'Red Dead III',
   img:
     'https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fheather%2Fhome%2FEGS_RockstarGames_RedDeadRedemption2_G1A_00-1920x1080-308f101576da37225c889173094f373f2afc56c1.jpg?h=1080&resize=1&w=1920',
@@ -21,6 +25,22 @@ describe('<GameItem />', () => {
     );
 
     expect(screen.getByText('R$ 250,00')).toBeInTheDocument();
+  });
+
+  it('should be able remove if the item is inside the cart and call remove', () => {
+    const cartProviderProps = {
+      ...defaultValuesCartContext,
+      isInCart: () => true,
+      removeFromCart: jest.fn(),
+    };
+
+    render(<GameItem {...props} />, { cartProviderProps });
+
+    const removeLink = screen.getByText(/remove/i);
+
+    userEvent.click(removeLink);
+
+    expect(cartProviderProps.removeFromCart).toHaveBeenCalledWith('1');
   });
 
   it('should be able render the item with download link', () => {
