@@ -4,14 +4,13 @@ import { tint } from 'polished';
 import * as ButtonStyles from '../Button/styles';
 
 export const Container = styled.div`
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-  `}
+  ${({ theme }) => css``}
 `;
 
 export const Body = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
+    background: ${theme.colors.white};
   `}
 `;
 
