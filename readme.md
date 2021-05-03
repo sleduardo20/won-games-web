@@ -17,28 +17,29 @@
 
 - [Nextjs](https://nextjs.org/docs)
 - [Reactjs](https://reactjs.org/docs/getting-started.html)
+- [Typescript](https://www.typescriptlang.org/docs/)
+- [Apollo GraphQL Client](https://www.apollographql.com/docs/react/)
+- [GraphQL](https://graphql.org/)
 - [React-Icons](https://react-icons.github.io/react-icons/)
-- [Styled-Components](https://styled-components.com/docs)
-- [Styled-Media-Query](https://github.com/morajabi/styled-media-query)
-- [Axios](https://github.com/axios/axios)
-- [Unform](https://unform.dev/installation)
-- [Framer-Motion](https://www.framer.com/api/motion/)
+- [Styled Components](https://styled-components.com/docs)
+- [Styled Media Query](https://github.com/morajabi/styled-media-query)
+- [Storybook](https://storybook.js.org/)
+- [React-slick](https://react-slick.neostack.com/)
+- [Testing Library](https://testing-library.com/)
+- [Jest](https://jestjs.io/pt-BR/)
+
 </br>
 
-## ⛏️ API
-
-- [Pokémon TCG Developers](https://docs.pokemontcg.io/)
-</br>
 
 ## 🚀 Installing
 
 ```
 
 # Clone this repository
-$ git clone https://github.com/sleduardo20/pokedex
+$ git clone https://github.com/sleduardo20/won-games-web
 
 # Go into the repository
-$ cd pokedex
+$ cd won-games-web
 
 # Install dependencies
 $ yarn install
@@ -50,4 +51,4 @@ $ yarn dev
 
 ## ✍️ Author
 
-Make by [@sleduardo20](https://github.com/sleduardo20)
+Make with ❤ by [@sleduardo20](https://github.com/sleduardo20)
