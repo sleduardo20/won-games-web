@@ -1,3 +1,4 @@
+import { useCart } from 'hooks/useCart';
 import { Download } from 'styled-icons/boxicons-solid';
 import {
   Container,
@@ -9,6 +10,8 @@ import {
   DownloadLink,
   PaymentContent,
   CardInfo,
+  Group,
+  Remove,
 } from './styles';
 
 export type PaymentInfoProps = {
@@ -19,6 +22,7 @@ export type PaymentInfoProps = {
 };
 
 export interface GameItemProps {
+  id: string;
   img: string;
   title: string;
   price: string;
@@ -27,12 +31,15 @@ export interface GameItemProps {
 }
 
 const GameItem = ({
+  id,
   img,
   price,
   title,
   downlowdLink,
   paymentInfo,
 }: GameItemProps) => {
+  const { isInCart, removeFromCart } = useCart();
+
   return (
     <Container>
       <GameContent>
@@ -53,7 +60,13 @@ const GameItem = ({
               </DownloadLink>
             )}
           </Title>
-          <Price>{price}</Price>
+          <Group>
+            <Price>{price}</Price>
+
+            {isInCart(id) && (
+              <Remove onClick={() => removeFromCart(id)}>Remove</Remove>
+            )}
+          </Group>
         </Content>
       </GameContent>
       {!!paymentInfo && (
