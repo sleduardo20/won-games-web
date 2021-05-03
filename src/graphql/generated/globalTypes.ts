@@ -13,7 +13,7 @@ export enum ENUM_COMPONENTPAGEHIGHLIGHT_ALIGNMENT {
 }
 
 export enum ENUM_COMPONENTPAGERIBBON_COLOR {
-  primay = "primay",
+  primary = "primary",
   secondary = "secondary",
 }
 
