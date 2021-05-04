@@ -1,5 +1,6 @@
-import { useCart } from 'hooks/useCart';
 import { Download } from 'styled-icons/boxicons-solid';
+import { useCart } from '../../hooks/useCart';
+
 import {
   Container,
   GameContent,
