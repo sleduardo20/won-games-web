@@ -1,4 +1,3 @@
-import { UsersPermissionsRegisterInput } from 'graphql/generated/globalTypes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -8,10 +7,11 @@ import { Email, Lock } from 'styled-icons/material-outlined';
 import Button from '../Button';
 import TextField from '../TextField';
 
-import { Container, ForgotPassword, FormLink } from './styles';
+import { Container, ForgotPassword, FormLink, FormLoading } from './styles';
 
 const FormSignIn = () => {
   const [values, setValues] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const { push } = useRouter();
 
@@ -21,6 +21,7 @@ const FormSignIn = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
+    setLoading(true);
 
     const result = await signIn('credentials', {
       ...values,
@@ -31,6 +32,8 @@ const FormSignIn = () => {
     if (result?.url) {
       return push(result?.url);
     }
+
+    setLoading(false);
 
     console.log('email ou senha invalida');
   };
@@ -52,8 +55,8 @@ const FormSignIn = () => {
           icon={<Lock />}
         />
         <ForgotPassword href="#">Forgot your password ?</ForgotPassword>
-        <Button size="large" fullWidth type="submit">
-          Sign In now
+        <Button size="large" fullWidth type="submit" disabled={loading}>
+          {loading ? <FormLoading /> : <span>Sign In now</span>}
         </Button>
         <FormLink>
           Don´t have an account ?

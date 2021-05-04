@@ -5,12 +5,13 @@ import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined';
 import { useMutation } from '@apollo/client';
 
 import { MUTATION_REGISTER } from 'graphql/mutations/register';
+import { signIn } from 'next-auth/client';
 import { UsersPermissionsRegisterInput } from '../../graphql/generated/globalTypes';
 
 import Button from '../Button';
 import TextField from '../TextField';
 
-import { Container, FormLink } from './styles';
+import { Container, FormLink, FormLoading } from './styles';
 
 const FormSignUp = () => {
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({
@@ -19,7 +20,17 @@ const FormSignUp = () => {
     password: '',
   });
 
-  const [createUser] = useMutation(MUTATION_REGISTER);
+  const [createUser, { error, loading }] = useMutation(MUTATION_REGISTER, {
+    onError: err => console.log(err),
+    onCompleted: () => {
+      !error &&
+        signIn('credentials', {
+          email: values.email,
+          password: values.password,
+          callbackUrl: '/',
+        });
+    },
+  });
 
   const handleInput = (field: string, value: string) => {
     setValues(state => ({ ...state, [field]: value }));
@@ -72,7 +83,7 @@ const FormSignUp = () => {
           icon={<Lock />}
         />
         <Button size="large" fullWidth type="submit">
-          CRIAR CONTA
+          {loading ? <FormLoading /> : <span>CRIAR CONTA</span>}
         </Button>
       </form>
 
