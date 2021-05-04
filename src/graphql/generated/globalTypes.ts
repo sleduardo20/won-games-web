@@ -30,6 +30,12 @@ export enum ENUM_GAME_RATING {
   FREE = "FREE",
 }
 
+export interface UsersPermissionsRegisterInput {
+  username: string;
+  email: string;
+  password: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
