@@ -1,17 +1,13 @@
 <p align="center">
- <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://raw.githubusercontent.com/sleduardo20/won-games-web/main/.github/img/logo-won-games.png">
+ <img width=240 align="center" style="-webkit-user-select: none; margin: auto; background-color: hsl(0, 0%, 90%); transition: background-color 300ms;" src="https://raw.githubusercontent.com/sleduardo20/won-games-web/main/.github/img/logo-won-games.png">
 </p>
-</br>
-
-<a href="https://pokedex.sleduardo.dev/" target="_blank">
-<p align="center">
-
-
-
-</a>
-</p>
+<h1 align="center">Project Won Games</h1>
 </br>
 </br>
+</br>
+
+<img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://raw.githubusercontent.com/sleduardo20/won-games-web/main/.github/img/img.png">
+
 </br>
 
 
