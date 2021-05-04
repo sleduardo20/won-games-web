@@ -1,5 +1,11 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined';
+
+import { useMutation } from '@apollo/client';
+
+import { MUTATION_REGISTER } from 'graphql/mutations/register';
+import { UsersPermissionsRegisterInput } from '../../graphql/generated/globalTypes';
 
 import Button from '../Button';
 import TextField from '../TextField';
@@ -7,13 +13,40 @@ import TextField from '../TextField';
 import { Container, FormLink } from './styles';
 
 const FormSignUp = () => {
+  const [values, setValues] = useState<UsersPermissionsRegisterInput>({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const [createUser] = useMutation(MUTATION_REGISTER);
+
+  const handleInput = (field: string, value: string) => {
+    setValues(state => ({ ...state, [field]: value }));
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    createUser({
+      variables: {
+        input: {
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        },
+      },
+    });
+  };
+
   return (
     <Container>
-      <form>
+      <form onSubmit={handleSubmit}>
         <TextField
-          name="name"
-          placeholder="Nome"
+          name="username"
+          placeholder="Username"
           type="text"
+          onInputChange={value => handleInput('username', value)}
           icon={<AccountCircle />}
         />
 
@@ -21,24 +54,28 @@ const FormSignUp = () => {
           name="email"
           placeholder="Email"
           type="email"
+          onInputChange={value => handleInput('email', value)}
           icon={<Email />}
         />
         <TextField
           name="password"
           placeholder="Senha"
           type="password"
+          onInputChange={value => handleInput('password', value)}
           icon={<Lock />}
         />
         <TextField
           name="password-confimation"
           placeholder="Confirmar senha"
           type="password"
+          onInputChange={value => handleInput('password-confimation', value)}
           icon={<Lock />}
         />
+        <Button size="large" fullWidth type="submit">
+          CRIAR CONTA
+        </Button>
       </form>
-      <Button size="large" fullWidth>
-        CRIAR CONTA
-      </Button>
+
       <FormLink>
         Já tem uma conta?
         <Link href="/sign-in">
