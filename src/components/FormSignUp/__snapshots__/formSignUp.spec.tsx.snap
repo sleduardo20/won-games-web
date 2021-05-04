@@ -50,6 +50,12 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
   flex: 1;
 }
 
+.c7:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inside;
+  -webkit-filter: none;
+  filter: none;
+}
+
 .c5 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -143,8 +149,8 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
         </div>
         <input
           class="c7"
-          name="name"
-          placeholder="Nome"
+          name="username"
+          placeholder="Username"
           type="text"
           value=""
         />
@@ -269,14 +275,15 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
         />
       </div>
     </div>
+    <button
+      class="c8 c9"
+      type="submit"
+    >
+      <span>
+        CRIAR CONTA
+      </span>
+    </button>
   </form>
-  <button
-    class="c8 c9"
-  >
-    <span>
-      CRIAR CONTA
-    </span>
-  </button>
   <div
     class="c10"
   >
