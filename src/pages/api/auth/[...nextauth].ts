@@ -36,7 +36,7 @@ const options = {
           `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
           {
             method: 'POST',
-            body: new URLSearchParams({ indentifier: email, password }),
+            body: new URLSearchParams({ identifier: email, password }),
           },
         );
 
@@ -69,8 +69,7 @@ const options = {
   },
 };
 
-const Auth = (request: NextApiRequest, response: NextApiResponse) => {
-  NextAuth(request, response, options);
-};
+const Auth = (req: NextApiRequest, res: NextApiResponse) =>
+  NextAuth(req, res, options);
 
 export default Auth;
