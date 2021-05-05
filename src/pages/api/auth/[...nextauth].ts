@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+import { api } from 'services/api';
 
 type Session = {
   jwt: string | null;
@@ -8,7 +9,7 @@ type Session = {
 };
 type User = {
   id: string | null;
-  name: string | null;
+  username: string | null;
   email: string | null;
   jwt: string | null;
 };
@@ -32,15 +33,10 @@ const options = {
       name: 'Sing-In',
       credentials: {},
       async authorize({ email, password }: Authorize) {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/auth/local`,
-          {
-            method: 'POST',
-            body: new URLSearchParams({ identifier: email, password }),
-          },
-        );
-
-        const data = await response.json();
+        const { data } = await api.post('auth/local', {
+          identifier: email,
+          password,
+        });
 
         if (data.user) {
           return { ...data.user, jwt: data.jwt };
@@ -60,7 +56,7 @@ const options = {
       if (user) {
         token.id = user.id;
         token.email = user.email;
-        token.name = user.name;
+        token.name = user.username;
         token.jwt = user.jwt;
       }
 
