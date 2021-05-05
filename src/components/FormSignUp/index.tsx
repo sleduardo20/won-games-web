@@ -1,11 +1,11 @@
 import Link from 'next/link';
+import { signIn } from 'next-auth/client';
 import { useState } from 'react';
 import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined';
 
 import { useMutation } from '@apollo/client';
 
-import { MUTATION_REGISTER } from 'graphql/mutations/register';
-import { signIn } from 'next-auth/client';
+import { MUTATION_REGISTER } from '../../graphql/mutations/register';
 import { UsersPermissionsRegisterInput } from '../../graphql/generated/globalTypes';
 
 import Button from '../Button';
