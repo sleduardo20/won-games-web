@@ -25,7 +25,7 @@ import {
 } from './styles';
 
 export interface MenuProps {
-  username?: string;
+  username?: string | null;
 }
 
 const Menu = ({ username }: MenuProps) => {
