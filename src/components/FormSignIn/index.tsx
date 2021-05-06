@@ -53,7 +53,7 @@ const FormSignIn = () => {
     });
 
     if (result?.url) {
-      return push(result?.url);
+      push(result?.url);
     }
 
     setLoading(false);
