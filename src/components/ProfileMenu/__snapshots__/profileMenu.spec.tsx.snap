@@ -29,6 +29,7 @@ exports[`<ProfileMenu/> should be able render menu correctly 1`] = `
   transition: background,color,0.3s ease-in-out;
   -webkit-text-decoration: none;
   text-decoration: none;
+  cursor: pointer;
   background-color: #fafafa;
   color: #030517;
 }
@@ -161,7 +162,7 @@ exports[`<ProfileMenu/> should be able render menu correctly 1`] = `
   </a>
   <a
     class="c1"
-    href="/logout"
+    role="button"
   >
     <svg
       aria-hidden="true"

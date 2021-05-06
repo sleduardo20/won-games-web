@@ -23,6 +23,6 @@ export const SectionFooter = styled.section`
 `;
 
 export const Content = styled.div`
-margin-top: ${({ theme }) => theme.spacings.large}
+  margin-top: ${({ theme }) => theme.spacings.large};
   flex: 1 0 auto;
 `;

@@ -25,14 +25,12 @@ const props: GameTemplateProps = {
   upcomingHighlight: mockHightLight,
 };
 
-jest.mock('components/Menu', () => {
-  return {
-    __esModule: true,
-    default: function Mock() {
-      return <div data-testid="Mock Menu" />;
-    },
-  };
-});
+jest.mock('templates/Base', () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock Base">{children}</div>;
+  },
+}));
 
 jest.mock('components/Gallery', () => {
   return {
@@ -74,7 +72,7 @@ describe('<Game />', () => {
   it('should be able render the template Game with components correctly', () => {
     render(<Game {...props} />);
 
-    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument();
+    expect(screen.getByTestId('Mock Base')).toBeInTheDocument();
     expect(screen.getByTestId('Mock Gallery')).toBeInTheDocument();
     expect(screen.getByTestId('Mock GameDetails')).toBeInTheDocument();
     expect(screen.getByTestId('Mock GameInfo')).toBeInTheDocument();

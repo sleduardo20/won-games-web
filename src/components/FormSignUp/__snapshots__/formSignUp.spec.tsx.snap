@@ -280,7 +280,9 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
       type="submit"
     >
       <span>
-        CRIAR CONTA
+        <span>
+          CRIAR CONTA
+        </span>
       </span>
     </button>
   </form>
