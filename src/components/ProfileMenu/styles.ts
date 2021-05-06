@@ -39,6 +39,7 @@ export const ItemLink = styled.a<LinkProps>`
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
     transition: background, color, ${theme.transition.default};
     text-decoration: none;
+    cursor: pointer;
 
     > span {
       margin-left: ${theme.spacings.xxsmall};
