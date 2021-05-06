@@ -71,7 +71,6 @@ const FormSignUp = () => {
       },
     });
   };
-  console.log(formError);
 
   return (
     <Container>
