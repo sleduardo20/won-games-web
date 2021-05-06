@@ -45,4 +45,11 @@ describe('<Menu />', () => {
     expect(screen.queryByText(/log in now/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument();
   });
+
+  it('should be able  not show sign in or dropdownUser if loading', () => {
+    render(<Menu username="Eduardo" loading />);
+
+    expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/my profile/i)).not.toBeInTheDocument();
+  });
 });
