@@ -120,6 +120,7 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
 <div
   class="c0"
 >
+  
   <form>
     <div
       class="c1 c2"
@@ -268,7 +269,7 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
         </div>
         <input
           class="c7"
-          name="password-confimation"
+          name="confirm_password"
           placeholder="Confirmar senha"
           type="password"
           value=""
