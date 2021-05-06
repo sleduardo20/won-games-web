@@ -3,7 +3,12 @@ import TextField from '../TextField';
 import Heading from '../Heading';
 import { Container, Form } from './styles';
 
-const FormProfile = () => {
+export type FormProfileProps = {
+  username: string;
+  email: string;
+};
+
+const FormProfile = ({ email, username }: FormProfileProps) => {
   return (
     <Container>
       <Heading lineBottom color="black" size="small">
@@ -11,16 +16,17 @@ const FormProfile = () => {
       </Heading>
       <Form>
         <TextField
-          name="name"
-          placeholder="Name"
-          label="Name"
-          initialValue="John Cage"
+          name="username"
+          placeholder="Username"
+          label="Username"
+          initialValue={username}
         />
         <TextField
           name="email"
           placeholder="E-mail"
           label="E-mail"
           type="email"
+          initialValue={email}
           disabled
         />
         <TextField
