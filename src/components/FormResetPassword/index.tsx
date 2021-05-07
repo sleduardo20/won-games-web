@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/client';
 import { ErrorOutline, Lock } from 'styled-icons/material-outlined';
 
+import { api } from 'services/api';
 import Button from '../Button';
 import TextField from '../TextField';
 
@@ -19,7 +20,7 @@ const FormResetPassword = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const { push, query } = useRouter();
+  const { query } = useRouter();
 
   const handleInput = (field: string, value: string) => {
     setValues(state => ({ ...state, [field]: value }));
@@ -39,19 +40,24 @@ const FormResetPassword = () => {
 
     setFieldErros({});
 
-    const result = await signIn('credentials', {
-      ...values,
-      redirect: false,
-      callbackUrl: `${window.location.origin}${query.callbackUrl || ''}`,
-    });
-
-    if (result?.url) {
-      push(result?.url);
-    }
+    await api
+      .post('auth/reset-password', {
+        password: values.password,
+        passwordConfirmation: values.confirm_password,
+        code: query.code,
+      })
+      .then(response => {
+        signIn('credentials', {
+          email: response.data.user.email,
+          password: values.password,
+          callbackUrl: `${process.env.NEXTAUTH_URL}`,
+        });
+      })
+      .catch(error => {
+        setFormError(error.response.data.data[0].messages[0].message);
+      });
 
     setLoading(false);
-
-    setFormError('Username or password is invalid');
   };
   return (
     <Container>

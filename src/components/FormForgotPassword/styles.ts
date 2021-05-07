@@ -35,6 +35,20 @@ export const FormError = styled.div`
   `}
 `;
 
+export const FormSuccess = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    color: ${theme.colors.black};
+    font-size: ${({ theme }) => theme.font.sizes.small};
+
+    svg {
+      margin-right: ${theme.spacings.xxsmall};
+      width: 2.4rem;
+      color: ${theme.colors.secondary};
+    }
+  `}
+`;
+
 export const FormLink = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
