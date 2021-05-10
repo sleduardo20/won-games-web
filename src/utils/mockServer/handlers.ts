@@ -7,18 +7,17 @@ type LoginReqBody = {
 // interceptar as chamadas
 export const handlers = [
   rest.post<LoginReqBody>(
-    `${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`,
+    `${process.env.NEXT_PUBLIC_API_URL}auth/forgot-password`,
     (req, res, ctx) => {
       const { email } = req.body;
-
       if (email === 'false@email.com') {
         return res(
           ctx.status(400),
           ctx.json({
             error: 'Bad Request',
-            messege: [
+            message: [
               {
-                message: [
+                messages: [
                   {
                     message: 'This email does not exist',
                   },
