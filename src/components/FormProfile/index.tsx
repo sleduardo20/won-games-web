@@ -5,8 +5,8 @@ import Heading from '../Heading';
 import { Container, Form, ButtonContainer } from './styles';
 
 export type FormProfileProps = {
-  username: string;
-  email: string;
+  username?: string;
+  email?: string;
 };
 
 const FormProfile = ({ email, username }: FormProfileProps) => {
