@@ -52,7 +52,7 @@ const FormForgotPassword = () => {
         setSucces(true);
       })
       .catch(error => {
-        setFormError(error.response.data.data[0].messages[0].message);
+        setFormError(error.response.data.message[0].messages[0].message);
         setSucces(false);
       });
 
