@@ -50,11 +50,11 @@ const FormResetPassword = () => {
         signIn('credentials', {
           email: response.data.user.email,
           password: values.password,
-          callbackUrl: `${process.env.NEXTAUTH_URL}`,
+          callbackUrl: '/',
         });
       })
       .catch(error => {
-        setFormError(error.response.data.data[0].messages[0].message);
+        setFormError(error.response.data.message[0].messages[0].message);
       });
 
     setLoading(false);
