@@ -62,7 +62,7 @@ describe('GamesMapper()', () => {
     expect(gamesMapper([game])).toStrictEqual([
       {
         id: '1',
-        name: 'game',
+        title: 'game',
         slug: 'game',
         developer: 'developer',
         img: `http://localhost:1337/image.jpg`,

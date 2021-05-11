@@ -1,3 +1,4 @@
+import { QueryWishList_wishlists_games } from 'graphql/generated/QueryWishList';
 import {
   QueryHome_banners,
   QueryHome_sections_popularGames_highlight,
@@ -20,11 +21,17 @@ export const bannerMapper = (banners: QueryHome_banners[]) => {
   }));
 };
 
-export const gamesMapper = (games: QueryGames_games[] | null | undefined) => {
+export const gamesMapper = (
+  games:
+    | QueryGames_games[]
+    | QueryWishList_wishlists_games[]
+    | null
+    | undefined,
+) => {
   return games
     ? games.map(game => ({
         id: game.id,
-        name: game.name,
+        title: game.name,
         slug: game.slug,
         developer: game.developers[0].name,
         img: `http://localhost:1337${game.cover?.url}`,
