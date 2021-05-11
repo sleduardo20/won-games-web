@@ -32,4 +32,22 @@ describe('useWishList', () => {
       wishListItems[1],
     ]);
   });
+
+  it('should be able check if the game is in wishlist', async () => {
+    const wrapper = ({ children }: { children: React.ReactNode }) => (
+      <MockedProvider mocks={[wishListMock]}>
+        <WishListProvider>{children}</WishListProvider>
+      </MockedProvider>
+    );
+
+    const { result, waitForNextUpdate } = renderHook(() => useWishList(), {
+      wrapper,
+    });
+
+    await waitForNextUpdate();
+
+    expect(result.current.isInWishList('1')).toBe(true);
+    expect(result.current.isInWishList('2')).toBe(true);
+    expect(result.current.isInWishList('3')).toBe(false);
+  });
 });
