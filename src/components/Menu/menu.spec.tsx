@@ -1,3 +1,4 @@
+import '../../../.jest/session.mock';
 import Menu from 'components/Menu';
 import { screen, render, fireEvent } from '../../utils/test-utils';
 

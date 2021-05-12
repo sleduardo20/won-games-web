@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import userEvent from '@testing-library/user-event';
 import { wishListContextDefaulValues } from 'hooks/useWishList';
-import { render, screen, act } from 'utils/test-utils';
+import { render, screen, act, waitFor } from 'utils/test-utils';
 import WishlistButton from '.';
 
 const useSession = jest.spyOn(require('next-auth/client'), 'useSession');
@@ -75,7 +75,9 @@ describe('<WishlistButton />', () => {
       userEvent.click(screen.getByText(/add to wishlist/i));
     });
 
-    expect(wishlistProviderProps.addToWishList).toHaveBeenCalledWith('1');
+    waitFor(() => {
+      expect(wishlistProviderProps.addToWishList).toHaveBeenCalledWith('1');
+    });
   });
 
   it('should be able remove from wishlist', () => {
@@ -91,6 +93,10 @@ describe('<WishlistButton />', () => {
       userEvent.click(screen.getByText(/remove from wishlist/i));
     });
 
-    expect(wishlistProviderProps.removeFromWishList).toHaveBeenCalledWith('1');
+    waitFor(() => {
+      expect(wishlistProviderProps.removeFromWishList).toHaveBeenCalledWith(
+        '1',
+      );
+    });
   });
 });

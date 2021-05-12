@@ -1,3 +1,4 @@
+import '../../../.jest/session.mock';
 import { MockedProvider } from '@apollo/client/testing';
 
 import filterItemsMock from 'components/ExploreSideBar/mock';

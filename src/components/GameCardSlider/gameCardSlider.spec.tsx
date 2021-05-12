@@ -1,4 +1,5 @@
 import '../../../.jest/macth-media-mock.js';
+import '../../../.jest/session.mock';
 
 import GameCardSlider from 'components/GameCardSlider';
 import { render } from '../../utils/test-utils';

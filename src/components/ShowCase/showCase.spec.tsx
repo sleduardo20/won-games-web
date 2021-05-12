@@ -1,3 +1,4 @@
+import '../../../.jest/session.mock';
 import '../../../.jest/macth-media-mock.js';
 
 import { render, screen } from '../../utils/test-utils';

@@ -1,5 +1,6 @@
 import { FavoriteBorder } from 'styled-icons/material-outlined';
 
+import WishlistButton from 'components/WishlistButton';
 import { formatPrice } from '../../utils/formatPrice';
 
 import { CartButton } from '../CartButton';
@@ -29,9 +30,7 @@ const GameInfo = ({ id, title, description, price }: GameInfoProps) => {
 
       <WrapperButton>
         <CartButton id={id} size="large" hasText />
-        <Button icon={<FavoriteBorder />} size="large" minimal>
-          Wishlist
-        </Button>
+        <WishlistButton id={id} hasText size="large" />
       </WrapperButton>
     </Container>
   );
