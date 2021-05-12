@@ -34,7 +34,7 @@ const UserDropdown = ({ username }: UserDropdownProps) => {
           </Option>
         </Link>
 
-        <Link href="/whishlist" passHref>
+        <Link href="/wishlist" passHref>
           <Option title="Wishlist">
             <FavoriteBorder />
             <span>Wishlist</span>
