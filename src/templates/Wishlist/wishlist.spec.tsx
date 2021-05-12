@@ -3,6 +3,7 @@ import '../../../.jest/macth-media-mock.js';
 
 import mockGames from 'components/GameCardSlider/mock';
 import mockHightLight from 'components/HighLight/mock';
+import { wishListContextDefaulValues } from 'hooks/useWishList';
 import { screen, render } from '../../utils/test-utils';
 
 import Wishtlist, { WishListTemplateProps } from '.';
@@ -11,7 +12,6 @@ const props: WishListTemplateProps = {
   recommendedGames: mockGames,
   recommendedTitle: 'You may like these games',
   recommendedHighLight: mockHightLight,
-  games: mockGames,
 };
 
 jest.mock('templates/Base', () => ({
@@ -30,7 +30,12 @@ jest.mock('components/ShowCase', () => ({
 
 describe('<Wishtlist />', () => {
   it('should be able render Wishlist', () => {
-    render(<Wishtlist {...props} />);
+    const wishlistProviderProps = {
+      ...wishListContextDefaulValues,
+      items: [mockGames[0]],
+    };
+
+    render(<Wishtlist {...props} />, { wishlistProviderProps });
 
     expect(screen.getByTestId(/mock showcase/i)).toBeInTheDocument();
 
@@ -38,16 +43,21 @@ describe('<Wishtlist />', () => {
       screen.getByRole('heading', { name: /wishlist/i }),
     ).toBeInTheDocument();
 
-    expect(screen.getAllByText(/RocketGames/i)).toHaveLength(6);
+    expect(screen.getByText(/RocketGames/i)).toBeInTheDocument();
   });
 
   it('should render empty when there are no games', () => {
+    const wishlistProviderProps = {
+      ...wishListContextDefaulValues,
+      items: [],
+    };
     render(
       <Wishtlist
         recommendedGames={props.recommendedGames}
         recommendedTitle={props.recommendedTitle}
         recommendedHighLight={props.recommendedHighLight}
       />,
+      { wishlistProviderProps },
     );
 
     expect(screen.queryByText(/rocketgames/i)).not.toBeInTheDocument();
