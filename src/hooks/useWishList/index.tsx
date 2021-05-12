@@ -71,7 +71,7 @@ const WishListProvider = ({ children }: WishListProviderProps) => {
   });
 
   useEffect(() => {
-    setWishListItems(data?.wishlists[0].games || []);
+    setWishListItems(data?.wishlists[0]?.games || []);
     setWishListId(data?.wishlists[0]?.id);
   }, [data]);
 
@@ -100,7 +100,7 @@ const WishListProvider = ({ children }: WishListProviderProps) => {
   };
 
   const removeFromWishList = (id: string) => {
-    updateList({
+    return updateList({
       variables: {
         input: {
           where: { id: wishListId },
