@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import Base from 'templates/Base';
 
 import { Container } from 'components/Container';
@@ -8,20 +9,23 @@ import Heading from 'components/Heading';
 import { HighLightProps } from 'components/HighLight';
 import ShowCase from 'components/ShowCase';
 import Empty from 'components/Empty';
+import { Loader } from 'components/Loader';
+
+import { useWishList } from 'hooks/useWishList';
 
 export interface WishListTemplateProps {
   recommendedTitle: string;
   recommendedGames: GameCardProps[];
   recommendedHighLight: HighLightProps;
-  games?: GameCardProps[];
 }
 
 const WishList = ({
   recommendedTitle,
   recommendedGames,
   recommendedHighLight,
-  games = [],
 }: WishListTemplateProps) => {
+  const { items, loading } = useWishList();
+
   return (
     <Base>
       <Container>
@@ -29,9 +33,11 @@ const WishList = ({
           Wishlist
         </Heading>
 
-        {games?.length ? (
+        {loading ? (
+          <Loader />
+        ) : items.length >= 1 ? (
           <Grid>
-            {games?.map((game, index) => (
+            {items?.map((game, index) => (
               <GameCard key={`wishlist-${index}`} {...game} />
             ))}
           </Grid>
