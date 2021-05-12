@@ -10,16 +10,23 @@ interface WishlistButtonProps extends Pick<ButtonProps, 'size'> {
 
 const WishlistButton = ({ id, hasText, size }: WishlistButtonProps) => {
   const [session] = useSession();
-  const { isInWishList } = useWishList();
+
+  const { isInWishList, addToWishList, removeFromWishList } = useWishList();
+
   const buttonText = isInWishList(id)
     ? 'Remove from Wishlist'
     : 'Add to Wishlist';
+
+  const handleClick = () => {
+    isInWishList(id) ? removeFromWishList(id) : addToWishList(id);
+  };
 
   if (!session) {
     return null;
   }
   return (
     <Button
+      onClick={handleClick}
       minimal
       size={size}
       icon={

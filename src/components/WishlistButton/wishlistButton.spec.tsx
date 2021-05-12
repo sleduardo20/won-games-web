@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+import userEvent from '@testing-library/user-event';
 import { wishListContextDefaulValues } from 'hooks/useWishList';
-import { render, screen } from 'utils/test-utils';
+import { render, screen, act } from 'utils/test-utils';
 import WishlistButton from '.';
 
 const useSession = jest.spyOn(require('next-auth/client'), 'useSession');
@@ -59,5 +60,37 @@ describe('<WishlistButton />', () => {
     render(<WishlistButton id="1" hasText />, { wishlistProviderProps });
 
     expect(screen.queryByText(/remove from wishlist/i)).not.toBeInTheDocument();
+  });
+
+  it('should be able add to wishlist', () => {
+    const wishlistProviderProps = {
+      ...wishListContextDefaulValues,
+      isInWishList: () => false,
+      addToWishList: jest.fn(),
+    };
+
+    render(<WishlistButton id="1" hasText />, { wishlistProviderProps });
+
+    act(() => {
+      userEvent.click(screen.getByText(/add to wishlist/i));
+    });
+
+    expect(wishlistProviderProps.addToWishList).toHaveBeenCalledWith('1');
+  });
+
+  it('should be able remove from wishlist', () => {
+    const wishlistProviderProps = {
+      ...wishListContextDefaulValues,
+      isInWishList: () => true,
+      removeFromWishList: jest.fn(),
+    };
+
+    render(<WishlistButton id="1" hasText />, { wishlistProviderProps });
+
+    act(() => {
+      userEvent.click(screen.getByText(/remove from wishlist/i));
+    });
+
+    expect(wishlistProviderProps.removeFromWishList).toHaveBeenCalledWith('1');
   });
 });
