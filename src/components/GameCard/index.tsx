@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
-import { Favorite, FavoriteBorder } from 'styled-icons/material-outlined';
-
+import WishlistButton from '../WishlistButton';
 import { CartButton } from '../CartButton';
 
 import { formatPrice } from '../../utils/formatPrice';
@@ -28,8 +27,6 @@ export interface GameCardProps {
   img: string;
   price: number;
   promotinalPrice?: number;
-  favorite?: boolean;
-  onFav?: () => void;
   ribbon?: React.ReactNode;
   ribbonColor?: RibbonColors;
   ribbonSize?: RibbonSizes;
@@ -43,8 +40,6 @@ const GameCard = ({
   img,
   price,
   promotinalPrice,
-  favorite = false,
-  onFav,
   ribbon,
   ribbonColor = 'primary',
   ribbonSize = 'normal',
@@ -68,13 +63,10 @@ const GameCard = ({
             <Developer>{developer}</Developer>
           </Info>
         </Link>
-        <FavButton role="button" onClick={onFav}>
-          {favorite ? (
-            <Favorite aria-label="Remove from Wishlist" />
-          ) : (
-            <FavoriteBorder aria-label="Add to Wishlist" />
-          )}
+        <FavButton>
+          <WishlistButton id={id} />
         </FavButton>
+
         <BuyBox>
           {!!promotinalPrice && (
             <Price isPromotional>{formatPrice(price)}</Price>

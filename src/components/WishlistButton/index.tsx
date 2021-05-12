@@ -37,7 +37,7 @@ const WishlistButton = ({ id, hasText, size }: WishlistButtonProps) => {
         )
       }
     >
-      {buttonText}
+      {hasText ? buttonText : ''}
     </Button>
   );
 };
