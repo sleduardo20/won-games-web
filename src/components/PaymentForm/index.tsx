@@ -11,9 +11,11 @@ import { Container, Body, Footer, Error } from './styles';
 
 const PaymentForm = () => {
   const [error, setError] = useState<string | null>(null);
+  const [disabled, setDisabled] = useState(true);
 
   const handleChange = async (event: StripeCardElementChangeEvent) => {
     setError(event.error ? event.error.message : '');
+    setDisabled(event.empty);
   };
   return (
     <Container>
@@ -38,7 +40,11 @@ const PaymentForm = () => {
         <Button as="a" fullWidth minimal>
           Continue shopping
         </Button>
-        <Button fullWidth icon={<ShoppingCart />}>
+        <Button
+          fullWidth
+          icon={<ShoppingCart />}
+          disabled={disabled || !!error}
+        >
           Buy Now
         </Button>
       </Footer>
