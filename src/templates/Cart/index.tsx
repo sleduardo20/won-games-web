@@ -12,9 +12,11 @@ import ShowCase from 'components/ShowCase';
 
 import Base from 'templates/Base';
 
+import { Session } from 'next-auth';
 import { Content } from './styles';
 
 export interface CartProps extends CartListProps {
+  session: Session;
   recommendedGames: GameCardProps[];
   recommendedHighLight: HighLightProps;
   recommendedTitle: string;
@@ -23,6 +25,7 @@ export interface CartProps extends CartListProps {
 const stripe = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}`);
 
 const Cart = ({
+  session,
   recommendedTitle,
   recommendedGames,
   recommendedHighLight,
@@ -38,7 +41,7 @@ const Cart = ({
           <CartList />
 
           <Elements stripe={stripe}>
-            <PaymentForm />
+            <PaymentForm session={session} />
           </Elements>
         </Content>
 

@@ -4,7 +4,7 @@ import { cartMapper } from '../../utils/mappers';
 import { formatPrice } from '../../utils/formatPrice';
 import { useQueryGames } from '../../graphql/queries/games';
 
-interface CartItem {
+export interface CartItem {
   id: string;
   img: string;
   title: string;
