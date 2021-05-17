@@ -2,12 +2,10 @@ import { screen, render } from '../../utils/test-utils';
 
 import gamesMock from '../../components/GameCardSlider/mock';
 import hightLightMock from '../../components/HighLight/mock';
-import cardsMock from '../../components/PaymentOptions/mock';
 
 import Cart from '.';
 
 const props = {
-  cards: cardsMock,
   recommendedTitle: 'You may like these games',
   recommendedGames: gamesMock,
   recommendedHighLight: hightLightMock,
@@ -34,10 +32,10 @@ jest.mock('components/CartList', () => ({
   },
 }));
 
-jest.mock('components/PaymentOptions', () => ({
+jest.mock('components/PaymentForm', () => ({
   __esModule: true,
   default: function Mock() {
-    return <div data-testid="Mock PaymentOptions" />;
+    return <div data-testid="Mock PaymentForm" />;
   },
 }));
 
@@ -56,6 +54,6 @@ describe('<Cart/>', () => {
     ).toBeInTheDocument();
     expect(screen.getByTestId(/Mock ShowCase/i)).toBeInTheDocument();
     expect(screen.getByTestId(/Mock Card/i)).toBeInTheDocument();
-    expect(screen.getByTestId(/Mock PaymentOptions/i)).toBeInTheDocument();
+    expect(screen.getByTestId(/Mock PaymentForm/i)).toBeInTheDocument();
   });
 });

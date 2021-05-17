@@ -9,9 +9,6 @@ import { gamesMapper, highLightMapper } from 'utils/mappers';
 import protectedRoutes from 'utils/protected-routes';
 import Cart, { CartProps } from '../templates/Cart';
 
-import itemsMock from '../components/CartList/mock';
-import cardsMock from '../components/PaymentOptions/mock';
-
 export default function CartPage(props: CartProps) {
   return <Cart {...props} />;
 }
@@ -34,9 +31,6 @@ export const getServerSideProps: GetServerSideProps = async (
       recommendedHighLight: highLightMapper(
         data.recommended?.section?.highlight,
       ),
-      cards: cardsMock,
-      items: itemsMock,
-      total: 'R$ 430,00',
     },
   };
 };
