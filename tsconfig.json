@@ -19,11 +19,7 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-, "src/stories/32-ExploreSideBar.storiestsx"  ],
+  "include": ["next-env.d.ts","**/*.ts","**/*.tsx"],
   "exclude": [
     "node_modules"
   ]
