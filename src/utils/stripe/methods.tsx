@@ -1,3 +1,4 @@
+import { PaymentIntent } from '@stripe/stripe-js';
 import { CartItem } from 'hooks/useCart';
 import { api } from 'services/api';
 
@@ -14,6 +15,28 @@ export const createPaymentIntent = async ({
 
   const { data } = await api.post('orders/create-payment-intent', {
     cart: items,
+  });
+
+  return data;
+};
+
+type CreatePaymentParams = {
+  items: CartItem[];
+  paymentIntent?: PaymentIntent;
+  token: string;
+};
+
+export const createPayment = async ({
+  items,
+  paymentIntent,
+  token,
+}: CreatePaymentParams) => {
+  api.defaults.headers.authorization = `Bearer ${token}`;
+
+  const { data } = await api.post('orders', {
+    cart: items,
+    paymentIntent: paymentIntent?.id,
+    paymentMethod: paymentIntent?.payment_method,
   });
 
   return data;
