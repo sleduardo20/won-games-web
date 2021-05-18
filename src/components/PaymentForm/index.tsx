@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Session } from 'next-auth';
+import { useRouter } from 'next/router';
 
-import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
 
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined';
 
@@ -24,6 +25,8 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
   const [freeGames, setFreeGames] = useState(false);
+
+  const { push } = useRouter();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -64,11 +67,17 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     event.preventDefault();
     setLoading(true);
 
+    if (freeGames) {
+      push('/success');
+      return;
+    }
+
     const payload = await stripe!.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements!.getElement(CardElement),
+        card: elements!.getElement(CardElement)!,
       },
     });
+
     if (payload.error) {
       setError(`Payment failed ${payload.error.message}`);
       setLoading(false);
@@ -76,7 +85,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       setError(null);
       setLoading(false);
 
-      console.log('deu certo');
+      push('/success');
     }
   };
   return (
