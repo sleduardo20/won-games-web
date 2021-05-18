@@ -1,4 +1,4 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { tint } from 'polished';
 
 import * as ButtonStyles from '../Button/styles';
@@ -38,5 +38,11 @@ export const Error = styled.p`
     padding-top: ${theme.spacings.xxsmall};
     display: flex;
     align-items: center;
+  `}
+`;
+
+export const FreeGames = styled.p`
+  ${({ theme }) => css`
+    color: ${theme.colors.black};
   `}
 `;
