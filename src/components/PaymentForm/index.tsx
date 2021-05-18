@@ -3,12 +3,12 @@ import { Session } from 'next-auth';
 import { useRouter } from 'next/router';
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
+import { PaymentIntent, StripeCardElementChangeEvent } from '@stripe/stripe-js';
 
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined';
 
 import { useCart } from 'hooks/useCart';
-import { createPaymentIntent } from 'utils/stripe/methods';
+import { createPayment, createPaymentIntent } from 'utils/stripe/methods';
 import { FormLoading } from 'components/FormForgotPassword/styles';
 import Button from '../Button';
 import Heading from '../Heading';
@@ -38,11 +38,12 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       if (items.length) {
         setFreeGames(false);
 
+        // buscar da api /orders/create-payment-intent
         const data = await createPaymentIntent({
           items,
           token: `${session.jwt}`,
         });
-
+        // fluxo de jogos free
         if (data.freeGames) {
           setFreeGames(true);
         }
@@ -50,7 +51,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         if (data.error) {
           setError(data.error);
         }
-
+        // payment intent for válido registrar o client secret
         setClientSecret(data.client_secret);
       }
     }
@@ -63,12 +64,23 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     setDisabled(event.empty);
   };
 
+  const saveOrder = async (paymentIntent?: PaymentIntent) => {
+    const data = await createPayment({
+      items,
+      paymentIntent,
+      token: `${session.jwt}`,
+    });
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
 
     if (freeGames) {
       push('/success');
+
+      // salvar as orders de jogos free
+      saveOrder();
       return;
     }
 
@@ -84,6 +96,10 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     } else {
       setError(null);
       setLoading(false);
+
+      // salvar as orders de jogos pagos
+
+      saveOrder(payload.paymentIntent);
 
       push('/success');
     }
