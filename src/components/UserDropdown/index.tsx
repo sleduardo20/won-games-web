@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import {
   AccountCircle,
@@ -16,6 +17,8 @@ export interface UserDropdownProps {
 }
 
 const UserDropdown = ({ username }: UserDropdownProps) => {
+  const { push } = useRouter();
+
   return (
     <Dropdown
       title={
@@ -41,7 +44,15 @@ const UserDropdown = ({ username }: UserDropdownProps) => {
           </Option>
         </Link>
 
-        <Option role="button" title="Sign out" onClick={() => signOut()}>
+        <Option
+          role="button"
+          title="Sign out"
+          onClick={async () => {
+            const data = await signOut({ redirect: false, callbackUrl: '/' });
+
+            push(data.url);
+          }}
+        >
           <ExitToApp />
           <span>Sign out</span>
         </Option>

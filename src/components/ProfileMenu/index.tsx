@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/client';
 import {
   AccountCircle,
@@ -13,6 +14,7 @@ export interface ProfileMenuProps {
 }
 
 const ProfileMenu = ({ activeLink }: ProfileMenuProps) => {
+  const { push } = useRouter();
   return (
     <Nav>
       <Link href="/profile/me" passHref>
@@ -29,7 +31,14 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => {
         </ItemLink>
       </Link>
 
-      <ItemLink role="button" onClick={() => signOut()}>
+      <ItemLink
+        role="button"
+        onClick={async () => {
+          const data = await signOut({ redirect: false, callbackUrl: '/' });
+
+          push(data.url);
+        }}
+      >
         <ExitToApp size={24} />
         <span>Sign Out</span>
       </ItemLink>
