@@ -17,8 +17,8 @@ import {
 
 export type PaymentInfoProps = {
   number: string;
-  flag: string;
-  img: string;
+  flag: string | null;
+  img: string | null;
   purchaseDate: string;
 };
 
@@ -75,7 +75,9 @@ const GameItem = ({
           <p>{paymentInfo.purchaseDate}</p>
           <CardInfo>
             <span>{paymentInfo.number}</span>
-            <img src={paymentInfo.img} alt={paymentInfo.flag} />
+            {!!paymentInfo.img && !!paymentInfo.flag && (
+              <img src={paymentInfo.img} alt={paymentInfo.flag} />
+            )}
           </CardInfo>
         </PaymentContent>
       )}

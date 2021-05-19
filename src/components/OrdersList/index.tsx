@@ -1,11 +1,17 @@
 import Empty from '../Empty';
-import GameItem, { GameItemProps } from '../GameItem';
+import GameItem, { GameItemProps, PaymentInfoProps } from '../GameItem';
 import Heading from '../Heading';
 
 import { Container } from './styles';
 
+type OrderProps = {
+  id: string;
+  paymentInfo: PaymentInfoProps;
+  games: GameItemProps[];
+};
+
 export interface OrdersListProps {
-  items?: GameItemProps[];
+  items?: OrderProps[];
 }
 
 const OrdersList = ({ items = [] }: OrdersListProps) => {
@@ -15,7 +21,15 @@ const OrdersList = ({ items = [] }: OrdersListProps) => {
         My Orders
       </Heading>
       {items.length ? (
-        items.map(item => <GameItem key={item.id} {...item} />)
+        items.map(order => {
+          return order.games.map(game => (
+            <GameItem
+              key={order.id}
+              paymentInfo={order.paymentInfo}
+              {...game}
+            />
+          ));
+        })
       ) : (
         <Empty
           title="You have no order yet"
