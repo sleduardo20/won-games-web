@@ -2,6 +2,20 @@ import '../../../.jest/session.mock';
 import Menu from 'components/Menu';
 import { screen, render, fireEvent } from '../../utils/test-utils';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+
+useRouter.mockImplementation(() => ({
+  query: {},
+}));
+
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div>{children}</div>;
+  },
+}));
+
 describe('<Menu />', () => {
   it('should be render Menu component correctly', () => {
     render(<Menu />);
