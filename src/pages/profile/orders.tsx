@@ -31,6 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (
     variables: {
       identifier: `${session?.id}`,
     },
+    fetchPolicy: 'no-cache',
   });
 
   return {
