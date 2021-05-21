@@ -1,6 +1,8 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import { DefaultSeo } from 'next-seo';
+
 import { ApolloProvider } from '@apollo/client';
 import { Provider as NextAuthProvider } from 'next-auth/client';
 import { ThemeProvider } from 'styled-components';
@@ -13,6 +15,8 @@ import GlobalStyles from 'styles/GlobalStyles';
 
 import { WishListProvider } from 'hooks/useWishList';
 import { CartProvider } from '../hooks/useCart';
+
+import SEO from '../../next-seo.config.js';
 
 import theme from '../styles/theme';
 
@@ -35,7 +39,9 @@ function App({ Component, pageProps }: AppProps) {
                   content="The best Game Stories in the world!"
                 />
               </Head>
+              <DefaultSeo {...SEO} />
 
+              <GlobalStyles />
               <Component {...pageProps} />
               <NextProgressBar
                 color="#f231a5"
@@ -43,7 +49,6 @@ function App({ Component, pageProps }: AppProps) {
                 stopDelayMs={200}
                 height={3}
               />
-              <GlobalStyles />
             </WishListProvider>
           </CartProvider>
         </ThemeProvider>

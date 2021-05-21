@@ -1,5 +1,6 @@
-import GameInfo, { GameInfoProps } from 'components/GameInfo';
+import { NextSeo } from 'next-seo';
 
+import GameInfo, { GameInfoProps } from 'components/GameInfo';
 import Gallery, { GalleryImageProps } from 'components/Gallery';
 import TextContent from 'components/TextContent';
 import GameDetails, { GameDetailsProps } from 'components/GameDetails';
@@ -20,6 +21,7 @@ import {
 } from './styles';
 
 export interface GameTemplateProps {
+  slug: string;
   cover: string;
   gameInfo: GameInfoProps;
   gallery?: GalleryImageProps[];
@@ -33,6 +35,7 @@ export interface GameTemplateProps {
 }
 
 const Game = ({
+  slug,
   cover,
   gameInfo,
   gallery,
@@ -46,6 +49,22 @@ const Game = ({
 }: GameTemplateProps) => {
   return (
     <Base>
+      <NextSeo
+        title={`${gameInfo.title} - Won Games`}
+        description={gameInfo.description}
+        canonical={`https://wongames.sleduardo.dev/game/${slug}`}
+        openGraph={{
+          url: `https://wongames.sleduardo.dev/game/${slug}`,
+          title: `${gameInfo.title} - Won Games`,
+          description: gameInfo.description,
+          images: [
+            {
+              url: cover,
+              alt: `${gameInfo.title}`,
+            },
+          ],
+        }}
+      />
       <Cover aria-label="cover">
         <Image
           src={cover}
