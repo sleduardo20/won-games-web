@@ -3,10 +3,6 @@ import media from 'styled-media-query';
 
 import { Container } from '../../components/Container';
 
-type CoverProps = {
-  src: string;
-};
-
 export const Main = styled.div`
   margin-top: 20rem;
 
@@ -15,16 +11,13 @@ export const Main = styled.div`
   `}
 `;
 
-export const Cover = styled.div<CoverProps>`
-  ${({ src }) => css`
+export const Cover = styled.div`
+  ${({ theme }) => css`
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     height: 39.5rem;
-    background-image: url(${src});
-    background-size: cover;
-    background-position: top center;
     opacity: 0.4;
 
     ${media.greaterThan('medium')`

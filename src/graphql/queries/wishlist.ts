@@ -1,9 +1,9 @@
 import { gql, QueryHookOptions, useQuery } from '@apollo/client';
-import { GameFragment } from 'graphql/fragments/game';
 import {
   QueryWishList,
   QueryWishListVariables,
 } from 'graphql/generated/QueryWishList';
+import { GameFragment } from '../fragments/game';
 
 export const QUERY_WISHLIST = gql`
   query QueryWishList($identifier: String!) {

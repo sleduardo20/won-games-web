@@ -35,9 +35,9 @@ export const createPayment = async ({
 
   const { data } = await api.post('orders', {
     cart: items,
-    paymentIntent: paymentIntent?.id,
+    paymentIntentId: paymentIntent?.id,
     paymentMethod: paymentIntent?.payment_method,
   });
 
-  return data;
+  return { data };
 };

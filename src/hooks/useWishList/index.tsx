@@ -1,14 +1,16 @@
+import { useSession } from 'next-auth/client';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { GameCardProps } from 'components/GameCard';
-import { QueryWishList_wishlists_games } from 'graphql/generated/QueryWishList';
+
+import { QueryWishList_wishlists_games } from '../../graphql/generated/QueryWishList';
 import {
   MUTATION_CREATE_WISHLIST,
   MUTATION_UPDATE_WISHLIST,
-} from 'graphql/mutations/wishlist';
-import { useQueryWishList } from 'graphql/queries/wishlist';
-import { useSession } from 'next-auth/client';
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { gamesMapper } from 'utils/mappers';
+} from '../../graphql/mutations/wishlist';
+import { useQueryWishList } from '../../graphql/queries/wishlist';
+
+import { GameCardProps } from '../../components/GameCard';
+import { gamesMapper } from '../../utils/mappers';
 
 export type WishListContextData = {
   items: GameCardProps[];

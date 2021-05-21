@@ -7,6 +7,7 @@ import { GameCardProps } from 'components/GameCard';
 import { HighLightProps } from 'components/HighLight';
 import ShowCase from 'components/ShowCase';
 import { Divider } from 'components/Divider';
+import Image from 'next/image';
 import Base from '../Base';
 
 import {
@@ -45,7 +46,14 @@ const Game = ({
 }: GameTemplateProps) => {
   return (
     <Base>
-      <Cover src={cover} role="img" aria-label="cover" />
+      <Cover aria-label="cover">
+        <Image
+          src={cover}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="top"
+        />
+      </Cover>
       <Main>
         <SectionGameInfo>
           <GameInfo {...gameInfo} />

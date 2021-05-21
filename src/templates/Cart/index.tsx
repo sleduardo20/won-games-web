@@ -1,3 +1,4 @@
+import { Session } from 'next-auth';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
@@ -12,7 +13,6 @@ import ShowCase from 'components/ShowCase';
 
 import Base from 'templates/Base';
 
-import { Session } from 'next-auth';
 import { Content } from './styles';
 
 export interface CartProps extends CartListProps {
