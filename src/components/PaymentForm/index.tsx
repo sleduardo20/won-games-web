@@ -4,11 +4,11 @@ import { useRouter } from 'next/router';
 
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { PaymentIntent, StripeCardElementChangeEvent } from '@stripe/stripe-js';
+import { createPayment, createPaymentIntent } from 'utils/stripe/methods';
 
 import { ErrorOutline, ShoppingCart } from '@styled-icons/material-outlined';
 
 import { useCart } from 'hooks/useCart';
-import { createPayment, createPaymentIntent } from 'utils/stripe/methods';
 import { FormLoading } from 'components/FormForgotPassword/styles';
 import Button from '../Button';
 import Heading from '../Heading';
@@ -70,6 +70,8 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       paymentIntent,
       token: `${session.jwt}`,
     });
+
+    return data;
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -98,7 +100,6 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
       setLoading(false);
 
       // salvar as orders de jogos pagos
-
       saveOrder(payload.paymentIntent);
 
       push('/success');

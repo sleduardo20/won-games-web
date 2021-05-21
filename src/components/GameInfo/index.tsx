@@ -1,10 +1,6 @@
-import { FavoriteBorder } from 'styled-icons/material-outlined';
-
-import WishlistButton from 'components/WishlistButton';
+import WishlistButton from '../WishlistButton';
 import { formatPrice } from '../../utils/formatPrice';
-
 import { CartButton } from '../CartButton';
-import Button from '../Button';
 import Heading from '../Heading';
 import Ribbon from '../Ribbon';
 

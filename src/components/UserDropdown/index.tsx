@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { signOut } from 'next-auth/client';
+import { ChevronDown } from '@styled-icons/boxicons-regular';
 import {
   AccountCircle,
   ExitToApp,
   FavoriteBorder,
 } from '@styled-icons/material-outlined';
-import { ChevronDown } from '@styled-icons/boxicons-regular';
-import { signOut } from 'next-auth/client';
 
 import Dropdown from '../Dropdown';
 

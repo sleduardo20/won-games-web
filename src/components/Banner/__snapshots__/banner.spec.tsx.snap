@@ -36,12 +36,10 @@ exports[`<Banner /> should be render Banner component correctly 1`] = `
 }
 
 .c1 {
+  position: relative;
   width: 100%;
   height: 23rem;
   background-color: #EAEAEA;
-  background-image: url(https://souce.unsplash.com/user/willianjusten/104x580);
-  background-position: center center;
-  background-size: cover;
 }
 
 .c2 {
@@ -111,11 +109,14 @@ exports[`<Banner /> should be render Banner component correctly 1`] = `
   class="c0"
 >
   <div
-    aria-label="Defy Death"
     class="c1"
-    role="img"
-    src="https://souce.unsplash.com/user/willianjusten/104x580"
-  />
+  >
+    <img
+      alt="Defy Death"
+      layout="fill"
+      src="https://souce.unsplash.com/user/willianjusten/104x580"
+    />
+  </div>
   <div
     class="c2"
   >

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import SlickSlider from 'react-slick';
 import {
@@ -80,11 +81,13 @@ const Gallery = ({ items }: GalleryProps) => {
     <Container>
       <Slider ref={slider} settings={settings}>
         {items.map((item, index) => (
-          <img
+          <Image
             role="button"
             key={`thumb-${item.src}`}
             src={item.src}
             alt={`Thumb - ${item.label}`}
+            width={400}
+            height={230}
             onClick={() => {
               setIsOpen(true);
               slider.current!.slickGoTo(index, true);
@@ -105,10 +108,12 @@ const Gallery = ({ items }: GalleryProps) => {
         <Content>
           <Slider ref={slider} settings={modalSettings}>
             {items.map(item => (
-              <img
+              <Image
                 key={`gallery-${item.src}`}
                 src={item.src}
                 alt={item.label}
+                width={1200}
+                height={500}
               />
             ))}
           </Slider>

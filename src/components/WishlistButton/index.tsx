@@ -1,7 +1,7 @@
 import { Favorite, FavoriteBorder } from '@styled-icons/material-outlined';
-import Button, { ButtonProps } from 'components/Button';
-import { useWishList } from 'hooks/useWishList';
 import { useSession } from 'next-auth/client';
+import { useWishList } from '../../hooks/useWishList';
+import Button, { ButtonProps } from '../Button';
 
 interface WishlistButtonProps extends Pick<ButtonProps, 'size'> {
   id: string;

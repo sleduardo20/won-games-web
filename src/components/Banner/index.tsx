@@ -1,6 +1,8 @@
+import Image from 'next/image';
+
 import Ribbon, { RibbonColors, RibbonSizes } from '../Ribbon';
 import Button from '../Button';
-import { Container, Image, Caption, Title, Subtitle } from './styles';
+import { Container, ImageWrapper, Caption, Title, Subtitle } from './styles';
 
 export interface BannerProps {
   img: string;
@@ -31,7 +33,9 @@ const Banner = ({
         </Ribbon>
       )}
 
-      <Image src={img} role="img" aria-label={title} />
+      <ImageWrapper>
+        <Image src={img} alt={title} layout="fill" objectFit="cover" />
+      </ImageWrapper>
 
       <Caption>
         <Title>{title}</Title>

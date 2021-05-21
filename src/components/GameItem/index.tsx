@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Download } from 'styled-icons/boxicons-solid';
 import { useCart } from '../../hooks/useCart';
 
@@ -45,7 +46,7 @@ const GameItem = ({
     <Container>
       <GameContent>
         <ImageBox>
-          <img src={img} alt={title} />
+          <Image src={img} alt={title} layout="fill" objectFit="cover" />
         </ImageBox>
         <Content>
           <Title>

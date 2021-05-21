@@ -107,6 +107,7 @@ exports[`<GameInfo/> should be able render GameInfo component correctly 1`] = `
 
 .c3 {
   position: absolute;
+  z-index: 50;
   top: 1.6rem;
   display: -webkit-box;
   display: -webkit-flex;

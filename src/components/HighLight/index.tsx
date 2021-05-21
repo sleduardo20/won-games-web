@@ -1,5 +1,12 @@
+import Image from 'next/image';
 import Button from '../Button';
-import { Container, Content, FloatImage, Title, SubTitle } from './styles';
+import {
+  Container,
+  Content,
+  FloatImageWrapper,
+  Title,
+  SubTitle,
+} from './styles';
 
 export interface HighLightProps {
   title: string;
@@ -21,8 +28,18 @@ const HighLight = ({
   alignment = 'right',
 }: HighLightProps) => {
   return (
-    <Container backgroundImage={backgroundImage} alignment={alignment}>
-      {!!floatImage && <FloatImage src={floatImage} alt={title} />}
+    <Container alignment={alignment}>
+      <Image
+        src={backgroundImage}
+        alt={title}
+        layout="fill"
+        objectFit="cover"
+      />
+      {!!floatImage && (
+        <FloatImageWrapper>
+          <Image src={floatImage} alt={title} width={400} height={300} />
+        </FloatImageWrapper>
+      )}
       <Content>
         <Title>{title}</Title>
         <SubTitle>{subtitle}</SubTitle>

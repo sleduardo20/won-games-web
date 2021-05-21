@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import WishlistButton from '../WishlistButton';
 import { CartButton } from '../CartButton';
@@ -53,7 +54,7 @@ const GameCard = ({
       )}
       <Link href={`game/${slug}`} passHref>
         <ImageBox>
-          <img src={img} alt={title} />
+          <Image src={img} alt={title} layout="fill" objectFit="cover" />
         </ImageBox>
       </Link>
       <Content>
