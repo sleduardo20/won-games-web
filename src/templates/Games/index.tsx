@@ -14,9 +14,10 @@ import Base from 'templates/Base';
 import ExploreSideBar, { ItemProps } from 'components/ExploreSideBar';
 import GameCard from 'components/GameCard';
 import { Grid } from 'components/Grid';
-import { Loader, LoaderEclipse } from 'components/Loader';
+import { LoaderEclipse } from 'components/Loader';
 import Empty from 'components/Empty';
 
+import { getImageUrl } from 'utils/getImageUrl';
 import { Main, ShowMore, ShowMoreButton } from './styles';
 
 export interface GamesTemplatesProps {
@@ -80,7 +81,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplatesProps) => {
                     title={game.name}
                     slug={game.slug}
                     developer={game.developers[0].name}
-                    img={`http://localhost:1337${game.cover!.url}`}
+                    img={`${getImageUrl(game.cover!.url)}`}
                     price={game.price}
                   />
                 ))}

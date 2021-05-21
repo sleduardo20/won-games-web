@@ -5,11 +5,13 @@ import {
   QueryHome_sections_popularGames_highlight,
 } from '../../graphql/generated/QueryHome';
 import { QueryGames_games } from '../../graphql/generated/QueryGames';
+
+import { getImageUrl } from '../getImageUrl';
 import { formatPrice } from '../formatPrice';
 
 export const bannerMapper = (banners: QueryHome_banners[]) => {
   return banners.map(banner => ({
-    img: `http://localhost:1337${banner.image?.url}`,
+    img: `${getImageUrl(banner.image?.url)}`,
     title: banner.title,
     subtitle: banner.subtitle,
     buttonLabel: banner.button?.label,
@@ -35,7 +37,7 @@ export const gamesMapper = (
         title: game.name,
         slug: game.slug,
         developer: game.developers[0].name,
-        img: `http://localhost:1337${game.cover?.url}`,
+        img: `${getImageUrl(game.cover?.url)}`,
         price: game.price,
       }))
     : [];
@@ -48,7 +50,7 @@ export const highLightMapper = (
     highLigth && {
       title: highLigth.title,
       subtitle: highLigth.subtitle,
-      backgroundImage: `http://localhost:1337${highLigth.background?.url}`,
+      backgroundImage: `${getImageUrl(highLigth.background?.url)}`,
       buttonLabel: highLigth.buttonLabel,
       buttonLink: highLigth.buttonLink,
       alignment: highLigth.alignment,
@@ -61,7 +63,7 @@ export const cartMapper = (games: QueryGames_games[] | undefined) => {
     ? games.map(game => ({
         id: game.id,
         title: game.name,
-        img: `http://localhost:1337${game.cover?.url}`,
+        img: `${getImageUrl(game.cover?.url)}`,
         price: formatPrice(game.price),
       }))
     : [];
@@ -89,7 +91,7 @@ export const ordersMapper = (orders: QueryOrders_orders[]) => {
             title: game.name,
             downloadLink:
               'https://wongames.com/game/download/yuYT56Tgh431LkjhNBgdf',
-            img: `http://localhost:1337${game.cover?.url}`,
+            img: `${getImageUrl(game.cover?.url)}`,
             price: formatPrice(game.price),
           })),
         };

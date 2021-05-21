@@ -19,6 +19,7 @@ import {
 import { QUERY_UPCOMING } from 'graphql/queries/upcoming';
 
 import { gamesMapper, highLightMapper } from 'utils/mappers';
+import { getImageUrl } from 'utils/getImageUrl';
 import Game, { GameTemplateProps } from '../../templates/Game';
 
 const apolloClient = initializeApollo();
@@ -89,8 +90,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         price: game.price,
       },
       gallery: game.gallery.map(image => ({
-        src: `http://localhost:1337${image.src}`,
-        label: `http://localhost:1337${image.label}`,
+        src: `${getImageUrl(image.src)}`,
+        label: image.label,
       })),
       description: game.description,
       details: {
