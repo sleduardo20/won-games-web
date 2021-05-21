@@ -18,13 +18,8 @@ export const CartButton = ({ id, size, hasText }: CartButtonProps) => {
 
   return (
     <Button
-      icon={
-        isInCart(id) ? (
-          <RemoveShoppingCart aria-label="Remove from cart" />
-        ) : (
-          <AddShoppingCart aria-label="Add to cart" />
-        )
-      }
+      aria-label={textButton}
+      icon={isInCart(id) ? <RemoveShoppingCart /> : <AddShoppingCart />}
       size={size}
       onClick={() => (isInCart(id) ? removeFromCart(id) : addToCart(id))}
     >

@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Slider /> should be render Slider component the childrens as silider item 1`] = `
+.c0 {
+  position: relative;
+}
+
 .c0 .slick-slider {
   position: relative;
   display: block;

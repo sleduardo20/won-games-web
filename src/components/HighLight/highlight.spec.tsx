@@ -25,23 +25,6 @@ describe('<HighLight />', () => {
     expect(screen.getByRole('link', { name: /buy now/i })).toBeInTheDocument();
   });
 
-  it('should be render background image', () => {
-    const { container } = render(<HighLight {...props} />);
-
-    expect(container.firstChild).toHaveStyle({
-      backgroundImage: `url(${props.backgroundImage})`,
-    });
-  });
-
-  it('should be render background image', () => {
-    render(<HighLight {...props} floatImage="/float-image.png" />);
-
-    expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
-      'src',
-      '/float-image.png',
-    );
-  });
-
   it('should render align righ by default', () => {
     const { container } = render(
       <HighLight {...props} floatImage="/float-image.png" />,

@@ -41,11 +41,11 @@ exports[`<Footer/> should be render 4 columns topics 1`] = `
 .c3 a,
 .c3 span {
   display: block;
-  color: #8f8f8f;
+  color: #030517;
   -webkit-text-decoration: none;
   text-decoration: none;
   margin-bottom: 0.8rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .c3 a:hover {
@@ -176,7 +176,7 @@ exports[`<Footer/> should be render 4 columns topics 1`] = `
         </a>
       </div>
       <div
-        aria-label="social media"
+        aria-labelledby="social media"
         class="c3"
       >
         <h2
@@ -185,7 +185,9 @@ exports[`<Footer/> should be render 4 columns topics 1`] = `
         >
           Follow Us
         </h2>
-        <nav>
+        <nav
+          id="social media"
+        >
           <a
             href="#"
             rel="noopenner, noreferrer"
@@ -217,7 +219,7 @@ exports[`<Footer/> should be render 4 columns topics 1`] = `
         </nav>
       </div>
       <div
-        aria-label="footer resources"
+        aria-labelledby="resources"
         class="c3"
       >
         <h2
@@ -226,7 +228,9 @@ exports[`<Footer/> should be render 4 columns topics 1`] = `
         >
           Links
         </h2>
-        <nav>
+        <nav
+          id="resources"
+        >
           <a
             href="/"
           >

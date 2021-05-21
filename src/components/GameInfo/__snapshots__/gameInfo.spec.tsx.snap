@@ -107,7 +107,7 @@ exports[`<GameInfo/> should be able render GameInfo component correctly 1`] = `
 
 .c3 {
   position: absolute;
-  z-index: 50;
+  z-index: 10;
   top: 1.6rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -241,11 +241,11 @@ exports[`<GameInfo/> should be able render GameInfo component correctly 1`] = `
     class="c5"
   >
     <button
+      aria-label="Add to cart"
       class="c6"
     >
       <svg
         aria-hidden="true"
-        aria-label="Add to cart"
         class="c7"
         fill="currentColor"
         focusable="false"

@@ -15,11 +15,11 @@ const Footer = () => {
           </Heading>
           <a href="mailto:sld@wongames.com">sac@wongames.com</a>
         </Column>
-        <Column aria-label="social media">
+        <Column aria-labelledby="social media">
           <Heading color="black" size="small" lineBottom lineColor="secondary">
             Follow Us
           </Heading>
-          <nav>
+          <nav id="social media">
             <a href="#" target="_blank" rel="noopenner, noreferrer">
               Intagram
             </a>
@@ -34,11 +34,11 @@ const Footer = () => {
             </a>
           </nav>
         </Column>
-        <Column aria-label="footer resources">
+        <Column aria-labelledby="resources">
           <Heading color="black" size="small" lineBottom lineColor="secondary">
             Links
           </Heading>
-          <nav>
+          <nav id="resources">
             <Link href="/">
               <a>Home</a>
             </Link>
