@@ -9,7 +9,7 @@ module.exports = withPWA({
     disable: !isProd,
   },
   images: {
-    domains: ['localhost', 'res.cloudinary.com'],
+    domains: ['127.0.0.1', 'localhost', 'res.cloudinary.com'],
   },
   future: {
     webpack5: true,
