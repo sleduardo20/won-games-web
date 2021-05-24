@@ -71,7 +71,7 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "@typescript-eslint/typescript-estree": "^4.22.0",
-    "apollo": "^2.32.13",
+    "apollo": "^2.33.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
     "eslint": "^7.25.0",
