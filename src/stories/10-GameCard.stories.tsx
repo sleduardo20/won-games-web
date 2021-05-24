@@ -9,8 +9,7 @@ export default {
   args: {
     title: 'Population Zero',
     developer: 'Rockstar Games',
-    img:
-      'https://d2skuhm0vrry40.cloudfront.net/2017/articles//a/1/8/9/9/2/6/7/eurogamer-zjp1vx.jpg/EG11/thumbnail/750x422/format/jpg/quality/60',
+    img: 'https://d2skuhm0vrry40.cloudfront.net/2017/articles//a/1/8/9/9/2/6/7/eurogamer-zjp1vx.jpg/EG11/thumbnail/750x422/format/jpg/quality/60',
     price: 235,
     promotinalPrice: 200,
   },

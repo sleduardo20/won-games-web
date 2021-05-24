@@ -31,8 +31,9 @@ describe('<TextContent />', () => {
   it('should able render without title', () => {
     render(<TextContent {...props} />);
 
-    const wrapper = screen.getByRole('heading', { name: /description/i })
-      .parentElement;
+    const wrapper = screen.getByRole('heading', {
+      name: /description/i,
+    }).parentElement;
 
     expect(wrapper).toHaveStyle({
       color: '#fafafa',

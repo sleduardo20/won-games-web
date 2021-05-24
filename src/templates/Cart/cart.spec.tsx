@@ -6,6 +6,13 @@ import hightLightMock from '../../components/HighLight/mock';
 import Cart from '.';
 
 const props = {
+  session: {
+    jwt: 'token',
+    user: {
+      email: 'won@gamail.com',
+    },
+    expires: '123',
+  },
   recommendedTitle: 'You may like these games',
   recommendedGames: gamesMock,
   recommendedHighLight: hightLightMock,

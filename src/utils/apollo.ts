@@ -47,10 +47,10 @@ export function initializeApollo(
 }
 
 export function useApollo(initialState = null, session?: Session | null) {
-  const store = useMemo(() => initializeApollo(initialState, session), [
-    initialState,
-    session,
-  ]);
+  const store = useMemo(
+    () => initializeApollo(initialState, session),
+    [initialState, session],
+  );
 
   return store;
 }

@@ -92,8 +92,10 @@ describe('<Game />', () => {
       display: 'none',
     });
 
-    expect(
-      screen.getByTestId('Mock Gallery').parentElement,
-    ).toHaveStyleRule('display', 'block', { media: '(min-width: 768px)' });
+    expect(screen.getByTestId('Mock Gallery').parentElement).toHaveStyleRule(
+      'display',
+      'block',
+      { media: '(min-width: 768px)' },
+    );
   });
 });
