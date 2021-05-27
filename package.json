@@ -22,19 +22,32 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.19",
+<<<<<<< HEAD
     "@stripe/react-stripe-js": "^1.4.1",
+=======
+    "@stripe/react-stripe-js": "^1.4.0",
+>>>>>>> 563c5aa7383eac2c9d53420958d767eecc2dbe23
     "@stripe/stripe-js": "^1.15.0",
     "@styled-icons/boxicons-regular": "^10.23.0",
     "@styled-icons/fa-brands": "^10.26.0",
     "@styled-icons/material-outlined": "^10.28.0",
     "axios": "^0.21.1",
     "build": "^0.1.4",
+<<<<<<< HEAD
     "dotenv": "^9.0.2",
     "graphql": "^15.5.0",
     "joi": "^17.4.0",
     "lodash.xor": "^4.5.0",
     "next": "10.2.2",
     "next-auth": "^3.23.2",
+=======
+    "dotenv": "^10.0.0",
+    "graphql": "^15.5.0",
+    "joi": "^17.4.0",
+    "lodash.xor": "^4.5.0",
+    "next": "10.2.0",
+    "next-auth": "^3.23.3",
+>>>>>>> 563c5aa7383eac2c9d53420958d767eecc2dbe23
     "next-pwa": "^5.2.21",
     "next-seo": "^4.24.0",
     "nextjs-progressbar": "^0.0.9",
@@ -63,9 +76,15 @@
     "@storybook/react": "^6.2.9",
     "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^5.11.9",
+<<<<<<< HEAD
     "@testing-library/react": "^11.2.7",
     "@testing-library/react-hooks": "^6.0.0",
     "@testing-library/user-event": "^13.1.9",
+=======
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/react-hooks": "^6.0.0",
+    "@testing-library/user-event": "^13.1.8",
+>>>>>>> 563c5aa7383eac2c9d53420958d767eecc2dbe23
     "@types/jest": "^26.0.23",
     "@types/lodash.xor": "^4.5.6",
     "@types/node": "^15.6.0",
@@ -73,9 +92,15 @@
     "@types/react-dom": "^17.0.5",
     "@types/react-slick": "^0.23.4",
     "@types/styled-components": "^5.1.9",
+<<<<<<< HEAD
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "@typescript-eslint/typescript-estree": "^4.24.0",
+=======
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "@typescript-eslint/typescript-estree": "^4.22.0",
+>>>>>>> 563c5aa7383eac2c9d53420958d767eecc2dbe23
     "apollo": "^2.33.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
