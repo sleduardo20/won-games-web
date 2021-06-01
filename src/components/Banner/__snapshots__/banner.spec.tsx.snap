@@ -62,11 +62,11 @@ exports[`<Banner /> should be render Banner component correctly 1`] = `
 }
 
 @media (max-width:768px) {
-  .c0 .sc-bdvvaa {
+  .c0 .sc-bdnxRM {
     right: 0;
   }
 
-  .c0 .sc-bdvvaa::before {
+  .c0 .sc-bdnxRM::before {
     display: none;
   }
 }

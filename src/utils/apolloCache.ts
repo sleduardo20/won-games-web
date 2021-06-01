@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { InMemoryCache } from '@apollo/client';
 import { concatPagination } from '@apollo/client/utilities';
 
@@ -11,7 +12,7 @@ export default new InMemoryCache({
     Wishlist: {
       fields: {
         games: {
-          merge: (_, incoming) => {
+          merge(_, incoming) {
             return incoming;
           },
         },
