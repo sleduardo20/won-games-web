@@ -13,7 +13,11 @@ const Dropdown = ({ title, children }: DropdownProps) => {
     <Container isOpen={isOpen}>
       <Title onClick={() => setIsOpen(!isOpen)}>{title}</Title>
       <Content aria-hidden={!isOpen}>{children}</Content>
-      <Overlay aria-hidden={!isOpen} onClick={() => setIsOpen(!isOpen)} />
+      <Overlay
+        aria-hidden={!isOpen}
+        onClick={() => setIsOpen(!isOpen)}
+        data-cy="overlay"
+      />
     </Container>
   );
 };

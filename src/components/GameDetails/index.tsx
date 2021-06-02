@@ -39,7 +39,7 @@ const GameDetails = ({
     linux: <Linux title="Linux" size={18} />,
   };
   return (
-    <Container>
+    <Container data-cy="game-details">
       <MediaMath greaterThan="small">
         <Heading color="white" lineLeft lineColor="secondary">
           Game Details

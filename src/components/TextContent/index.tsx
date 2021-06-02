@@ -9,7 +9,7 @@ export interface TextContentProps {
 
 const TextContent = ({ title, content }: TextContentProps) => {
   return (
-    <Container>
+    <Container data-cy="content">
       {!!title && (
         <Heading lineLeft lineColor="secondary">
           {title}

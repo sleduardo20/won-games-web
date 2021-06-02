@@ -5,6 +5,7 @@ export const Container = styled.div`
     width: 2.4rem;
     height: 2.4rem;
     position: relative;
+    z-index: ${theme.layers.modal};
 
     color: ${theme.colors.white};
   `}

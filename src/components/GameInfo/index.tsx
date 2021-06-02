@@ -15,7 +15,7 @@ export interface GameInfoProps {
 
 const GameInfo = ({ id, title, description, price }: GameInfoProps) => {
   return (
-    <Container>
+    <Container data-cy="game-info">
       <Heading color="black" lineBottom>
         {title}
       </Heading>

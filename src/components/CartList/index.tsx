@@ -24,7 +24,7 @@ const CartList = ({ hasButton = false }: CartListProps) => {
   }
 
   return (
-    <Container isEmpty={!items.length}>
+    <Container isEmpty={!items.length} data-cy="cart-list">
       {items.length ? (
         <>
           <GamesList>
