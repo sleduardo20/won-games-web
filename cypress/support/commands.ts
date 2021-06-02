@@ -32,19 +32,36 @@ Cypress.Commands.add('shouldRenderBanner', () => {
     
   //selecionou os banners
     cy.get('.slick-slider').within(() => {
-      cy.findByRole('heading', { name: /The Witcher 3/i, level: 2} )
-      cy.findByRole('link', { name: /buy now/i} )
+      cy.findByRole('heading', { name: /MechWarrior 5: Mercenaries/i, level: 2} )
+      cy.findByRole('link', { name: /buy now/i} );
       
-      cy.get('.slick-dots > :nth-child(2) > button').click()
-      cy.wait(500)
+      cy.get('.slick-dots > :nth-child(2) > button').click();
+      cy.wait(500);
 
-      cy.findByRole('heading', { name: /Cyberpunk 2077/i, level: 2} )
-      cy.findByRole('link', { name: /buy now/i} )
+      cy.findByRole('heading', { name: /Necromunda: Hired Gun/i, level: 2} )
+      cy.findByRole('link', { name: /buy now/i} );
 
-      cy.get('.slick-dots > :nth-child(3) > button').click()
+      cy.get('.slick-dots > :nth-child(3) > button').click();
       
 
-      cy.findByRole('heading', { name: /Fallout 3: Game of the Year Edition/i, level: 2})
-      cy.findByRole('link', { name: /buy now/i} )
+      cy.findByRole('heading', { name: /Solasta: Crown of the Magister/i, level: 2})
+      cy.findByRole('link', { name: /buy now/i} );
     });
-})
+});
+
+Cypress.Commands.add('shouldRenderShowCase', ({ name, highlight = false }) => {
+    
+  cy.get(`[data-cy="${name}"]`).within(() => {
+    cy.findByRole('heading', { name }).should('exist');
+
+    cy.get('[data-cy=highlight]').should( highlight ? 'exist' : 'not.exist');
+
+    if (highlight) {
+      cy.get('[data-cy=highlight]').within(() => {
+        cy.findByRole('link').should('have.attr', 'href')
+      });
+    }
+
+  cy.get(`[data-cy="game-card"]`).should('have.length.gt', 0);
+  });
+});

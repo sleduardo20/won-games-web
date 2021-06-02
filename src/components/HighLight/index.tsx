@@ -28,7 +28,7 @@ const HighLight = ({
   alignment = 'right',
 }: HighLightProps) => {
   return (
-    <Container alignment={alignment}>
+    <Container alignment={alignment} data-cy="highlight">
       <Image
         src={backgroundImage}
         alt={title}
