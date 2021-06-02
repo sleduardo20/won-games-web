@@ -32,6 +32,13 @@ Cypress.Commands.add('getByDataCy', (selector, ...args) => {
   return cy.get(`[data-cy=${selector}]`,...args);
 });
 
+Cypress.Commands.add('getFields', ( fields ) => {
+  fields.map(({label}) => {
+    cy.findByText(label).should('exist');
+  });
+});
+
+
 Cypress.Commands.add('shouldRenderBanner', () => {
     
   //selecionou os banners
@@ -68,4 +75,21 @@ Cypress.Commands.add('shouldRenderShowCase', ({ name, highlight = false }) => {
 
   cy.getByDataCy("game-card").should('have.length.gt', 0);
   });
+});
+
+Cypress.Commands.add('shouldBeGreaterThan', (value) => {
+  
+  cy.findByText(/^\$\d+(\.\d{1,2})?/) //regex para pegar o preço do gameCard exemplo $10.00
+      .invoke('text') //converter para string
+      .then( $el => $el.replace('$','')) //remover o $
+      .then(parseFloat) //converter para float ex: 10.00
+      .should('be.gt', value)
+});
+
+Cypress.Commands.add('shouldBeLessThan', (value) => {
+  cy.findByText(/^\$\d+(\.\d{1,2})?/)
+      .invoke('text')
+      .then( $el => $el.replace('$',''))
+      .then(parseFloat)
+      .should('be.lt', value)
 });
