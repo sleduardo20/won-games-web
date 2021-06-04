@@ -99,7 +99,7 @@ const FormSignUp = () => {
         />
         <TextField
           name="password"
-          placeholder="Senha"
+          placeholder="Password"
           type="password"
           error={fieldError.password}
           onInputChange={value => handleInput('password', value)}
@@ -107,7 +107,7 @@ const FormSignUp = () => {
         />
         <TextField
           name="confirm_password"
-          placeholder="Confirmar senha"
+          placeholder="Conform password"
           type="password"
           error={fieldError?.confirm_password}
           onInputChange={value => handleInput('confirm_password', value)}
