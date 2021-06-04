@@ -14,9 +14,9 @@ type FieldsAttributes = {
 }
 
 type User = {
-  username: string;
-  email: string;
-  password: string;
+  username?: string;
+  email?: string;
+  password?: string;
 };
 
 
@@ -41,6 +41,10 @@ declare namespace Cypress {
     // Custom command to create sign up
     // @example cy.signUp(user)
     signUp(user: User): Chainable<Element>;
+    
+    // Custom command to create sign in
+    // @example cy.signIn(user)
+    signIn(email?: string, password?: string): Chainable<Element>;
     
     // Custom command to check if value is less than price
     // @example cy.shouldBeLessThan(50)

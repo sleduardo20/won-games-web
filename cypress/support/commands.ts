@@ -38,7 +38,6 @@ Cypress.Commands.add('getFields', ( fields ) => {
   });
 });
 
-
 Cypress.Commands.add('shouldRenderBanner', () => {
     
   //selecionou os banners
@@ -99,4 +98,11 @@ Cypress.Commands.add('signUp', (user) => {
     cy.findByPlaceholderText(/email/i).type(user.email);
     cy.findByPlaceholderText(/^password/i).type(user.password);
     cy.findByPlaceholderText(/conform password/i).type(user.password);
+});
+
+Cypress.Commands.add('signIn', (email='user01@example.com', password='User01') => {
+    cy.findByPlaceholderText(/email/i).type(email);
+    cy.findByPlaceholderText(/^password/i).type(password);
+    cy.findByRole('button', { name: /sign in now/i }).click();
+    
 })
