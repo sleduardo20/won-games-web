@@ -1,6 +1,8 @@
 // load type definitions from Cypress module
 /// <reference types="cypress" />
 
+
+
 type ShowcaseAttributes = {
   name: string;
   highlight?: boolean;
@@ -10,6 +12,13 @@ type FieldsAttributes = {
   label:string;
   name: string | number;
 }
+
+type User = {
+  username: string;
+  email: string;
+  password: string;
+};
+
 
 declare namespace Cypress {
   interface Chainable {
@@ -28,6 +37,10 @@ declare namespace Cypress {
     // Custom command to check if value is greater than price
     // @example cy.shouldBeGreaterThan(100)
     shouldBeGreaterThan(value: number): Chainable<Element>;
+    
+    // Custom command to create sign up
+    // @example cy.signUp(user)
+    signUp(user: User): Chainable<Element>;
     
     // Custom command to check if value is less than price
     // @example cy.shouldBeLessThan(50)
