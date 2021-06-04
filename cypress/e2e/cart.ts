@@ -5,36 +5,27 @@ describe('Cart',() => {
     //vistar a home
     cy.visit('/');
 
-    //procurar um jogo e clicar no botao do carrinho
-    cy.getByDataCy('game-card').eq(0).within(() => {
-      cy.findByRole('button', { name: /add to cart/i}).click();
-    })
-
-
-    //procurar outro jogo e clicar no botao do carrinho
-    cy.getByDataCy('game-card').eq(1).within(() => {
-      cy.findByRole('button', { name: /add to cart/i}).click();
-    })
+    //procurar um jogo e adicionar no carrinho
+    cy.addToCart(0);
+    cy.addToCart(1);
+    cy.addToCart(2);
 
     //verificar se o icone tem o numero de jogos
-    cy.findAllByLabelText(/cart items/i).first().should('have.text', 2);
+    cy.findAllByLabelText(/cart items/i).first().should('have.text', 3);
 
     //abre o carrinho e verifica se tem os jogos
-    cy.findAllByLabelText(/cart items/i).first().should('have.text', 2).click();
+    cy.findAllByLabelText(/cart items/i).first().should('have.text', 3).click();
     cy.getByDataCy('cart-list').within(() => {
-      cy.findAllByRole('heading').should('have.length', 2);
+      cy.findAllByRole('heading').should('have.length', 3);
     })
 
     //fecha o carrinho
-    cy.findAllByLabelText(/cart items/i).first().should('have.text', 2).click();
+    cy.findAllByLabelText(/cart items/i).first().should('have.text', 3).click();
 
-    //procura pelos jogos adicionados e remover
-    cy.getByDataCy('game-card').eq(0).within(() => {
-      cy.findByRole('button', { name: /remove from cart/i}).click();
-    });
-    cy.getByDataCy('game-card').eq(1).within(() => {
-      cy.findByRole('button', { name: /remove from cart/i}).click();
-    });
+    //procura pelos jogos adicionados e remover do carrinho
+    cy.removeFromCart(0);
+    cy.removeFromCart(1);
+    cy.removeFromCart(2);
 
     //verifica o icone do carrinho para não ter jogos
     cy.findAllByLabelText(/cart items/i).should('not.exist');

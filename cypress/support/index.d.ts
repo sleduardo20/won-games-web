@@ -34,6 +34,14 @@ declare namespace Cypress {
     // @example cy.getFields('field')
     getFields(fields: FieldsAttributes[]): Chainable<Element>;
     
+    // Custom command to add to cart
+    // @example cy.addToCart(index)
+    addToCart(index: number): Chainable<Element>;
+    
+    // Custom command to remove from cart
+    // @example cy.removeFromCart(index)
+    removeFromCart(index: number): Chainable<Element>;
+    
     // Custom command to check if value is greater than price
     // @example cy.shouldBeGreaterThan(100)
     shouldBeGreaterThan(value: number): Chainable<Element>;
