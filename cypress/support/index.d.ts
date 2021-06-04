@@ -42,6 +42,14 @@ declare namespace Cypress {
     // @example cy.removeFromCart(index)
     removeFromCart(index: number): Chainable<Element>;
     
+    // Custom command to add to wishlist
+    // @example cy.addToWishlist(index)
+    addToWishlist(index: number): Chainable<Element>;
+    
+    // Custom command to remove from wishlist
+    // @example cy.removeFromWishlist(index)
+    removeFromWishlist(index: number): Chainable<Element>;
+    
     // Custom command to check if value is greater than price
     // @example cy.shouldBeGreaterThan(100)
     shouldBeGreaterThan(value: number): Chainable<Element>;
