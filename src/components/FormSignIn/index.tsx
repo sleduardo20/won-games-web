@@ -62,7 +62,7 @@ const FormSignIn = () => {
   };
   return (
     <Container>
-      {formError && (
+      {!!formError && (
         <FormError>
           <ErrorOutline /> {formError}
         </FormError>
