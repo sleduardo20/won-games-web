@@ -13,7 +13,7 @@ type ResetReqBody = {
 // interceptar as chamadas
 export const handlers = [
   rest.post<LoginReqBody>(
-    `${process.env.NEXT_PUBLIC_API_URL}auth/forgot-password`,
+    `${process.env.NEXT_PUBLIC_API_URL}/auth/forgot-password`,
     (req, res, ctx) => {
       const { email } = req.body;
       if (email === 'false@email.com') {
@@ -38,7 +38,7 @@ export const handlers = [
     },
   ),
   rest.post<ResetReqBody>(
-    `${process.env.NEXT_PUBLIC_API_URL}auth/reset-password`,
+    `${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`,
     (req, res, ctx) => {
       const { code } = req.body;
 

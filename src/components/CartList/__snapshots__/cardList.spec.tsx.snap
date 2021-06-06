@@ -148,12 +148,14 @@ exports[`<CardList /> should be able render correctly 1`] = `
 
 <div
   class="c0"
+  data-cy="cart-list"
 >
   <div
     class="c1"
   >
     <div
       class="c2"
+      data-cy="game-item"
     >
       <div
         class="c3"
@@ -189,6 +191,7 @@ exports[`<CardList /> should be able render correctly 1`] = `
     </div>
     <div
       class="c2"
+      data-cy="game-item"
     >
       <div
         class="c3"

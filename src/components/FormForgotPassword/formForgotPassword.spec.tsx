@@ -27,10 +27,7 @@ describe('<FormForgotPassword />', () => {
   it('should be able validate the email', async () => {
     render(<FormForgotPassword />);
 
-    await userEvent.type(
-      screen.getByPlaceholderText(/email/i),
-      'valid@email.com',
-    );
+    userEvent.type(screen.getByPlaceholderText(/email/i), 'valid@email.com');
 
     userEvent.click(screen.getByRole('button', { name: /send email/i }));
 

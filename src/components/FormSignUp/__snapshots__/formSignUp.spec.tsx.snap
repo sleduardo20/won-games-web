@@ -228,7 +228,7 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
         <input
           class="c7"
           name="password"
-          placeholder="Senha"
+          placeholder="Password"
           type="password"
           value=""
         />
@@ -270,7 +270,7 @@ exports[`<FormSignUp /> should be able render form correctly 1`] = `
         <input
           class="c7"
           name="confirm_password"
-          placeholder="Confirmar senha"
+          placeholder="Conform password"
           type="password"
           value=""
         />

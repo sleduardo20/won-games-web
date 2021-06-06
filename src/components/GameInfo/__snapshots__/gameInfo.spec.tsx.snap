@@ -219,6 +219,7 @@ exports[`<GameInfo/> should be able render GameInfo component correctly 1`] = `
 
 <div
   class="c0"
+  data-cy="game-info"
 >
   <h2
     class="c1"

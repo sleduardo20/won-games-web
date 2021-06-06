@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { MockedProvider } from '@apollo/client/testing';
 import FormSignUp from 'components/FormSignUp';
 import { screen, render } from '../../utils/test-utils';
@@ -12,8 +13,8 @@ describe('<FormSignUp />', () => {
 
     expect(screen.getByPlaceholderText('Username')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Senha')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('Confirmar senha')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Conform password')).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: /criar conta/i }),
     ).toBeInTheDocument();

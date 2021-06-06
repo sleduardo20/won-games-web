@@ -54,16 +54,15 @@ describe('<FormResetPassword />', () => {
 
     render(<FormResetPassword />);
 
-    await userEvent.type(screen.getByPlaceholderText('password'), '123');
+    userEvent.type(screen.getByPlaceholderText('password'), '123');
 
-    await userEvent.type(
-      screen.getByPlaceholderText(/confirm password/i),
-      '123',
-    );
+    userEvent.type(screen.getByPlaceholderText(/confirm password/i), '123');
 
     userEvent.click(screen.getByRole('button', { name: /reset password/i }));
 
-    expect(await screen.findByText(/incorrect code provider/i));
+    expect(
+      await screen.findByText(/incorrect code provider/i),
+    ).toBeInTheDocument();
   });
 
   it('should be able reset password and sign in the user', async () => {
@@ -71,12 +70,9 @@ describe('<FormResetPassword />', () => {
 
     render(<FormResetPassword />);
 
-    await userEvent.type(screen.getByPlaceholderText('password'), '123');
+    userEvent.type(screen.getByPlaceholderText('password'), '123');
 
-    await userEvent.type(
-      screen.getByPlaceholderText(/confirm password/i),
-      '123',
-    );
+    userEvent.type(screen.getByPlaceholderText(/confirm password/i), '123');
 
     userEvent.click(screen.getByRole('button', { name: /reset password/i }));
 

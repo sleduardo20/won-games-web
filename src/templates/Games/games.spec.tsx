@@ -1,4 +1,5 @@
 import '../../../.jest/session.mock';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { MockedProvider } from '@apollo/client/testing';
 
 import filterItemsMock from 'components/ExploreSideBar/mock';
