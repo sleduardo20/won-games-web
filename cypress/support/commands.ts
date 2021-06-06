@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 // Add Testing Library React
 import '@testing-library/cypress/add-commands';
+import 'cypress-plugin-stripe-elements';
 
 Cypress.Commands.add('google', () => cy.visit('https://www.google.com'));
 
@@ -98,6 +99,7 @@ Cypress.Commands.add('signUp', (user) => {
     cy.findByPlaceholderText(/email/i).type(user.email);
     cy.findByPlaceholderText(/^password/i).type(user.password);
     cy.findByPlaceholderText(/conform password/i).type(user.password);
+    cy.findByRole('button', { name: /criar conta/i }).click();
 });
 
 Cypress.Commands.add('signIn', (email='user01@example.com', password='User01') => {

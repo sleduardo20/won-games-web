@@ -24,6 +24,5 @@ describe('Whishlist', () => {
         
     //verificar se a wishlist esta vazia
     cy.findByText(/Games added to your wishlist will appear here/i).should('exist');
-
   });
 });

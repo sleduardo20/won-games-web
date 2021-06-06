@@ -31,13 +31,19 @@ export const createPayment = async ({
   paymentIntent,
   token,
 }: CreatePaymentParams) => {
-  api.defaults.headers.authorization = `Bearer ${token}`;
+  // api.defaults.headers.authorization = `Bearer ${token}`;
 
-  const { data } = await api.post('orders', {
-    cart: items,
-    paymentIntentId: paymentIntent?.id,
-    paymentMethod: paymentIntent?.payment_method,
-  });
+  const { data } = await api.post(
+    'orders',
+    {
+      cart: items,
+      paymentIntentId: paymentIntent?.id,
+      paymentMethod: paymentIntent?.payment_method,
+    },
+    {
+      headers: { authorization: `Bearer ${token}` },
+    },
+  );
 
   return { data };
 };
