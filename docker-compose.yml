@@ -1,0 +1,25 @@
+
+version: '3'
+
+services:
+  api:
+    container_name: wongames_api
+    image: wongames/api:latest
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: wongames
+      DATABASE_PASSWORD: wongames123
+      DATABASE_NAME: wongames
+      STRIPE_KEY: 'NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51IYWGGJdQBJH6dfItmJpjMe0rD4UlGeyToXwjEQmpz1aljKNKamxyrgYISF7MPmSjPVm1QrGQxORApsgKR5ksDx800zMtIXKIU
+      '
+    ports:
+      - '1337:1337'
+    depends_on:
+      - db
+
+  db:
+    container_name: wongames_db
+    image: wongames/database:latest
+    ports:
+      - '5432:5432'
