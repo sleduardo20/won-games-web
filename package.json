@@ -104,7 +104,7 @@
     "pretty-format": "^26.6.0",
     "react-is": "^17.0.2",
     "start-server-and-test": "^1.12.3",
-    "ts-loader": "^9.2.1",
+    "ts-loader": "^9.2.3",
     "typescript": "^4.2.4"
   }
 }
