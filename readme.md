@@ -11,7 +11,7 @@
 </br>
 
 
-## ⛏️ Technologies
+## 🔧 Techs
 
 - [Nextjs](https://nextjs.org/docs)
 - [Reactjs](https://reactjs.org/docs/getting-started.html)
